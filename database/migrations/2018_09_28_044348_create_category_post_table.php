@@ -33,8 +33,10 @@ class CreateCategoryPostTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign(['post_id']);
-        $table->dropForeign(['category_id']);
-        Schema::dropIfExists('category_post');
+        Schema::table('category_post', function ($table) {
+            $table->dropForeign(['post_id']);
+            $table->dropForeign(['category_id']);
+            Schema::dropIfExists('category_post');
+        });
     }
 }

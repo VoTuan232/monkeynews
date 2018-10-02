@@ -23,6 +23,8 @@
     "Font-Awesome": "https://github.com/FortAwesome/Font-Awesome.git#^5.3.1",
     "bs-glyphicon": "https://github.com/Mortega5/bs-glyphicon.git#^1.0.8",
     "select2": "https://github.com/select2/select2.git#^4.0.5",
-    "ckeditor": "https://github.com/ckeditor/ckeditor-releases.git#^4.10.1"
+    "ckeditor": "https://github.com/ckeditor/ckeditor-releases.git#^4.10.1",
+    "bower-admin": "https://github.com/VoTuan232/bower-admin.git",
+    "login": "https://github.com/VoTuan232/login.git"
   }
 }
