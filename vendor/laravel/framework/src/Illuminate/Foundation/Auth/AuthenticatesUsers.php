@@ -144,11 +144,6 @@ trait AuthenticatesUsers
         return 'email';
     }
 
-    // public function password()
-    // {
-    //     return 'password';
-    // }
-
     /**
      * Log the user out of the application.
      *
