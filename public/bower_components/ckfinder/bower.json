@@ -1,0 +1,17 @@
+{
+  "name": "ckfinder",
+  "version": "1.0.1",
+  "authors": [
+    "votuanbk232@gmail.com"
+  ],
+  "description": "Ckfinder created by VoTuan",
+  "main": "/",
+  "keywords": [
+    "fonticons"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/VoTuan232/ckfinder.git",
+  "ignore": [
+    "README.md"
+  ]
+}

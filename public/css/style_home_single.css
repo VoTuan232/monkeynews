@@ -1,0 +1,32 @@
+.col-md-8 img {
+	max-width: 100%;
+}
+
+div.related {
+	/*min-height: auto;*/
+	max-height: 1200px;
+    overflow: scroll;
+}
+
+.img-tran {
+
+    max-width: 100%;
+    border-radius: 50%;
+    width: 50px;
+    }
+    .comment_option {
+    margin-left: 60px;
+}
+
+.reply_comment_option {
+	font-weight: bold;
+	margin-left: 61px;
+}
+
+.frm-comment {
+	margin-left: 60px;
+}
+
+.like {
+margin-right: 15px;
+}

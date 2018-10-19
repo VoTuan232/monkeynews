@@ -20,15 +20,29 @@
          <div class="container-login100">
             <div class="wrap-login100">
                <div class="login100-pic js-tilt" data-tilt>
-                  <img src="{{ asset('bower_components/login/images/img-01.png') }}" alt="IMG">
+                   <img src="{{ \Storage::disk('my-disk')->url('/img-01.png') }}" alt="IMG">
                </div>
+
                {!! Form::open(['route' =>'login', 'class' => 'login100-form validate-form', 'method' => 'POST']) !!}
                {{ csrf_field() }}
                <span class="login100-form-title">
                Member Login
-               </span>
+
+                </span>
+                  {{-- @include('partials._message') --}}
+                  @if($errors->has('email'))
+                  <div class="alert alert-success">
+                  {{ $errors->first('email') }}
+                  </div>
+                  @endif
+                  @if($errors->has('password'))
+                  <div class="alert alert-success">
+                  {{ $errors->first('password') }}
+                  </div>
+                  @endif
+
                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                  {{ Form::email('email', null, ['class' => 'input100', 'placeholder' => 'Email']) }}
+                  {{ Form::email('email', old('email'), ['class' => 'input100', 'placeholder' => 'Email']) }}
                   <span class="focus-input100"></span>
                   <span class="symbol-input100">
                   <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -45,7 +59,7 @@
                   <div class="col-md-6 col-md-offset-4">
                      <div class="checkbox">
                         <label>
-                        {{ Form::checkbox('remember', 'check') }} Remember
+                        {{ Form::checkbox('remember', 'check'),false, ['class' => 'checkbox'] }} Remember
                         </label>
                      </div>
                   </div>
@@ -62,7 +76,7 @@
                   </a>
                </div>
                <div class="text-center p-t-136">
-                  <a class="txt2" href="#">
+                  <a class="txt2" href="{{ route('register') }}">
                   Create your Account
                   <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                   </a>

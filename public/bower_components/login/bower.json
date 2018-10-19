@@ -1,0 +1,17 @@
+{
+  "name": "login",
+  "version": "1.0.1",
+  "authors": [
+    "votuanbk232@gmail.com"
+  ],
+  "description": "Framgia standard demo Bower",
+  "main": "/",
+  "keywords": [
+    "fonticons"
+  ],
+  "license": "MIT",
+  "homepage": "votuanbk232@gmail.com",
+  "ignore": [
+    "README.md"
+  ]
+}

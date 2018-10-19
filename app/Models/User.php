@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -60,6 +61,17 @@ class User extends Authenticatable
 
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany('App\Models\Comment', 'user_id');
+    }
+
+    public function isAdmin() 
+    {
+       if ( $this->roles->count()>0 && !$this->inRole('subscriber') )
+        {
+            return true;
+        }
+
+        return false;
+
     }
 }

@@ -1,0 +1,26 @@
+{
+  "name": "ckfinder",
+  "authors": [
+    "votuanbk232@gmail.com"
+  ],
+  "description": "Ckfinder created by VoTuan",
+  "main": "/",
+  "keywords": [
+    "fonticons"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/VoTuan232/ckfinder.git",
+  "ignore": [
+    "README.md"
+  ],
+  "_release": "43552ff9b0",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "43552ff9b0519b9981686523fc06d852a3e85534"
+  },
+  "_source": "https://github.com/VoTuan232/ckfinder.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/VoTuan232/ckfinder.git",
+  "_direct": true
+}

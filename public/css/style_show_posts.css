@@ -1,0 +1,31 @@
+.container .post {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 263px;
+}
+
+.container .post img 
+{vertical-align: middle;}
+
+.container .post .content {
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(71, 53, 53, 0.5);
+  color: #dedede;
+  width: 100%;
+  padding: 20px;
+}
+
+.container .row-post {
+  margin-bottom: 25px;
+}
+
+div .content .title a {
+  color: #fefefe;
+}
+
+.sub-cat-posts-base-cat {
+  text-decoration: underline;
+}

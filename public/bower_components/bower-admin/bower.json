@@ -1,0 +1,17 @@
+{
+  "name": "bower-admin",
+  "version": "1.0.1",
+  "authors": [
+    "votuanbk232@gmail.com"
+  ],
+  "description": "Admin Bower",
+  "main": "/",
+  "keywords": [
+    "fonticons"
+  ],
+  "license": "MIT",
+  "homepage": "votuanbk232@gmail.com",
+  "ignore": [
+    "README.md"
+  ]
+}

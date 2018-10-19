@@ -11,6 +11,8 @@ class Post extends Model
         'slug',
         'body',
         'user_id',
+        'image',
+        'published',
     ];
 
     public function user()
@@ -30,16 +32,57 @@ class Post extends Model
 
     public function categories()
     {
-        return $this->belongsToMany('App\Models\Category');
+        return $this->belongsToMany('App\Models\Category')->withTimestamps();
     }
 
+    // public function comments()
+    // {
+    //     return $this->hasMany('App\Models\Comment');
+    // }
+    
+    //post va comment moi quan he da hinh
+    //comment thuoc post hoac comment thuoc 1 comment khac
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment');
+        return $this->morphMany('App\Models\Comment', 'commentable')->whereNull('parent_id')->orderBy('created_at', 'desc');
     }
 
     public function tags()
     {
-        $this->belongsToMany('App\Models\Tag');
+        return $this->belongsToMany('App\Models\Tag');
     }
+
+    public static function getCategory(Post $post) {
+         if($post->categories()->count() > 0 )
+            {
+                $id = 0;
+                // dd($post->categories()->first()->id);
+                foreach($post->categories()->get() as $category)
+                {
+
+                    foreach($post->categories()->get() as $category1)
+                    {
+                        if($category1->parent_id == $category->id){
+                            $id += 1;
+                        }
+
+                            
+                    }
+
+                    if($id == 0){
+
+                        $cat = $category;
+                        break;
+                    }
+                    else
+                    {
+                        $id = 0;
+                    }
+
+                }
+                return $cat;
+            }
+        return null;
+    }
+
 }

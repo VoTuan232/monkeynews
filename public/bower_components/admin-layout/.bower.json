@@ -1,0 +1,26 @@
+{
+  "name": "admin-layout",
+  "authors": [
+    "votuanbk232@gmail.com"
+  ],
+  "description": "Admin Layout created by VoTuan",
+  "main": "/",
+  "keywords": [
+    "fonticons"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/VoTuan232/admin-layout.git",
+  "ignore": [
+    "README.md"
+  ],
+  "_release": "58e719267f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "58e719267f85f27bfd3dbdbbc247e7d54e6e6173"
+  },
+  "_source": "https://github.com/VoTuan232/admin-layout.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/VoTuan232/admin-layout.git",
+  "_direct": true
+}

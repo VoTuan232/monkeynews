@@ -14,10 +14,10 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
         $user2 = User::where('email', 'user2@gmail.com')->first();
-        $user5 = User::where('email', 'user5@gmail.com')->first();
+        $user4 = User::where('email', 'user4@gmail.com')->first();
         $faker = Faker\Factory::create();
 
-        for ($i = 0; $i < 10; $i++) { 
+        for ($i = 0; $i < 100; $i++) { 
             $title = $faker->sentence($nbWords = 6, $variableNbWords = true);
             $post = Post::create([
                 'title' => $title, 
@@ -25,7 +25,9 @@ class PostsTableSeeder extends Seeder
                 'slug' => str_slug($title),
                 'published' => rand(0, 1),
                 'image' => 'demo.jpg',
-                'user_id' => $user2->id
+                'user_id' => $user2->id,
+                'vote' => rand(0, 10),
+                'view' => rand(0, 10)
             ]);
             $title = $faker->sentence($nbWords = 6, $variableNbWords = true);
             $post = Post::create([
@@ -34,7 +36,9 @@ class PostsTableSeeder extends Seeder
                 'slug' => str_slug($title),
                 'published' => rand(0, 1),
                 'image' => 'demo.jpg',
-                'user_id' => $user5->id
+                'user_id' => $user4->id,
+                'vote' => rand(0, 10),
+                'view' => rand(0, 10)
             ]);
         }
     }

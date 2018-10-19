@@ -10,16 +10,66 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// use App\Models\Post;
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
+
+Route::get('/', 'HomeController@index')->name('pages.index');
 
 Auth::routes();
 Route::get('logout','Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'auth'], function(){
-    Route::resource('admin','admin\AdminController');
+
+Route::get('/{id}-{slug}', 'HomeController@getPosts')->name('home.posts');
+
+Route::group(['middleware' => ['auth', 'admin']], function(){
+    // Route::get('test', 'admin\PostController@test');
+    // Route::post('/{slug-category}/{slug}', 'HomeController@single')->name('home.single');
+    Route::post('manager/categories/destroy', 'admin\CategoryController@destroy')->name('categories.destroy');
+    Route::post('manager/categories/update', 'admin\CategoryController@update')->name('categories.update');
+    Route::get('manager/categories/edit', 'admin\CategoryController@edit')->name('categories.edit');
+    Route::post('manager/categories/search', 'admin\CategoryController@search')->name('categories.search');
+    Route::get('manager/categories/test', 'admin\CategoryController@test');
+    Route::post('manager/categories/store', 'admin\CategoryController@store')->name('categories.store');
+    Route::get('manager/categories', 'admin\CategoryController@index')->name('categories.index');
+    Route::post('manager/tags/update', 'admin\TagController@update')->name('tags.update');
+    Route::post('manager/tags/destroy', 'admin\TagController@destroy')->name('tags.destroy');
+    Route::get('manager/tags/edit', 'admin\TagController@edit')->name('tags.edit');
+    Route::post('manager/tags', 'admin\TagController@store')->name('tags.store');
+    Route::get('manager/tags', 'admin\TagController@index')->name('tags.index');
+    Route::post('manager/posts/update/', 'admin\PostController@update')->name('posts.update');
+    Route::get('manager/posts/edit/{id}', 'admin\PostController@edit')->name('posts.edit');
+    Route::get('manager/posts/edit','admin\PostController@edit');
+	Route::post('manager/posts/destroy', 'admin\PostController@destroy');
+	Route::get('manager/posts/read-data', 'admin\PostController@readData');
+    Route::resource('admin', 'admin\AdminController');
+    Route::get('manager/posts', 'admin\PostController@index')->name('posts.index');
+    Route::post('manager/posts/store', 'admin\PostController@store')->name('posts.store')->middleware('can:post.create');
+	// Route::get('ajax/getCategoriesChildren/{category_id}', 'admin\PostController@getCategoriesChildren');
+	Route::post('manager/ajax/getCategoriesChildren', 'admin\PostController@getCategoriesChildren');
+
+    Route::get('manager/users', 'admin\UserController@index')->name('users.index');
+    Route::post('manager/users/store', 'admin\UserController@store')->name('users.store');
+    Route::get('manager/users/edit', 'admin\UserController@edit')->name('users.edit');
+    Route::post('manager/users/update', 'admin\UserController@update')->name('users.update');
+    Route::get('manager/roles', 'admin\RoleController@index')->name('roles.index');
+    Route::post('manager/roles/update', 'admin\RoleController@update')->name('roles.update');
+
+    Route::get('manager/ajax/getPermissions', 'admin\RoleController@getPermissions')->name('roles.getPermissions');
+
+    // Route::get('manager/storages', 'admin\StorageController@index')->name('storages.index');
 });
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::post('/post/comment/store', 'CommentController@store')->name('comment.add');
+    Route::get('storage/posts', 'StorageController@getPost')->name('storages.posts.index');
+});
+
+Route::get('storages/posts/save', 'StorageController@savePost')->name('storages.posts.save'); 
+Route::get('storages/posts/remove', 'StorageController@removePost')->name('storages.posts.remove'); 
+
+Route::get('/{category}/{slug}', 'HomeController@getSingle')->name('home.single');

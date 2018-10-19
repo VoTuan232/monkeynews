@@ -34,26 +34,31 @@ class CategoriesTableSeeder extends Seeder
 
         DB::table('categories')->insert([
             'id'  => '5',
+            'name' => 'Văn hóa',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'  => '6',
             'name' => 'Bóng đá',
             'parent_id' => '1',
         ]);
 
         DB::table('categories')->insert([
-            'id'  => '6',
+            'id'  => '7',
             'name' => 'Cầu lông',
             'parent_id' => '1',
         ]);
 
         DB::table('categories')->insert([
-            'id'  => '7',
+            'id'  => '8',
             'name' => 'Bất động sản',
             'parent_id' => '3',
         ]);
 
         DB::table('categories')->insert([
-            'id'  => '8',
+            'id'  => '9',
             'name' => 'Ca nhạc',
             'parent_id' => '4',
-         ]);
+        ]);
     }
 }

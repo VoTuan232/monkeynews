@@ -33,8 +33,10 @@ class CreateCategoryUserTable extends Migration
      */
     public function down()
     {
-        $table->dropForeign(['user_id']);
-        $table->dropForeign(['category_id']);
+        Schema::table('category_user', function ($table) {
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['category_id']);
+        });
         Schema::dropIfExists('category_user');
     }
 }

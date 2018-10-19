@@ -64,6 +64,18 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'my-disk' => [
+            'driver' => 'local',
+            'root'    => 'bower_components/login/images',
+            'url'    => 'bower_components/login/images',
+        ],
+
+        'img-post' => [
+            'driver' => 'local',
+            'root'    => 'images/',
+            'url'    => 'images/',
+        ],
+
     ],
 
 ];

@@ -1,0 +1,14 @@
+{
+  "name": "client-news",
+  "homepage": "https://github.com/VoTuan232/client-news",
+  "_release": "5cf5902079",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "5cf5902079d35f215558ec34233af6ab12007792"
+  },
+  "_source": "https://github.com/VoTuan232/client-news.git",
+  "_target": "*",
+  "_originalSource": "client-news",
+  "_direct": true
+}

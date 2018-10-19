@@ -1,0 +1,26 @@
+{
+  "name": "bower-admin",
+  "authors": [
+    "votuanbk232@gmail.com"
+  ],
+  "description": "Admin Bower",
+  "main": "/",
+  "keywords": [
+    "fonticons"
+  ],
+  "license": "MIT",
+  "homepage": "votuanbk232@gmail.com",
+  "ignore": [
+    "README.md"
+  ],
+  "_release": "844eaff2ab",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "844eaff2ab622462c93755e0b72d08fadf5c1232"
+  },
+  "_source": "https://github.com/VoTuan232/bower-admin.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/VoTuan232/bower-admin.git",
+  "_direct": true
+}
