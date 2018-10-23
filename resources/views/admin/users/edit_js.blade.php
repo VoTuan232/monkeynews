@@ -15,14 +15,8 @@
    
     $('#frm-update').on('submit',function(e){
             e.preventDefault();
-            // var id=document.getElementById("id-update").value;
-            // var name=document.getElementById("name-update").value;
-            // var parent_name=document.getElementById("parent_id").value;
-            // console.log(id);
             var url = $(this).attr('action');
             var method = $(this).attr('method');
-            // var method = new FormData(this);
-            // console.log(method);
             
             $.ajax({
                 type: method,
@@ -77,45 +71,5 @@
                     }                   
                 }
             })
-            // 
-            // $.post('@{{ URL::to("manager/users/update") }}',{data :},function(data){
-            //     console.log(data);
-            //     //     if(data.category)
-            //     //     {
-
-            //     //     var tr=$("<tr/>",{
-            //     //     id:data.category.id
-            //     // });
-            //     //     tr.append($("<th/>",{
-            //     //         text : data.category.id
-            //     //     })).append($("<td/>",{
-            //     //         text : data.category.name
-                        
-            //     //     })).append($("<td/>",{
-            //     //         text : data.parent_name
-                        
-            //     //     })).append($("<td/>",{
-            //     //         html : '<a href="#" class="btn btn-info btn-xs" id="view" data-id="'+data.category.id+'">View </a> ' + 
-            //     //             '<a href="#" class="btn btn-success btn-xs" id="edit" data-id="'+data.category.id+'">Edit </a> ' +
-            //     //             '<a href="#" class="btn btn-danger btn-xs" id="delete" data-id="'+data.category.id+'">Delete </a> ' 
-            //     //     }))
-
-            //     //         $('#category-info tr#'+data.category.id).replaceWith(tr);
-            //     //         $('#editCategory').modal('hide');
-            //     //         $('#message').css('display', 'block');
-            //     //         $('#message').html(data.message);
-            //     //         $('#message').addClass(data.class_name);
-            //     //     }
-
-            //     //     else{
-            //     //         $('#message-fail').css('display', 'block');
-            //     //         $('#message-fail').html(data.message);
-            //     //         $('#message-fail').addClass(data.class_name);
-            //     //     }
-
-
-
-
-            // })
         })      
 </script>

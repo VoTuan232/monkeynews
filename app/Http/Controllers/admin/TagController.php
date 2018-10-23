@@ -45,7 +45,6 @@ class TagController extends Controller
 
         if($validation->passes()){
             
-            // $name = $request->name;
             $tag = Tag::create($request->all());
 
             return response()->json([
@@ -57,7 +56,6 @@ class TagController extends Controller
         }
         else{
             return response()->json([
-            // 'message' => $request->all(),
             'message' => $validation->errors()->all(),
             'class_name'  => 'alert-success',
 
@@ -106,10 +104,8 @@ class TagController extends Controller
             $tag = Tag::find($request->id);
             $tag->name = $request->name;
             $tag->save();
-            // $tag->posts()->detach();
-            // $tag->delete();
+         
             return response()->json([
-                // 'message' => $tag,
                 'message' => 'Updated successfully',
                 'class_name'  => 'alert-success',
                 'tag' => $tag,
@@ -118,10 +114,8 @@ class TagController extends Controller
 
         else{
             return response()->json([
-                // 'message' => $tag,
                 'message' => $validation->errors()->all(),
                 'class_name'  => 'alert-danger',
-                // 'tag' => $tag,
             ]); 
         }
     }
@@ -138,7 +132,6 @@ class TagController extends Controller
         $tag->posts()->detach();
         $tag->delete();
         return response()->json([
-            // 'message' => $tag
             'message' => 'Delete successfully',
             'class_name'  => 'alert-success',
             'tag' => $tag,

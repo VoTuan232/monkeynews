@@ -36,7 +36,6 @@
                     <div class="col-3-md">
                         <div class="form-group">
                            {{ Form::label('role', 'Role:') }}
-                           {{-- {{ Form::select('role',  $roles->pluck('name', 'id') , null, ['class' => 'form-control', 'name'=>'role']) }}   --}}
                             <select type="text" name="role" id="role" class="form-control">
                                 <option value="">------------------------</option>
                                 @foreach($roles as $key => $value)

@@ -17,6 +17,22 @@ class RolesTableSeeder extends Seeder
             'slug' => 'super-admin',
             'permissions' => [
                 'all permissions' => true,
+                'post.create' => true,
+                'post.update' => true,
+                'post.delete' => true,
+                'post.publish' => true,
+                'category.create' => true,
+                'category.update' => true,
+                'category.delete' => true,
+                'tag.create' => true,
+                'tag.update' => true,
+                'tag.delete' => true,
+                'user.create' => true,
+                'user.update' => true,
+                'user.delete' => true,
+                'role.create' => true,
+                'role.update' => true,
+                'role.delete' => true,
             ]
         ]);
 

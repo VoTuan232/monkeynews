@@ -37,11 +37,9 @@ class HomeComposer
      */
     public function compose(View $view)
     {
-        //truyen 2 bien toi tat ca cac view
         $cats = Category::where('parent_id', null)->take(5)->get();
         $tags = Tag::all();
 
         $view->withCatHomes($cats)->withTagHomes($tags);
-        // $view->with('cats', $cats);
     }
 }

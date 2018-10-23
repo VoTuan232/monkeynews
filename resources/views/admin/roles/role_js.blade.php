@@ -2,11 +2,10 @@
 
  $('select[name="role"]').on('change', function() {
 
-    var checkbox = document.querySelectorAll('input[name="roles"]'), values = [];
+    var checkbox = document.querySelectorAll('input[name="roles[]"]'), values = [];
      Array.prototype.forEach.call(checkbox, function(el) {
         document.getElementById(el.value).checked = false;
     });
-    
     var data = $(this).val();
 
     $.ajax({
@@ -15,33 +14,39 @@
         dataType: "json",
         data : { role_id : data },
         success:function(data){
-            // console.log(data);
-          // $('select[name="sub_cat_id[]"]').empty();
           $.each(data.data, function(key, sub_cat){
-                 // $.each(sub_cat, function(key, value){
-                 //  $('select[name="sub_cat_id[]"]').append(
-                 //      "<option selected value='"+value.id+"'>"+value.name+"</option>"
-                 //        );
-                 // // });
-                var checkboxes = document.querySelectorAll('input[name="roles"]'), values = [];
+                var checkboxes = document.querySelectorAll('input[name="roles[]"]'), values = [];
                 Array.prototype.forEach.call(checkboxes, function(el) {
-                    // console.log(el);
-                    // values.push(el.value);
                     if(el.value == sub_cat) {
                         document.getElementById(el.value).checked = true;
-                        // console.log('hihi');
-                        // console.log('#'+el.value);
-                        // $('#'+el.value).prop("checked", true);
                     }
                 });
-                // console.log(values);
-                // foreach ($roles as $key => $value)
-                //     {
-                //     }
             });
          
         }
     });
 
   });
+    $(document).ready(function () {
+         $("#permission").on('keyup', function (e) {
+
+                if (e.keyCode == 13) {
+                    var value = document.getElementById('permission').value;
+
+                    if(value != "") {
+                        var myDiv = document.getElementById("show-permissions");
+                        $("#show-permissions").append('<div class="col-md-3"><div><input id="'+value+'" class="checkbox-custom" name="roles[]" type="checkbox" value="'+value+'"><label for="roles" class="checkbox-custom-label">&nbsp;'+value+'</label></div></div>');
+                    }
+                    else {
+                        $('#message').css('display', 'block');
+                        $('#message').html('Vui lòng nhập nội dung permissions...');
+                        $('#message').addClass('alert-danger');
+                        $("#message").fadeTo(2000, 500).slideUp(500, function(){
+                            $("#message").slideUp(500);
+                        });
+                    }
+                }
+
+            });
+    });
 </script>

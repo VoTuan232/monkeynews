@@ -22,10 +22,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
-        // Pót::class => PostPolicy::class,
-        //  'App\Models' => 'App\Policies\PostPolicy',
-        // Post::class => PostPolicy::class,
+       
     ];
 
     /**
@@ -43,15 +40,12 @@ class AuthServiceProvider extends ServiceProvider
             }
         });
 
-        // Gate::resource('post', PostPolicy::class);
         Gate::resource('tag', TagPolicy::class);
         Gate::resource('category', CategoryPolicy::class);
         Gate::resource('user', UserPolicy::class);
         Gate::resource('post', PostPolicy::class);
         Gate::resource('role', RolePolicy::class);
         Gate::define('post.publish', PostPolicy::class . '@publish');
-        // Gate::define('post.delete', PostPolicy::class . '@delete');
-        // Gate::define('post.create', PostPolicy::class . '@create');
-        // Gate::define('post.update', PostPolicy::class . '@update');
+      
     }
 }

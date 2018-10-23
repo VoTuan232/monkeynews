@@ -3,7 +3,6 @@
         <!-- Modal content-->
         <div class="modal-content">
 
-            {{-- <div class="alert alert-danger" style="display:none"></div> --}}
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Update Category</h4>
@@ -18,7 +17,6 @@
                   <span class="btn btn-info" data-toggle="modal" data-target="#showTreeCategory"><i class="far fa-eye"></i> Chọn chủ đề cha</span>
                   <span class="btn btn-info btn-info" id="clear-category"><i class="fas fa-eraser"></i>Xóa</span>
                   {{ Form::text('parent_id', null, ['class' => 'form-control', 'readonly' => 'true', 'id' => 'parent_id']) }}
-                  {{-- <div id="categoryList"></div> --}}
 
                   <br>
                 <br>
@@ -28,7 +26,6 @@
               </div>
             <div class="modal-footer">
                     {{ Form::submit('Yes',array('class'=>'btn danger'))}}
-              {{-- <a href="#" id="btnYes" class="btn danger">Yes</a> --}}
               <a href="#" data-dismiss="modal" aria-hidden="true" class="btn secondary">No</a>
             </div>
             {!! Form::close() !!}

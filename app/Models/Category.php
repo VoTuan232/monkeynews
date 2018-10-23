@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
+use App\Models\Post;
 
 class Category extends Model
 {
@@ -10,6 +12,18 @@ class Category extends Model
         'name', 
         'parent_id',
     ];
+    // public function posts()
+    //     {
+    //         if ( $this->childrens()->count() == 0 )
+    //         {
+    //             // dd('hihaaa');
+    //             return $this->hasMany('App\Models\Category', 'parent_id');
+    //         }
+    //         else
+    //         {
+    //            return $this->hasManyThrough('App\Models\Post', 'App\childrens');
+    //         }
+    //     }
 
     public function posts()
     {
@@ -20,6 +34,8 @@ class Category extends Model
     {
         return $this->belongsTo('App\Models\Category', 'parent_id');
     }
+
+    
 
     public function childrens()
     {

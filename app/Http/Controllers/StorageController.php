@@ -62,7 +62,6 @@ class StorageController extends Controller
             ]);
 
             return response()->json([
-                // 'hihi' => $request->get('id'),
                 'message' => 'Save post successfully',
                 'class_name' => 'alert-success',
             ]); 
@@ -94,7 +93,6 @@ class StorageController extends Controller
         ->whereNotNull('categories.parent_id')
         ->groupBy('posts.id')
         ->selectRaw('posts.*, categories.name as category_name')->get();
-        // dd($storagesPost);
         $tags = Tag::all();
 
         return view('storages.index')->withStoragesPost($storagesPost)->withTags($tags);
@@ -104,14 +102,6 @@ class StorageController extends Controller
 
     }
 
-    // public function store(Request $request)
-    // {
-    //     // dd('hihi');
-    //     return response()->json([
-    //         'message' => 'hihi',
-    //     ]);
-        
-    // }
 
     /**
      * Display the specified resource.

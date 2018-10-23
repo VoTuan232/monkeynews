@@ -72,21 +72,16 @@
             		<div class="well">
 						{!! Form::open(['route' => 'categories.store', 'method' => 'POST', 'id' => 'frm-create']) !!}
 							<h2>Chủ đề mới</h2>
-							{{-- {{ Form::label('name', 'Name:') }} --}}
 							{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'category_id', 'placeholder' => 'Nhập tên chủ để...']) }}
-							{{-- {{ Form::text('parent_name', null, ['class' => 'form-control input-lg', 'placeholder' => 'enter', 'id' => 'name']) }}
-    							<div id="categoryList"></div> --}}
     							<br>
     							<span class="btn btn-info" data-toggle="modal" data-target="#showTreeCategory"><i class="far fa-eye"></i> Chọn chủ đề cha</span>
     							<span class="btn btn-info btn-sm" id="clear-category">Xóa</span>
     							<br>
     							{{ Form::text('parent_id', null, ['class' => 'form-control', 'readonly' => 'true']) }}
-    							{{-- <div id="categoryList"></div> --}}
 							{{ Form::submit('Tạo', ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
 						
 						{!! Form::close() !!}
 
-								{{-- <input type="text" name="" id="name" class="form-control input-lg" placeholder="Enter Country Name" /> --}}
             		</div>
             	</div>
             	@endcan
@@ -114,6 +109,5 @@
 @include('admin.categories.create_js')
 @include('admin.categories.edit_js')
 @include('admin.categories.delete_js')
-{{-- @include('admin.categories.search_js') --}}
 
 @endsection

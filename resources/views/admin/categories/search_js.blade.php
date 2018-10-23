@@ -1,15 +1,3 @@
-{{-- <script>
-	$(function()
-		{
-			 $( "#q" ).autocomplete({
-			  source: "manager/categories/search",
-			  minLength: 3,
-			  select: function(event, ui) {
-			  	$('#q').val(ui.item.value);
-			  }
-			});
-		});
-</script> --}}
 
 <script>
 

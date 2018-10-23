@@ -6,7 +6,7 @@
     <td>{{ $post->slug }}</td>
     <td>{{ substr(strip_tags($post->body),0,50) }}{{ strlen(strip_tags($post->body))>50 ? "..." : "" }}</td>
     <td>{{ $post->published }}</td>
-    <td>{{ $post->image }}</td>
+    <td><image src="{{ asset('/images/'.$post->image) }}" alt="img" class="manager-post-image"/></td>
     <td>{{ $post->username }}</td>
     <td>{{ $post->vote }}</td>
     <td>{{ $post->view }}</td>

@@ -1,7 +1,6 @@
 <script>
    $(document).on('click','#delete',function(e){
             var id=$(this).data('id');
-            // console.log(id);
             $.get("{{ URL::to('manager/categories/edit')}}", {id: id}, function(data){
             	console.log(data);
                 $('#frm-delete').find('#id').val(data.category.id)
@@ -25,16 +24,6 @@
                     $("#message").fadeTo(2000, 500).slideUp(500, function(){
                         $("#message").slideUp(5000);
                     });
-                    // $('#category-info #'+id).remove();
-
-                    // $('#message').css('display', 'block');
-                    // $('#message').html(data.message);
-                    // $('#message').addClass(data.class_name);
-                    // $("#message").fadeTo(2000, 500).slideUp(500, function(){
-                    //     $("#message").slideUp(500);
-                    // });
-
-                    // $('#deleteCategory').modal('hide');
             })
         })      
 </script>

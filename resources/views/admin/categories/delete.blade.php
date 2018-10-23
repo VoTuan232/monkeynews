@@ -3,7 +3,6 @@
         <!-- Modal content-->
         <div class="modal-content">
 
-            {{-- <div class="alert alert-danger" style="display:none"></div> --}}
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Delete Category</h4>
@@ -23,7 +22,6 @@
               </div>
             <div class="modal-footer">
                     {{ Form::submit('Yes',array('class'=>'btn danger'))}}
-              {{-- <a href="#" id="btnYes" class="btn danger">Yes</a> --}}
               <a href="#" data-dismiss="modal" aria-hidden="true" class="btn secondary">No</a>
             </div>
             {!! Form::close() !!}

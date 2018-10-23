@@ -15,10 +15,6 @@ class UserLoginRequest extends FormRequest
     //xacs ddinh neu user co quyen request nay
     public function authorize()
     {
-    //     $commentId = $this->route('comment');
-
-    // return Comment::where('id', $commentId)
-    //     ->where('user_id', Auth::id())->exists();
         return false;
     }
 

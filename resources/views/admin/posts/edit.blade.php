@@ -60,11 +60,7 @@
 	                        <div class="form-group">
 	                            {{ Form::label('image', 'Upload a Featured Image') }}
 	                            {{ Form::file('image', ['class' => 'image']) }}
-	                            {{-- <input type="text" name="name" class="form-control" /> --}}
 	                        </div>
-	                      {{--   <div class="form-conntrol">
-	                            <img src="{{ asset('/images/'.$post->image) }}" id="upload-image" width="300px" />
-	                        </div> --}}
 	                        {{ HTML::image('images/'.$post->image, 'Image Post', array('id' => 'upload-image', 'width' => '300px')) }}
 	                    </div>
 	                    <br>
@@ -82,8 +78,6 @@
 	                        <div class="form-group">
 	                            {{ Form::label('tags', 'Tag:') }}
 	                           {{ Form::select('tags[]', $tags, null, ['class' => 'form-control select2-multi', 'multiple' => 'multiple']) }} 
-
-	                            {{-- {{ Form::select('sub_cat_id[]', array() , null, ['class' => 'form-control select2-multi', 'multiple', 'name'=>'sub_cat_id[]']) }} --}}  
 	                        </div>
 	                    </div>
 	                    @can('post.published')
@@ -101,11 +95,6 @@
 						</div>
 	                   
 	                </div>
-	                {{-- <div class="modal-footer">
-	                    {{ Form::submit('Save Change',array('class'=>'btn btn-success pull-left'))}}
-                    <input type="submit" name="" value="Save" class="btn btn-success pull-left">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	                </div> --}}
 	                <div class="col-md-6 col-offset-4">
 						<div class="well">
 							<div class="row">

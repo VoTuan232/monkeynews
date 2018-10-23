@@ -33,9 +33,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    //kiem tra quyen o day :))
-    //tra ve index neu la nguoi dung ko co role
-    //tra ve admin neu la quan tri vien
+    
     protected $redirectTo = '/admin';
     
     /**
@@ -47,11 +45,9 @@ class LoginController extends Controller
 
     public function __construct()
     {
-        // $this->redirectTo = url()->previous();
         $this->middleware('guest')->except('logout');
     }
 
-    //return back url su dung showloginform va authenticated
     public function showLoginForm()
     {
         session(['link' => url()->previous()]);
@@ -64,25 +60,7 @@ class LoginController extends Controller
         return redirect(session('link'));
     }
 
-    // protected function authenticated(Request $request, $user)
-    // {
-    //     // if ( $user->roles()->count() > Config::get('social.zero') ) {// do your margic here
-    //     //     return redirect()->route('admin.index');
-    //     // }
-
-    //      // return redirect('/');
-    //      return back();
-    // }
-
-
-    // public function showLoginForm()
-    // {
-    //     if(!session()->has('url.intended'))
-    //     {
-    //         session(['url.intended' => url()->previous()]);
-    //     }
-    //     return view('auth.login');    
-    // }
+    
 
     protected $redirectAfterLogout = '/';
 
@@ -94,18 +72,10 @@ class LoginController extends Controller
         return redirect($this->redirectAfterLogout);
     }
 
-    // protected function validateLogin(UserLoginRequest $request)
-    // {
-        
-    // }
-    // 
+   
     protected function sendFailedLoginResponse(Request $request)
     {
-        // throw ValidationException::withMessages([
-        //     $this->username() => ['Tài khoản hoặc mật khẩu không tồn tại'],
-        //     // $this->password() => ['Tài khoản hoặc mật khẩu không tồn tại'],
-        // ]);
-        // 
+       
         if ( ! User::where('email', $request->email)->first() ) {
             return redirect()->back()
                 ->withInput($request->only($this->username(), 'remember'))

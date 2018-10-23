@@ -4,13 +4,12 @@
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
 	  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-	    {{-- <a class="navbar-brand" href="#">Thể thao</a> --}}
 	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 cat_nav">
 	    	<li class="nav-item {{ Request::is('/') ? "li-manager" : "" }}">
 		        <a class="nav-link" href="{{ route('pages.index') }}">Trang chủ</a>
 		     </li>
 	    	@foreach($catHomes as $category)
-		      <li class="nav-item {{ Request::is('') ? "li-manager" : "" }}">
+		      <li class="nav-item">
 		        <a class="nav-link" href="{{ route('home.posts', ['id' => $category->id, 'slug' => str_slug($category->name)]) }}">{{ $category->name }}</a>
 		      </li>
 	    	@endforeach
@@ -23,4 +22,3 @@
 	</nav>
 </div>
 
-{{-- class="{{ Request::is('manager/users') ? "li-manager" : "" }} --}}

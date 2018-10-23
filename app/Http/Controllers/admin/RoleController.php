@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
+use Illuminate\Support\Facades\Input;
 
 class RoleController extends Controller
 {
@@ -15,34 +16,27 @@ class RoleController extends Controller
      */
     public function index()
     {
-        // $roles = Role::all();
-        // $roles::prepend()
+       
         $roles = Role::pluck('name', 'id'); //value va key
-        // dd($roles);
         $roleList = Role::all();
 
         $permissions = array();
 
         foreach($roleList as  $role) {
-            // dd($role->permissions['post.create']); //tra ve true
-            // dd($role->permissions['post.update1'] ?? false); //tra ve false
+         
             foreach($role->permissions as  $key => $permission){
 
-                // dd($key); //post->create
                 array_push($permissions, $key);
             }
-            // dd($role->permissions);
-         // dd(json_decode( $role->permissions, true ));
+          
         }
-            // dd($data);
-        //loai bo gia tri giong nhau
-        // dd(array_unique($permissions));
+    
         $permissions = array_unique($permissions);
         return view('admin.roles.index')->withRoles($roles)->withPermissions($permissions);
     }
 
     public function getPermissions(Request $request) {
-        $role_id = $request->get('role_id'); //null or int
+        $role_id = $request->get('role_id');
         $role = Role::find($role_id);
 
         $permissions = array();
@@ -52,7 +46,6 @@ class RoleController extends Controller
         }
         return response()->json([
             'data' => $permissions,
-            // 'message' => $request->get('role_id'),
         ]);
     }
     /**
@@ -105,9 +98,26 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $role = Role::find($request->role_id);
+
+        $permissions = $request->pers;
+
+        $array = array();
+        if(!is_null($permissions)){
+            foreach($permissions as $permission) {
+                $array[$permission] = true;
+            }
+        }
+        $role->permissions = $array;
+        
+        $role->save();
+
+        return response()->json([
+            'message' => 'Updated successfully',
+            'class_name' => 'alert-success',
+        ]);
     }
 
     /**

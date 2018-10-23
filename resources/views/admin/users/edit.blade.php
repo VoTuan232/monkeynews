@@ -3,7 +3,6 @@
         <!-- Modal content-->
         <div class="modal-content">
 
-            {{-- <div class="alert alert-danger" style="display:none"></div> --}}
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Update User</h4>
@@ -45,7 +44,6 @@
             <div class="modal-footer">
               {{ Form::submit('Update',array('class'=>'btn danger'))}}
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            {{--   <a href="#" data-dismiss="modal" aria-hidden="true" class="btn btn-info">Close</a> --}}
             </div>
             {!! Form::close() !!}
         </div>

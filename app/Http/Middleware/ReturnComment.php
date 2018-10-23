@@ -15,15 +15,6 @@ class ReturnComment
      */
     public function handle($request, Closure $next)
     {
-       // if ( Auth::check() )
-       //  {
-       //      // session()->put('admin','true');
-       //      return $next($request);
-       //  }
-       //  else {
-       //      return 
-       //  }
-        
-       //  return redirect('/');
+       
     }
 }

@@ -1,10 +1,8 @@
 <script>
-    //delete
         $(document).on('click','#delete',function(e){
             var id=$(this).data('id');
            if(confirm("Are You Sure to delete this")){
             $.post('{{URL::to("manager/posts/destroy")}}',{id:id},function(data){
-                // console.log(data.message);
                 if (data.success){
                     
                 $('#post-info #'+id).remove();

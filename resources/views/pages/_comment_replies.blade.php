@@ -5,16 +5,9 @@
 <div class="display-comment-<?php echo $comment->id;?>"  style="margin-left:30px;">
         <image src="/images/demo.jpg" class="img-tran">
         <strong>{{ $comment->user->name }}</strong>&nbsp;&nbsp;<small>{{ $comment->created_at }}</small>
-        {{-- <i class="fa fa-lock"></i> --}}
         <div class="comment_option">
             <p style="margin-bottom: 8px;">{{ $comment->body }}</p>
 
-            {{-- <a href="#">
-              <span class="glyphicon glyphicon-thumbs-up"></span>
-            </a>
-            <a href="#">
-              <span class="glyphicon glyphicon-thumbs-down"></span>
-            </a> --}}
             <i class="far fa-thumbs-up like"></i>
             <i class="far fa-thumbs-down like"></i>
             <a href="" class="show_reply" data-id="{{ $comment->id }}">Trả lời</a>        

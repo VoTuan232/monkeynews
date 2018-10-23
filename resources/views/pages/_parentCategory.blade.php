@@ -7,4 +7,3 @@
 </p>
 <i class="fas fa-angle-double-right finger"></i>
 
-{{-- <i class="fas fa-arrow-right"></i> --}}

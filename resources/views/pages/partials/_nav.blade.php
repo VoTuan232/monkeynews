@@ -30,30 +30,16 @@
       <nav class="navbar navbar-static-top">
           <div class="navbar-custom-menu">
               <ul class="nav navbar-nav">
-                  <!-- User Account: style can be found in dropdown.less -->
                   <li class="dropdown user user-menu">
                       <a href="#" class="dropdown-toggle user_home" data-toggle="dropdown">
-                        {{-- <img src="{{ asset('/images/demo.jpg') }}" class="user-image" alt="User Image"> --}}
                         <span class="hidden-xs">{{ Auth()->user()->name }}</span>
                     </a>
                     <div>
                         <ul class="dropdown-menu">
-                            <!-- User image -->
                             <li class="user-header">
                               <img src="{{ asset('/images/taylor.jpg') }}" class="img-circle" alt="User Image" width="160" height="70 ">
-
-                           {{--  <p class="username">
-                                {{ Auth::user()->name }}
-                            </p> --}}
                         </li>
-                        <!-- Menu Body -->
                         <li class="user-body">
-                          {{-- <div class="row"> --}}
-                       {{--  @if(Session::get('admin') == 'true' )
-                            <div class="col-xs-4 text-center">
-                              <a href="/admin">Manager</a>
-                            </div>
-                            @endif --}}
                             @if (auth()->user()->isAdmin())
                             <div class="col-xs-4 text-center">
                               <a href="/admin"><i class="fas fa-home"></i>Manager</a>
@@ -66,14 +52,16 @@
                           </div>
                           <div class="col-xs-4 text-center">
                               <a href="{{ route('storages.posts.index') }}">
-                              <i class="fas fa-archive"></i>Blog</a>
+                              <i class="fas fa-archive"></i>Save</a>
+                          </div>
+                          <div class="col-xs-4 text-center">
+                              <a href="{{ route('draft.posts.index') }}">
+                              <i class="fas fa-drafting-compass"></i>Drawf</a>
                           </div>
                           <hr>
                           <div class="col-xs-4 text-center">
                               <a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
                           </div>
-                      {{-- </div> --}}
-                      <!-- /.row -->
                   </li>
               </ul>
           </div>

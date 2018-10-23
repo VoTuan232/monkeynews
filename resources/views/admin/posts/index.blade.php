@@ -6,8 +6,6 @@
 
     {!! Html::style('public/bower_components/bootstrap/dist/css/bootstrap.min.css')!!}
     {!! Html::style('bower_components/select2/dist/css/select2.min.css')!!}
-    {{-- <script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script> --}}
-    
 
 @endsection
 
@@ -21,8 +19,6 @@
           <div class="box">
             <div class="box-header">
                 <div class="alert" id="message_delete" style="display: none"></div>
-
-              {{-- <h3 class="box-title">Data Table With Full Features</h3> --}}
                 @can('post.create')
                 <button class="btn btn-info" data-toggle="modal" data-target="#createPost"><i class="fas fa-plus-circle"></i>{{ trans('language.Create new post') }}
                 </button>
@@ -84,7 +80,9 @@
     
     <script src="{{ asset('bower_components/select2/dist/js/select2.min.js') }}"></script>
     
-    
+    <script type="text/javascript">
+        $('.select2-multi').select2();
+    </script>
     @include('admin.posts.create_js')
     @include('admin.posts.delete_js')
     @include('admin.posts.edit_js')

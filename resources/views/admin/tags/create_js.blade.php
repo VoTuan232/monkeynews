@@ -3,8 +3,6 @@
 		e.preventDefault();
         var method = $(this).attr('method');
         var url = $(this).attr('action');
-        // var data = $(this).serialize();
-        // console.log(data);
 		$.ajax({
 			type: method,
             url: url,

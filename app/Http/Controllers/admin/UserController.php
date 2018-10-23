@@ -17,11 +17,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function getUsers() {
-        // return DB::table('users')
-        //     ->leftJoin('role_user', 'users.id', '=', 'role_user.user_id' )
-        //     ->leftJoin('roles', 'roles.id', '=', 'role_user.role_id' )
-        //     ->leftJoin('posts', 'users.id', '=', 'posts.user_id' )
-        //     ->selectRaw('users.id as user_id, users.name, users.email, roles.name as role_name')->distinct()->get();
+
      return DB::table('users')
         ->leftJoin('role_user', 'users.id', '=', 'role_user.user_id' )
         ->leftJoin('roles', 'roles.id', '=', 'role_user.role_id' )
@@ -33,12 +29,7 @@ class UserController extends Controller
     {
         $users = $this->getUsers();
 
-        // $roles = Role::all();
-        // $roles->prepend('0', 'Choose');
-        // dd($users);
-        //edit role
-        $roles = Role::pluck('name','id'); //lay toan bo mot truong va tra ve dang mang
-        //key value :))
+        $roles = Role::pluck('name','id'); 
 
         return view('admin.users.index')->withUsers($users)->withRoles($roles)->withRoles($roles);
     }
@@ -115,14 +106,7 @@ class UserController extends Controller
      */
     public function edit(Request $request)
     {
-        // dd($request->id);
-        // if($request->ajax()){
-        //     $user = $this->findUser($request->id);
-        //     return response($user);
-        // }
-        // 
         $user = $this->findUser($request->id);
-        // dd($user);
             return response()->json([
                 'user_data' => $user,
             ]);
@@ -145,10 +129,6 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
 
-           // if(!is_null($request->role)){
-           //      $user->roles()->sync($request->role, true);
-           // }
-            // $user->roles()->sync($request->role, false); //de false thi bang trung gian ko bi xoa
            $user->roles()->sync($request->role, true);
 
             $user->save();
@@ -156,7 +136,6 @@ class UserController extends Controller
             return response()->json([
                 'user_data' => $this->findUser($user->id),
                 'message'   => 'The post was successfully updated!',
-                // 'message'   => $post,
                 'class_name'  => 'alert-success',
             ]);
         }
@@ -165,7 +144,6 @@ class UserController extends Controller
             'message'   =>  $validation->errors()->all(),
             'class_name'  => 'alert-danger',
         ]);
-        // return response('hihihi');
     }
 
     /**

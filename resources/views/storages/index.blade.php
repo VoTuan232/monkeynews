@@ -3,8 +3,6 @@
 @section('title', '|Blog')
 
 @section('stylesheet')
-{{-- <link href="{{ asset('css/style_home.css') }}" rel="stylesheet"> --}}
-{{-- <link href="{{ asset('css/style_show_posts.css') }}" rel="stylesheet"> --}}
 <link href="{{ asset('css/style_show_posts.css') }}" rel="stylesheet">
 <link href="{{ asset('bower_components/Font-Awesome/web-fonts-with-css/css/fontawesome-all.min.css') }}" rel="stylesheet">
 <link href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}" rel="stylesheet">
@@ -14,13 +12,13 @@
 
 @section('content')
 
-@include('admin.posts.create')
+{{-- @include('admin.posts.create') --}}
 
 <div class="container">
-	<div class="row">
+	{{-- <div class="row">
 		<button class="btn btn-info" data-toggle="modal" data-target="#createPost"><i class="fas fa-plus-circle"></i>{{ trans('language.Create new post') }}
                 </button>
-    </div>
+    </div> --}}
     <br>
 		@if($storagesPost->count() > 0)
 
@@ -33,7 +31,6 @@
 							    <h6 class="title"><a href="{{ route('home.single', [ 'category' => str_slug($post->category_name), 'slug' => str_slug($post->slug)]) }}">{{ substr(strip_tags($post->title),0,20) }}{{ strlen(strip_tags($post->title))>20 ? "..." : "" }}</a></h6>
 		                        <h6>{{ $post->created_at }}</h6>
 		                        <p>{!! substr(strip_tags($post->body), 0, 70) !!}{{ strlen(strip_tags($post->body))>70 ? "..." : ""}}</p>
-							    {{-- <p>{{ strlen(strip_tags($post->body))>70 ? substr(strip_tags($post->body),0,70)."..."  :  $post->body }}</p> --}}
 							</div>
 				     	</div>
 			        </div>
@@ -42,11 +39,6 @@
 		@else
 			Không có bài post nào được lưu
 		@endif
-   {{--  <div class="row">
-         <div class="text-center">
-                {!! $posts->links(); !!}
-        </div>
-    </div> --}}
     <div class="row">
          <small>
             <span class="btn-group">

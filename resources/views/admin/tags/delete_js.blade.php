@@ -1,7 +1,6 @@
 <script>
    $(document).on('click','#delete',function(e){
             var id=$(this).data('id');
-            // console.log(id);
             $.get("{{ URL::to('manager/tags/edit')}}", {id: id}, function(data){
             	console.log(data);
                 $('#frm-delete').find('#id').val(data.tag.id)
@@ -13,10 +12,8 @@
     $('#frm-delete').on('submit',function(e){
             e.preventDefault();
             var id=document.getElementById('id').value;
-            // console.log(id);
            
             $.post('{{ URL::to("manager/tags/destroy") }}',{id:id},function(data){
-                // console.log(data);
 
                     $('#tag-info #'+id).remove();
 

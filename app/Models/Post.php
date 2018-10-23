@@ -13,6 +13,7 @@ class Post extends Model
         'user_id',
         'image',
         'published',
+        'request',
     ];
 
     public function user()
@@ -35,13 +36,7 @@ class Post extends Model
         return $this->belongsToMany('App\Models\Category')->withTimestamps();
     }
 
-    // public function comments()
-    // {
-    //     return $this->hasMany('App\Models\Comment');
-    // }
-    
-    //post va comment moi quan he da hinh
-    //comment thuoc post hoac comment thuoc 1 comment khac
+   
     public function comments()
     {
         return $this->morphMany('App\Models\Comment', 'commentable')->whereNull('parent_id')->orderBy('created_at', 'desc');
@@ -56,7 +51,6 @@ class Post extends Model
          if($post->categories()->count() > 0 )
             {
                 $id = 0;
-                // dd($post->categories()->first()->id);
                 foreach($post->categories()->get() as $category)
                 {
 

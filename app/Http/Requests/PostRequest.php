@@ -30,7 +30,7 @@ class PostRequest extends FormRequest
             'body.required' => 'Nội dung bài viết bắt buộc!',
             'title.max' => 'Tiêu đề cần ít hơn 255 kí tự!',
             'slug.required' => 'Slug là bắt buộc!',
-            'slug.min' => 'Slug có độ dài ít nhất là 3!',
+            'slug.min' => 'Slug có độ dài ít nhất là 5!',
             'slug.unique' => 'Slug đã tồn tại!',
             'image.required' => 'Ảnh là bắt buộc!',
         ];
@@ -79,10 +79,4 @@ class PostRequest extends FormRequest
         }
     }
 
-    //  public      function messages()
-    // {
-    //     return [
-    //         'title.required' => 'Email is required!',
-    //     ];
-    // }
 }
