@@ -161,6 +161,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
+        App\Providers\MainServiceProvider::class,
+        // 'repotutrepositoriesRepositoryServiceProvider'
 
     ],
 
@@ -212,7 +214,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'PaginateHelper' => App\Helpers\helpsers::class,
+        'MainService' => App\Helpers\Pagination::class,
 
     ],
 

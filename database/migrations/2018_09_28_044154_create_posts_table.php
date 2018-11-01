@@ -21,7 +21,8 @@ class CreatePostsTable extends Migration
             $table->boolean('published')->default(false);
             $table->string('image')->nullable();
             $table->integer('user_id')->unsigned();
-            $table->integer('vote')->default('0');
+            $table->integer('like')->default('0');
+            $table->integer('dislike')->default('0');
             $table->integer('view')->default('0');
             $table->timestamps();
         });

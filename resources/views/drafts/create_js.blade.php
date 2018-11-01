@@ -51,10 +51,6 @@
                             })).append($("<td/>",{
                                 text : data.post_data.title
                             })).append($("<td/>",{
-                                text : data.post_data.slug
-                         })).append($("<td/>",{
-                                text : data.post_data.body.substring(0,50)
-                            })).append($("<td/>",{
                                 html : '<a href="#" class="btn btn-info btn-sm" id="view" data-id="'+data.post_data.id+'">View </a> ' + 
                                     '<a href="posts/edit/'+data.post_data.id+'" class="btn btn-success btn-sm" id="edit" data-id="'+data.post_data.id+'">Edit </a> ' +
                                     '<a href="#" class="btn btn-danger btn-sm" id="delete" data-id="'+data.post_data.id+'">Delete </a>' 

@@ -80,7 +80,7 @@
 	                           {{ Form::select('tags[]', $tags, null, ['class' => 'form-control select2-multi', 'multiple' => 'multiple']) }} 
 	                        </div>
 	                    </div>
-	                    @can('post.published')
+	                    @can('post.publish')
 	                    <div class="col-3-md">
 	                        <div class="form-group">
 	                            {{ Form::label('published', "Published")}}

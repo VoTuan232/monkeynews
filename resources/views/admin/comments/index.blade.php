@@ -43,7 +43,7 @@
 								<td>{{ $post->slug }}</td>
 								<td>{{ $post->comment_number }}</td>
 								<td>
-									<a href="#" class="btn btn-info btn-xs" id="view">View</a>
+									<a href="{{ route('home.single', ['slug' => $post->slug]) }}" class="btn btn-info btn-xs" id="view">View</a>
 									@can('user.update')
 									<a href="#" class="btn btn-success btn-xs" id="edit" data-id="{{ $post->post_id }}">Edit</a>
 									@endcan

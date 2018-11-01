@@ -17,6 +17,9 @@
 //     return view('welcome');
 // });
 
+Route::get('/test', function() {
+    return view('test.index');
+});
 Route::get('/', 'HomeController@index')->name('pages.index');
 
 Auth::routes();
@@ -71,6 +74,9 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::post('manager/publish/close/{id}', 'admin\RequestController@closeRequest')->name('posts.draft.close');
     Route::post('manager/publish/accept/{id}', 'admin\RequestController@accept')->name('posts.draft.accept');
 
+    Route::get('manager/comments/destroyComment', 'admin\CommentController@destroyComment')->name('comments.destroy');
+
+
 });
 
     Route::post('/post/comment/store', 'CommentController@store')->name('comment.add');
@@ -89,7 +95,16 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::get('draft/posts/edit/{id}', 'DraftController@edit')->name('draft.posts.edit');
     Route::get('draft/posts/single/{id}', 'DraftController@getSingle')->name('draft.posts.single');
     Route::post('manager/posts/update/', 'admin\PostController@update')->name('posts.update');
+    
+    Route::get('state/posts/like', 'StatePostController@likePost')->name('state.posts.like'); 
+    Route::get('state/posts/removeLike', 'StatePostController@removeLikePost')->name('state.posts.removeLike'); 
+    Route::get('state/posts/dislike', 'StatePostController@dislikePost')->name('state.posts.dislike'); 
+    Route::get('state/posts/removeDislike', 'StatePostController@removeDislikePost')->name('state.posts.removeDislike');
 
+    Route::get('/search', 'HomeController@getSearch')->name('home.getSearch'); 
+    // Route::post('/search', 'HomeController@postSearch')->name('home.postSearch'); 
+    // Route::get('/search/{text}', 'HomeController@getSearch')->name('home.getSearch'); 
+    // Route::get('/search/{text}', 'HomeController@search')->name('home.search'); 
 
     Route::get('/tags/{id}', 'HomeController@getPostsBaseTag')->name('home.tags.posts');
 

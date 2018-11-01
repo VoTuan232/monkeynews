@@ -43,8 +43,7 @@ class StorageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-   
-
+    
     public function savePost(Request $request) {
 
         if(is_null(Auth::user())) {
@@ -56,10 +55,25 @@ class StorageController extends Controller
         else {
             $post = Post::find($request->id);
 
-            DB::table('storages')->insert([
+            if(DB::table('storages')->where([
                 'post_id' => $post->id,
                 'user_id' => Auth::user()->id,
-            ]);
+            ])->exists()) {
+                DB::table('storages')->where([
+                    ['user_id', '=', Auth::user()->id],
+                    ['post_id', '=', $post->id],
+                    ])->update([
+                        'save' => true, 
+                ]);
+            }
+
+            else {
+                DB::table('storages')->insert([
+                    'post_id' => $post->id,
+                    'user_id' => Auth::user()->id,
+                    'save' => true,
+                ]);
+            }
 
             return response()->json([
                 'message' => 'Save post successfully',
@@ -69,27 +83,68 @@ class StorageController extends Controller
 
     }
 
-    //xoa => da login roi
-    public function removePost(Request $request) {
+    // public function savePost(Request $request) {
+
+    //     if(is_null(Auth::user())) {
+    //         return response()->json([
+    //             'authenticated' => 'Bạn cần đăng nhập mới lưu được bài post này',
+    //             'class_name' => 'alert-danger',
+    //         ]);
+    //     }
+    //     else {
+    //         $post = Post::find($request->id);
+
+    //         DB::table('storages')->insert([
+    //             'post_id' => $post->id,
+    //             'user_id' => Auth::user()->id,
+    //         ]);
+
+    //         return response()->json([
+    //             'message' => 'Save post successfully',
+    //             'class_name' => 'alert-success',
+    //         ]); 
+    //     }
+
+    // }
+
+     public function removePost(Request $request) {
             $post = Post::find($request->id);
 
             DB::table('storages')->where([
                 ['user_id', '=', Auth::user()->id],
                 ['post_id', '=', $post->id],
-            ])->delete();
+            ])->update([
+                'save' => false, 
+            ]);
+            
             return response()->json([
                 'message' => 'Delete post successfully',
                 'class_name' => 'alert-success',
             ]); 
     }
+    //xoa => da login roi
+    // public function removePost(Request $request) {
+    //         $post = Post::find($request->id);
 
-    public function getPost() {
+    //         DB::table('storages')->where([
+    //             ['user_id', '=', Auth::user()->id],
+    //             ['post_id', '=', $post->id],
+    //         ])->delete();
+    //         return response()->json([
+    //             'message' => 'Delete post successfully',
+    //             'class_name' => 'alert-success',
+    //         ]); 
+    // }
+    // 
+     public function getPost() {
         $storagesPost = DB::table('storages')
         ->join('users', 'storages.user_id', '=', 'users.id')
         ->join('posts', 'storages.post_id', '=', 'posts.id')
         ->join('category_post', 'storages.post_id', '=', 'category_post.post_id')
         ->join('categories', 'categories.id', '=', 'category_post.category_id')
         ->where('storages.user_id', Auth::user()->id)
+        ->where('storages.save', '=', true)
+        ->orWhere('storages.like', '!=', 1)
         ->whereNotNull('categories.parent_id')
         ->groupBy('posts.id')
         ->selectRaw('posts.*, categories.name as category_name')->get();
@@ -97,6 +152,22 @@ class StorageController extends Controller
 
         return view('storages.index')->withStoragesPost($storagesPost)->withTags($tags);
     }
+
+
+    // public function getPost() {
+    //     $storagesPost = DB::table('storages')
+    //     ->join('users', 'storages.user_id', '=', 'users.id')
+    //     ->join('posts', 'storages.post_id', '=', 'posts.id')
+    //     ->join('category_post', 'storages.post_id', '=', 'category_post.post_id')
+    //     ->join('categories', 'categories.id', '=', 'category_post.category_id')
+    //     ->where('storages.user_id', Auth::user()->id)
+    //     ->whereNotNull('categories.parent_id')
+    //     ->groupBy('posts.id')
+    //     ->selectRaw('posts.*, categories.name as category_name')->get();
+    //     $tags = Tag::all();
+
+    //     return view('storages.index')->withStoragesPost($storagesPost)->withTags($tags);
+    // }
 
     public function getSingle(Request $request) {
 

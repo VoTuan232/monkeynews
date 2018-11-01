@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Closure;
 use Session;
+use Config;
 
 class AdminMiddleware
 {
@@ -17,7 +18,7 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ( Auth::check() && Auth::user()->roles->count()>0 && !Auth::user()->inRole('subscriber') )
+        if ( Auth::check() && Auth::user()->roles->count() > Config::get('social.zero') && !Auth::user()->inRole('subscriber') )
         {
             return $next($request);
         }

@@ -31,6 +31,7 @@ class DraftController extends Controller
     public function __construct() {
         $this->middleware(['auth']);
     }
+    
     public function index()
     {
         $categories = Category::all();
@@ -39,7 +40,6 @@ class DraftController extends Controller
         // dd($posts = $this->getPosts());
 
         return view('drafts.index')->withPosts($posts)->withCategories($categories)->withTrees($trees);
-        
     }
 
     /**
@@ -64,7 +64,7 @@ class DraftController extends Controller
         ->leftJoin('comments', 'comments.commentable_id', '=', 'posts.id')
         ->where('posts.published', '=', false)
         ->where('users.id', '=', Auth::user()->id)
-        ->selectRaw('posts.id, posts.title, posts.slug, posts.body, posts.image, posts.published, posts.vote, posts.view, users.name as username, posts.user_id, posts.request as request, comments.commentable_id as comment')->distinct()->orderBy('posts.id', 'asc')->get(); 
+        ->selectRaw('posts.id, posts.title, posts.slug, posts.body, posts.image, posts.published, posts.like, posts.dislike, posts.view, users.name as username, posts.user_id, posts.request as request, comments.commentable_id as comment')->distinct()->orderBy('posts.id', 'asc')->get(); 
 
         
     }
@@ -74,7 +74,7 @@ class DraftController extends Controller
         // dd(Carbon\Carbon::now());
         $post =  Post::find($id);
         if(Auth::user()->id == $post->user_id) {
-            $post->request = true;
+            $post->request = 1;
             $post->requested_at = Carbon\Carbon::now();
             $post->save();
         }
@@ -87,7 +87,7 @@ class DraftController extends Controller
         // dd(Carbon\Carbon::now());
         $post =  Post::find($id);
         if(Auth::user()->id == $post->user_id) {
-            $post->request = false;
+            $post->request = 0;
             $post->requested_at = Carbon\Carbon::now();
             $post->save();
         }
@@ -97,7 +97,12 @@ class DraftController extends Controller
 
     public function getSingle(Request $request, $id) {
         $post = Post::find($id);
-        return view('drafts.view')->withPost($post);
+        if($post->published == 1 || Auth::user()->id == $post->user_id || Gate::allows('post.publish')) {
+            return view('drafts.view')->withPost($post);
+        }
+
+         return view('errors.404');
+        // return view('errors.404',$data,404);
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
 return [
-	'zero' => 0
+	'zero' => 0,
+	'postPerPage' => 4,
 ];

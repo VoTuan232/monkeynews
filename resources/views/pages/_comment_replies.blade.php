@@ -8,9 +8,15 @@
         <div class="comment_option">
             <p style="margin-bottom: 8px;">{{ $comment->body }}</p>
 
-            <i class="far fa-thumbs-up like"></i>
-            <i class="far fa-thumbs-down like"></i>
-            <a href="" class="show_reply" data-id="{{ $comment->id }}">Trả lời</a>        
+            <i class="fa fa-thumbs-up like"></i>
+            <i class="fa fa-thumbs-down like"></i>
+            @can('comment.edit')
+            <a href="" class="edit" data-id="{{ $comment->id }}"><i class="fa fa-edit"></i>Sửa</a>  
+            @endcan 
+            @can('comment.delete')
+            <a href="" class="delete" data-id="{{ $comment->id }}"><i class="fa fa-trash"></i>Xóa</a>  
+            @endcan      
+            <a href="" class="show_reply" data-id="{{ $comment->id }}"><i class="fa fa-reply"></i>Trả lời</a>        
         </div>
 
         <div class="frm-comment" id="comment-<?php echo $comment->id;?>">

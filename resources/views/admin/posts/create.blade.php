@@ -57,9 +57,9 @@
                     <div class="col-3-md">
                         <div class="form-group">
                             {{ Form::label('category', 'Category:') }}
-                            <span class="btn btn-info btn-sm" data-toggle="modal" data-target="#showTreeCategory"><i class="far fa-eye"></i>Chọn chủ đề</span>
+                            <span class="btn btn-info btn-sm" data-toggle="modal" data-target="#showTreeCategory"><i class="fa fa-eye"></i>Chọn chủ đề</span>
 
-                            <span class="btn btn-info btn-sm" id="clear-category"><i class="fas fa-eraser"></i>Xóa</span>
+                            <span class="btn btn-info btn-sm" id="clear-category"><i class="fa fa-eraser"></i>Xóa</span>
                             <br><br>
                             {{ Form::text('category', null, ['class' => 'form-control', 'readonly' => 'true', 'placeholder' => 'Categrory...']) }}
                         </div>

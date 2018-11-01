@@ -26,7 +26,8 @@ class PostsTableSeeder extends Seeder
                 'published' => rand(0, 1),
                 'image' => 'demo.jpg',
                 'user_id' => $user2->id,
-                'vote' => rand(0, 10),
+                'like' => rand(0, 10),
+                'dislike' => rand(0, 10),
                 'view' => rand(0, 10)
             ]);
             $title = $faker->sentence($nbWords = 6, $variableNbWords = true);
@@ -37,7 +38,8 @@ class PostsTableSeeder extends Seeder
                 'published' => rand(0, 1),
                 'image' => 'demo.jpg',
                 'user_id' => $user4->id,
-                'vote' => rand(0, 10),
+                'like' => rand(0, 10),
+                'dislike' => rand(0, 10),
                 'view' => rand(0, 10)
             ]);
         }

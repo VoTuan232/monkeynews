@@ -43,7 +43,7 @@ class PostController extends Controller
     public function readData()
     {
         $posts = Post::join('users', 'users.id', '=', 'posts.user_id')
-        ->selectRaw('posts.id, posts.title, posts.slug, posts.body, posts.image, posts.published, posts.vote, posts.view, users.name as username, posts.user_id')->orderBy('posts.id', 'asc')->get(); 
+        ->selectRaw('posts.id, posts.title, posts.slug, posts.body, posts.image, posts.published, posts.like,posts.dislike, posts.view, users.name as username, posts.user_id')->orderBy('posts.id', 'asc')->get(); 
 
         return view('admin.posts.post_info')->withPosts($posts);
     }
@@ -84,7 +84,7 @@ class PostController extends Controller
 
     public function find($id){
         return Post::join('users', 'users.id', '=', 'posts.user_id')
-        ->selectRaw('posts.id, posts.title, posts.slug, posts.body, posts.image, posts.published, posts.vote, posts.view, users.name as username')->where('posts.id',$id)->first();
+        ->selectRaw('posts.id, posts.title, posts.slug, posts.body, posts.image, posts.published, posts.like, posts.dislike, posts.view, users.name as username')->where('posts.id',$id)->first();
     }
 
 
@@ -134,7 +134,7 @@ class PostController extends Controller
                 'image' => $filename,
                 'published' => $published,
                 'user_id' => Auth::user()->id,
-                'request' => false,
+                'request' => 0,
 
             ]);
 

@@ -1,24 +1,51 @@
-<div class="card-body">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-	  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 cat_nav">
-	    	<li class="nav-item {{ Request::is('/') ? "li-manager" : "" }}">
-		        <a class="nav-link" href="{{ route('pages.index') }}">Trang chủ</a>
-		     </li>
-	    	@foreach($catHomes as $category)
-		      <li class="nav-item">
-		        <a class="nav-link" href="{{ route('home.posts', ['id' => $category->id, 'slug' => str_slug($category->name)]) }}">{{ $category->name }}</a>
-		      </li>
-	    	@endforeach
-	    </ul>
-	    <form class="form-inline my-2 my-lg-0">
-	      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-	    </form>
-	  </div>
-	</nav>
-</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-3 fh5co_padding_menu">
+            <img src="{{ asset('client/images/logo.png') }}" alt="img" class="fh5co_logo_width"/>
+        </div>
+        <div class="col-12 col-md-9 align-self-center fh5co_mediya_right">
 
+            {!! Form::open(array('route' => 'home.getSearch', 'method' => 'GET')) !!}
+            @csrf
+	        	<div class="text-center d-inline-block">
+	        		<div class="fh5co_verticle_middle">
+	            		<input type="" name="text" id="textSearch" placeholder="Search..." >
+	        		</div>
+	            </div>
+                <?php $textSearch =  'a' ?>
+	            <div class="text-center d-inline-block">
+	                <a class="fh5co_display_table" id="btn-search" href="">
+	                	<div class="fh5co_verticle_middle">
+	                		{{-- <i class="fa fa-search"></i> --}}{{ Form::button('<i class="fa fa-search"></i>' ,array('class'=>'btn btn-success pull-left', 'type' => 'submit'))}}
+	                	</div>
+	                </a>
+	            </div>
+
+            {!! Form::close() !!}
+
+            <div class="text-center d-inline-block">
+                <a class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-linkedin"></i></div></a>
+            </div>
+            <div class="text-center d-inline-block">
+                <a class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-google-plus"></i></div></a>
+            </div>
+            <div class="text-center d-inline-block">
+                <a href="https://twitter.com/fh5co" target="_blank" class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-twitter"></i></div></a>
+            </div>
+             <div class="text-center d-inline-block">
+                <a href="https://fb.com/fh5co" target="_blank" class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i></div></a>
+            </div>
+            <!--<div class="d-inline-block text-center"><img src="images/country.png" alt="img" class="fh5co_country_width"/></div>-->
+            <div class="d-inline-block text-center dd_position_relative ">
+                <select class="form-control fh5co_text_select_option">
+                    <option>English </option>
+                    <option>French </option>
+                    <option>German </option>
+                    <option>Spanish </option>
+                </select>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>               
+               

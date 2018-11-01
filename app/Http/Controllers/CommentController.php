@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Post;
 use Auth;
+use Session;
 
 class CommentController extends Controller
 {
@@ -68,17 +69,32 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-            $comment = new Comment;
-            $comment->body = $request->get('comment_body');
-            $comment->user()->associate(Auth::user()->id);
-            $comment->parent_id = $request->comment_id;
-            // $comment->user()->associate($request->user()); //cap nhat moi quan he belogsTo => set khoa ngoai cua model con, neu la disassociate thi 
-            //https://viblo.asia/p/eloquent-relationships-in-laravel-phan-3-MJykjmxyePB
-            $post = Post::find($request->get('post_id'));
-            $post->comments()->save($comment);
-            
-            return back();
+        if( Auth::user())
+        {
+                $comment = new Comment;
+                $comment->body = $request->get('comment_body');
+                $comment->user()->associate(Auth::user()->id);
+                $comment->parent_id = $request->comment_id;
+               
+                $post = Post::find($request->get('post_id'));
+                $post->comments()->save($comment);
+                
+                return back();
+        }
+        else {
+            Session::flash('message', 'Bạn cần đăng nhập trước khi bình luận');
+            return redirect()->route('login');
+        }
 
+    }
+
+    public function destroyComment(Request $request) {
+        dd('hihii');
+         $response = array(
+          'status' => 'success',
+          'msg' => $request->id,
+      );
+      return response()->json($response); 
     }
 
     /**

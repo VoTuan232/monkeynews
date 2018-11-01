@@ -10,7 +10,7 @@
 
 @section('main')
    
-   @can('posts.publish') 
+   @can('post.publish') 
     <section class="content">
       <div class="row">
         <div class="col-xs-12">

@@ -17,9 +17,9 @@ class RequestController extends Controller
     public function getRequests() {
          return  Post::join('users', 'users.id', '=', 'posts.user_id')
          ->where('posts.published', '=', false)
-         ->where('posts.request', '=', true)
+         ->where('posts.request', '=', 1)
          ->orderBy('posts.requested_at','asc')
-        ->selectRaw('posts.id, posts.title, posts.slug, posts.body, posts.image, posts.published, posts.vote, posts.view, users.name as username, posts.user_id')->orderBy('posts.id', 'asc')->get(); 
+        ->selectRaw('posts.id, posts.title, posts.slug, posts.body, posts.image, posts.published, posts.like, posts.dislike, posts.view, users.name as username, posts.user_id')->orderBy('posts.id', 'asc')->get(); 
 
     }
 
@@ -31,16 +31,21 @@ class RequestController extends Controller
 
     public function closeRequest(Request $request, $id) {
         $post = Post::find($id);
-        $post->request = null;
+        $post->request = 2;
         $post->save();
 
         return back();
     }
 
+    //xoa comment cu 
     public function accept(Request $request, $id) {
         $post = Post::find($id);
         $post->published = true;
+        $post->request = 0;
         $post->save();
+
+        DB::table('comments')->where('commentable_id',$post->id)->delete();
+
         return back();
     }
     /**

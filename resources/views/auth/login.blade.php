@@ -18,6 +18,7 @@
    <body>
       <div class="limiter">
          <div class="container-login100">
+            @include('partials._message')
             <div class="wrap-login100">
                <div class="login100-pic js-tilt" data-tilt>
                    <img src="{{ \Storage::disk('my-disk')->url('/img-01.png') }}" alt="IMG">
