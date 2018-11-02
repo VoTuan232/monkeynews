@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Models\Comment;
+use Illuminate\Support\Collection;
 
 class CommentController extends Controller
 {
@@ -13,6 +15,12 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    private $save;
+
+    public function __construct() {
+        $this->save = new Collection();
+    }
     public function getComments() {
 
      return DB::table('posts')
@@ -26,6 +34,47 @@ class CommentController extends Controller
         // dd($posts);
         return view('admin.comments.index')->withPosts($posts);
     }
+
+    public function getAllCommentDestroy($idComment) {
+
+        // $comment = DB::table('comments')->where([
+        //     'id' => $idComment,
+        //     'commentable_id' => $idPost,
+        // ])->get();
+
+        // $this->save = $this->save->merge($comment);
+        $comment = Comment::find($idComment);
+        $this->save = $this->save->merge($comment);
+
+        while ($comment->replies()->count() > 0 )
+        {
+            foreach($comment->replies as $sub_comment) {
+                $this->getAllCommentDestroy($sub_comment->id);
+            }
+        }
+
+        return $this->save;
+    }
+
+    public function destroyComment(Request $request) {
+
+        // $comments = $this->getAllCommentDestroy($request->id, $request->post_id);
+
+        $comment = DB::table('comments')->where([
+            'id' => $request->id,
+            'commentable_id' => $request->post_id,
+        ])->first();
+
+        // $comments = $comment->replies()->count();
+
+        $response = array(
+            'data' => $comment,
+            'message'   => 'Đã xóa bình luận thành công',
+            'class_name'  => 'alert-success'
+        );
+        return response()->json($response); 
+    }
+
     /**
      * Show the form for creating a new resource.
      *

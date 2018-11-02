@@ -14,7 +14,7 @@
             <a href="" class="edit" data-id="{{ $comment->id }}"><i class="fa fa-edit"></i>Sửa</a>  
             @endcan 
             @can('comment.delete')
-            <a href="" class="delete" data-id="{{ $comment->id }}"><i class="fa fa-trash"></i>Xóa</a>  
+            <a href="" class="delete" data-id="{{ $comment->id }}" data-post="{{ $post->id }}"><i class="fa fa-trash"></i>Xóa</a>  
             @endcan      
             <a href="" class="show_reply" data-id="{{ $comment->id }}"><i class="fa fa-reply"></i>Trả lời</a>        
         </div>

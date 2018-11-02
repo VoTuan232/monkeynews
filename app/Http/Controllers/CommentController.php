@@ -88,14 +88,7 @@ class CommentController extends Controller
 
     }
 
-    public function destroyComment(Request $request) {
-        dd('hihii');
-         $response = array(
-          'status' => 'success',
-          'msg' => $request->id,
-      );
-      return response()->json($response); 
-    }
+    
 
     /**
      * Display the specified resource.

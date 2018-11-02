@@ -74,7 +74,7 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::post('manager/publish/close/{id}', 'admin\RequestController@closeRequest')->name('posts.draft.close');
     Route::post('manager/publish/accept/{id}', 'admin\RequestController@accept')->name('posts.draft.accept');
 
-    Route::get('manager/comments/destroyComment', 'admin\CommentController@destroyComment')->name('comments.destroy');
+    Route::post('manager/comments/destroyComment', 'admin\CommentController@destroyComment')->name('comments.destroy');
 
 
 });
