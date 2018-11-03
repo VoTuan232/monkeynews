@@ -14,6 +14,7 @@ class Post extends Model
         'image',
         'published',
         'request',
+        'view',
     ];
 
     public function user()

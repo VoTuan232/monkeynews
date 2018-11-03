@@ -12,7 +12,8 @@ use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Config; 
-
+use Event;
+use Session;
 
 use App\Repositories\TodoInterface;
 
@@ -31,11 +32,14 @@ class HomeController extends Controller
     
     public function __construct(RepositoryInterface $res)
     {
-        // $this->middleware('auth');
+
+        $this->middleware('checkviewpost');
         $this->save = new Collection();
-        // $this->res = $res;
         $this->res = $res;
     }
+
+    
+
 
     /**
      * Show the application dashboard.
@@ -67,7 +71,7 @@ class HomeController extends Controller
     public function getSearch(Request $request) {
         // dd($request->all());
         // dd('hihi');
-        $posts = Post::where('body', 'LIKE', '%'.$request->text.'%')->orderBy('created_at', 'desc')->paginate(4);
+        $posts = Post::where('body', 'LIKE', '%'.$request->text.'%')->where('published', '=', true)->orderBy('created_at', 'desc')->paginate(4);
         $posts->appends($request->only('text'));
         // dd($posts);
         return view('pages.search')->withPosts($posts)->withTextSearch($request->text);
@@ -130,9 +134,7 @@ class HomeController extends Controller
             $this->save = new Collection();
             $posts = $this->getAllPostsBaseCategory($id)->sortByDesc('created_at');
             $this->save = new Collection();
-
             $numberPage = (int)($posts->count() / 4);
-
             // $posts = MainService::paginate($posts);
             $posts = $this->res->paginate($posts);
             // $posts = $this->paginate($posts);
@@ -140,7 +142,25 @@ class HomeController extends Controller
             $this->save = new Collection();
             $postsMostPopular = $this->getAllPostsBaseCategory($id)->sortByDesc('view')->take(4);
             $this->save = new Collection();
-            return view('pages.posts_base_category')->withPosts($posts)->withCategory($category)->withPostsMostPopular($postsMostPopular)->withNumberPage($numberPage);
+
+
+            $data = [];
+            $data1 = [];
+            $categories = Category::where('parent_id', '=', null)->take(4)->get();
+            foreach ($categories as $key => $category) {
+                $this->save = new Collection();
+                $postsBaseCategory = $this->getAllPostsBaseCategory($category->id)->sortByDesc('created_at');
+                $this->save = new Collection();
+                if($postsBaseCategory->count() > 0 ) {
+                    $data[$category->id] = $postsBaseCategory;
+                }
+              
+                $data1[$category->id] = $postsBaseCategory->first();
+            }
+
+
+
+            return view('pages.posts_base_category')->withPosts($posts)->withCategory($category)->withPostsMostPopular($postsMostPopular)->withNumberPage($numberPage)->withData($data)->withData1($data1)->withCategories($categories);
         }
 
 
@@ -156,7 +176,7 @@ class HomeController extends Controller
                     ->select('posts.*')->get();
         $this->save = $this->save->merge($posts);
 
-            while ($category->childrens()->count() > 0 )
+            if ($category->childrens()->count() > 0 )
             {
                 foreach($category->childrens as $category) {
                     $this->getAllPostsBaseCategory($category->id);
@@ -193,6 +213,9 @@ class HomeController extends Controller
         $post = Post::where('slug', '=', $slug)->firstOrFail();
 
         if($post->published == true) {
+                //increament view
+                Event::fire('posts.view', $post);
+
                 if(Auth::user()) {
                     $postAll = DB::table('posts')
                     ->leftJoin('storages', 'storages.post_id', '=', 'posts.id')
@@ -200,10 +223,18 @@ class HomeController extends Controller
                     ->where('storages.user_id', '=', Auth::user()->id)
                     ->selectRaw('storages.*')
                     ->first();
+                    
+                    // dd($tags);
+                    // $postAll->key = [
+                    //     'key1' => 'value1',
+                    //     'key2' => 'value2',
+                    // ];
+                    // dd($postAll);
                 } 
                 else {
                     $postAll = null;
                 }
+
                 $category = DB::table('category_post')
                         ->join('posts', 'category_post.post_id', '=', 'posts.id' )
                         ->join('categories', 'category_post.category_id', '=', 'categories.id' )
@@ -214,7 +245,16 @@ class HomeController extends Controller
                 $this->save = new Collection();
                 $postsRelated = $this->getAllPostsBaseCategory($category1->id)->sortByDesc('created_at')->take(4);
                 $this->save = new Collection();
-
+                //show tag of post
+                $tags = DB::table('post_tag')
+                    ->leftJoin('tags', 'tags.id', '=', 'post_tag.tag_id')
+                    ->leftjoin('posts', 'posts.id', '=', 'post_tag.post_id')  
+                    ->where('posts.id', '=', $post->id)
+                    ->selectRaw('tags.*')->get();
+                    // dd($this->res->getCommentBasePost($post));
+                $comments = $this->res->getCommentBasePost($post);
+                // dd($tags);           
+                //show ds category :))
                 $data = [];
                 $data1 = [];
                 $categories = Category::where('parent_id', '=', null)->paginate(4);
@@ -229,7 +269,7 @@ class HomeController extends Controller
                     $data1[$category->id] = $posts->first();
                 }
 
-                return view('pages.single')->withPost($post)->withCategory($category1)->withPostsRelated($postsRelated)->withPost($post)->withPostAll($postAll)->withData($data)->withData1($data1)->withCategories($categories);
+                return view('pages.single')->withPost($post)->withCategory($category1)->withPostsRelated($postsRelated)->withPost($post)->withPostAll($postAll)->withData($data)->withData1($data1)->withCategories($categories)->withTags($tags)->withComments($comments);
         }
         return view('errors.404');
 

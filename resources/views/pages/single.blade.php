@@ -47,7 +47,14 @@
         }
 
         .like {
-        margin-right: 15px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .icon-view-post {
+            color : #a25757;
+            margin-left : 5px;
+            cursor: pointer;
         }
     </style>
 
@@ -161,6 +168,11 @@
                 <div class="row">
                     <div class="col-md-8">
                         <h2>{{ $post->title }}</h2>
+                        Thẻ liên quan bài viết:<br>
+                        @foreach($tags as $tag)
+                            <a href="{{ route('home.tags.posts', ['id' => $tag->id]) }}" class="fh5co_tagg">{{ $tag->name }}</a>
+                        @endforeach
+                        <br>
                         <span>{{ $post->created_at }}</span> &nbsp;&nbsp;
                         @can('post.update', $post)
                             <a href="{{ route('posts.edit', $post->id) }}" ><i class="fa fa-edit"></i>Edit</a>
@@ -168,6 +180,8 @@
                         @can('post.delete')
                              <a href="" data-id="{{$post->id}}"><i class="fa fa-trash"></i>Delete</a>
                         @endcan
+                        <i class="fa fa-eye fa-1x icon-view-post" title="View"></i>{{ $post->view }}
+                        <i class="fa fa-comments fa-1x icon-view-post" title="Comment"></i>{{ $comments->comment_number }}
                     </div>
                     <div class="col-md-4">
                         <button type="button" class="btn btn-primary btn-sm" data-like="{{ isset($postAll) ? $postAll->like : "1"}}" data-id="{{ $post->id }}" title="Like" id="btn-like-post">
@@ -190,6 +204,7 @@
                         </button>
 
                         <div class="alert" id="message-state-post" style="display: none"></div>
+                        <br><br>                                    
                     </div>
                 </div>
 

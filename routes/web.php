@@ -102,11 +102,19 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::get('state/posts/removeDislike', 'StatePostController@removeDislikePost')->name('state.posts.removeDislike');
 
     Route::get('/search', 'HomeController@getSearch')->name('home.getSearch'); 
-    // Route::post('/search', 'HomeController@postSearch')->name('home.postSearch'); 
-    // Route::get('/search/{text}', 'HomeController@getSearch')->name('home.getSearch'); 
-    // Route::get('/search/{text}', 'HomeController@search')->name('home.search'); 
 
     Route::get('/tags/{id}', 'HomeController@getPostsBaseTag')->name('home.tags.posts');
+
+    // Route::post('/language-chooser', 'LanguageController@changeLanguage');
+    Route::post('/language/', array(
+        'before' => 'csrf',
+        'as' => 'language-chooser',
+        'uses' => 'LanguageController@changeLanguage',
+    ));
+    // Route::group(['middleware' => 'locale'], function() {
+    //     Route::get('change-language/{language}', 'HomeController@changeLanguage')
+    //     ->name('user.change-language');
+    // });
 
     Route::get('/{id}/{slug}', 'HomeController@getPosts')->name('home.posts');
     Route::get('/{slug}', 'HomeController@getSingle')->name('home.single');

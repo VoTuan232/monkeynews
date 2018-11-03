@@ -1,6 +1,9 @@
 <div class="show_comment_before_add"  style="margin-left:30px;">
 
 </div>
+
+<div class="alert" id="message-destroy-comment" style="display: none"></div>
+
 @foreach($comments as $comment)
 <div class="display-comment-<?php echo $comment->id;?>"  style="margin-left:30px;">
         <image src="/images/demo.jpg" class="img-tran">
@@ -8,8 +11,8 @@
         <div class="comment_option">
             <p style="margin-bottom: 8px;">{{ $comment->body }}</p>
 
-            <i class="fa fa-thumbs-up like"></i>
-            <i class="fa fa-thumbs-down like"></i>
+            <i class="fa fa-thumbs-up like">0</i>
+            <i class="fa fa-thumbs-down like">0</i>
             @can('comment.edit')
             <a href="" class="edit" data-id="{{ $comment->id }}"><i class="fa fa-edit"></i>Sửa</a>  
             @endcan 

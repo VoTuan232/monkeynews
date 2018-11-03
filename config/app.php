@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'vn',
 
     /*
     |--------------------------------------------------------------------------
@@ -162,6 +162,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
         App\Providers\MainServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
         // 'repotutrepositoriesRepositoryServiceProvider'
 
     ],
@@ -214,6 +215,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'MainService' => App\Helpers\Pagination::class,
 
     ],

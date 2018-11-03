@@ -37,12 +37,36 @@
             </div>
             <!--<div class="d-inline-block text-center"><img src="images/country.png" alt="img" class="fh5co_country_width"/></div>-->
             <div class="d-inline-block text-center dd_position_relative ">
-                <select class="form-control fh5co_text_select_option">
-                    <option>English </option>
-                    <option>French </option>
-                    <option>German </option>
-                    <option>Spanish </option>
+                <select name="locale" id="languageSwitcher">
+                          <option value="vn" >Viet Nam</option>
+                          <option value="en">English</option>
                 </select>
+            {{--     <a href="{!! route('user.change-language', ['en']) !!}">English</a>
+                <a href="{!! route('user.change-language', ['vn']) !!}">Vietnam</a> --}}
+
+               {{--  <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{URL::asset('')}}language/vn">Tiếng Việt</a></li>
+                        <li><a href="{{URL::asset('')}}language/en">Tiếng Anh</a></li>
+                        <li><a href="{{URL::asset('')}}language/ja">Tiếng Nhật</a></li>
+                </ul> --}}
+                {{-- <form action="{{ route('switchLang') }}" class="form-lang" method="post">
+                    <select name="locale" onchange='this.form.submit();'>
+                          <option value="en">English</option>
+                          <option value="vn" selected >Viet Nam</option>
+                    </select>
+                      {{ csrf_field() }}
+                </form> --}}
+
+                {{-- <a href="{{ route('switchLang') }}">English</a> --}}
+
+               {{--  <select class="form-control fh5co_text_select_option">
+                    <option>
+                        <a href="{!! route('user.change-language', ['en']) !!}">English</a>
+                    </option>
+                    <option>
+                        <a href="{!! route('user.change-language', ['vn']) !!}">Vietnam</a>
+                    </option>
+                </select> --}}
             </div>
             <div class="clearfix"></div>
         </div>

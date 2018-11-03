@@ -28,7 +28,7 @@ class PostsTableSeeder extends Seeder
                 'user_id' => $user2->id,
                 'like' => rand(0, 10),
                 'dislike' => rand(0, 10),
-                'view' => rand(0, 10)
+                'view' => 0
             ]);
             $title = $faker->sentence($nbWords = 6, $variableNbWords = true);
             $post = Post::create([
@@ -40,7 +40,7 @@ class PostsTableSeeder extends Seeder
                 'user_id' => $user4->id,
                 'like' => rand(0, 10),
                 'dislike' => rand(0, 10),
-                'view' => rand(0, 10)
+                'view' => 0
             ]);
         }
     }

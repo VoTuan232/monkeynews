@@ -37,38 +37,28 @@ class CommentController extends Controller
 
     public function getAllCommentDestroy($idComment) {
 
-        // $comment = DB::table('comments')->where([
-        //     'id' => $idComment,
-        //     'commentable_id' => $idPost,
-        // ])->get();
-
-        // $this->save = $this->save->merge($comment);
         $comment = Comment::find($idComment);
-        $this->save = $this->save->merge($comment);
+        $this->save = $this->save->push($comment);
 
-        while ($comment->replies()->count() > 0 )
+        if ($comment->replies()->count() > 0 )
         {
             foreach($comment->replies as $sub_comment) {
                 $this->getAllCommentDestroy($sub_comment->id);
             }
         }
-
         return $this->save;
     }
 
     public function destroyComment(Request $request) {
+        $comments = $this->getAllCommentDestroy($request->id);
 
-        // $comments = $this->getAllCommentDestroy($request->id, $request->post_id);
+        foreach($comments as $comment) {
+            DB::table('comments')->where('id', '=', $comment->id)->delete();
+        }
 
-        $comment = DB::table('comments')->where([
-            'id' => $request->id,
-            'commentable_id' => $request->post_id,
-        ])->first();
-
-        // $comments = $comment->replies()->count();
 
         $response = array(
-            'data' => $comment,
+            // 'data' =>$comments-,
             'message'   => 'Đã xóa bình luận thành công',
             'class_name'  => 'alert-success'
         );

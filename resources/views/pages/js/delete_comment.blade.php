@@ -16,9 +16,15 @@
                     dataType: 'JSON',
                     /* remind that 'data' is the response of the AjaxController */
                     success: function (data) { 
-                        console.log(data.data);
-                        // location.reload();
-                       // document.getElementsByClassName('display-comment-'+comment_id).remove();
+                        // console.log(data.data);
+                        location.reload();
+                        $('#message-destroy-comment').css('display', 'block');
+                        $('#message-destroy-comment').html(data.message);
+                        $('#message-destroy-comment').addClass(data.class_name);
+
+                        // $("#message-state-post").fadeTo(2000, 500).slideUp(500, function(){
+                        //     $("#message-state-post").slideUp(500);
+                        // });
                     }
                 }); 
     		}
