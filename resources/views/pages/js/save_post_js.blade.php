@@ -9,7 +9,7 @@
     var first_status_post = $("#btn-save-post").data('save');
     if(first_status_post == 1) {
         document.getElementById("btn-save-post").title = "Unsave";
-        document.getElementById("btn-save-post").style.backgroundColor= "#632222";
+        document.getElementById("btn-save-post").style.backgroundColor= "#e40a0a";
         save = true;
     }
     if(first_status_post == 0) {

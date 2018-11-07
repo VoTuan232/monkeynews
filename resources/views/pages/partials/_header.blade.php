@@ -37,10 +37,10 @@
             </div>
             <!--<div class="d-inline-block text-center"><img src="images/country.png" alt="img" class="fh5co_country_width"/></div>-->
             <div class="d-inline-block text-center dd_position_relative ">
-                <select name="locale" id="languageSwitcher">
+                {{-- <select name="locale" id="languageSwitcher">
                           <option value="vn" >Viet Nam</option>
                           <option value="en">English</option>
-                </select>
+                </select> --}}
             {{--     <a href="{!! route('user.change-language', ['en']) !!}">English</a>
                 <a href="{!! route('user.change-language', ['vn']) !!}">Vietnam</a> --}}
 

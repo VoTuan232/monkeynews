@@ -55,6 +55,9 @@
 							@endforeach
 						</tbody>
 					</table>
+                    </div>
+                    	@include('admin.comments.pagination_comment')
+						{{-- {{ $posts->appends(request()->query())->links() }} --}}
             	</div>
 
             	

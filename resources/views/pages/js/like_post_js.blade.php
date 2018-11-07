@@ -4,7 +4,7 @@
     console.log(first_status_post);
     if(first_status_post == 2) {
         document.getElementById("btn-like-post").title = "Bỏ like";
-        document.getElementById("btn-like-post").style.backgroundColor= "#632222";
+        document.getElementById("btn-like-post").style.backgroundColor= "#e40a0a";
 
         document.getElementById("btn-dislike-post").title = "Dislike";
         document.getElementById("btn-dislike-post").style.backgroundColor= "#007bff";
@@ -16,7 +16,7 @@
         document.getElementById("btn-like-post").style.backgroundColor= "#007bff";
 
         document.getElementById("btn-dislike-post").title = "Bỏ Dislike";
-        document.getElementById("btn-dislike-post").style.backgroundColor= "#632222";
+        document.getElementById("btn-dislike-post").style.backgroundColor= "#e40a0a";
         like =0;
     }
 
@@ -41,7 +41,8 @@
                 }
                 else {
                         document.getElementById("btn-like-post").title = "Remove Like";
-                        document.getElementById("btn-like-post").style.backgroundColor= "#632222";
+                        document.getElementById("btn-like-post").style.backgroundColor= "#e40a0a";
+                        document.getElementById("btn-dislike-post").title = "Dislike";
                         document.getElementById("btn-dislike-post").style.backgroundColor= "#007bff";
 
                         $("#number-like-post").text(data.post_data.like);
@@ -101,8 +102,10 @@
                 }
                 else {
                         document.getElementById("btn-dislike-post").title = "Bỏ Dislike";
-                        document.getElementById("btn-dislike-post").style.backgroundColor= "#632222";
+                        document.getElementById("btn-dislike-post").style.backgroundColor= "#e40a0a";
                         document.getElementById("btn-like-post").style.backgroundColor= "#007bff";
+
+                        document.getElementById("btn-like-post").title = "Like";
 
                         $("#number-like-post").text(data.post_data.like);
                         $("#number-dislike-post").text(data.post_data.dislike);

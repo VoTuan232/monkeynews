@@ -115,8 +115,18 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     //     Route::get('change-language/{language}', 'HomeController@changeLanguage')
     //     ->name('user.change-language');
     // });
+    Route::get('password/reset/{token?}', 'Auth\ResetPasswordController@showResetForm')->name('resetPassword');
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
     Route::get('/{id}/{slug}', 'HomeController@getPosts')->name('home.posts');
     Route::get('/{slug}', 'HomeController@getSingle')->name('home.single');
     // Route::get('/{category}/{slug}', 'HomeController@getSingle')->name('home.single');
+    // 
+//     MAIL_DRIVER=smtp
+// MAIL_HOST=smtp.gmail.com
+// MAIL_PORT=587
+// MAIL_USERNAME=votuanbk051@gmail.com
+// MAIL_PASSWORD=votuan232
+// MAIL_ENCRYPTION=tls
 

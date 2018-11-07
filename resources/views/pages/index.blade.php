@@ -81,7 +81,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    @foreach($catHomes as $category)
+                    @foreach($catsHome as $category)
                         @if($category->childrens->count() > 0 )
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="{{ route('home.posts', ['id' => $category->id, 'slug' => str_slug($category->name)]) }}" id="dropdownMenuButton3" data-toggle="dropdown"
@@ -111,7 +111,10 @@
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton3" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}<span class="sr-only">(current)</span></a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink_1">
+                            @if (auth()->user()->isAdmin())
                             <a class="dropdown-item" href="/admin"><i class="fa fa-home"></i>Manager</a>
+                            @else
+                            @endif
                             <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Profife</a>
                             <a class="dropdown-item" href="{{ route('storages.posts.index') }}">
                               <i class="fa fa-archive"></i>Save</a>

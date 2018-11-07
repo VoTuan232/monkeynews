@@ -99,7 +99,8 @@
 						<div class="well">
 							<div class="row">
 								<div class="col-sm-6">
-									{!! Html::linkRoute('posts.index','Cancel',null,array('class'=>'btn btn-danger btn-block')) !!}	
+									<a class="btn btn-danger btn-block" href="{{ url()->previous() }}">Cancel</a>
+									{{-- {!! Html::linkRoute('posts.index','Cancel',null,array('class'=>'btn btn-danger btn-block')) !!}	 --}}
 								</div>
 								<div class="col-sm-6">
 									{{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-block']) }}

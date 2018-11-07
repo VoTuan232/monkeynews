@@ -48,7 +48,7 @@
                     <div class="fh5co_latest_trading_img_position_absolute"></div>
                     <div class="fh5co_latest_trading_img_position_absolute_1">
                         <a href="{{ route('home.single', ['slug' => str_slug($list->slug)]) }}" class="text-white"> {!! substr(strip_tags($list->title), 0, 70) !!}{{ strlen(strip_tags($list->title))>20 ? "..." : ""}} </a>
-                        <div class="fh5co_latest_trading_date_and_name_color"> Walter Johson - March 7,2017</div>
+                        <div class="fh5co_latest_trading_date_and_name_color">{{ $list->created_at }}</div>
                     </div>
                 </div>
             </div>

@@ -28,6 +28,7 @@
     "login": "https://github.com/VoTuan232/login.git",
     "admin-layout": "https://github.com/VoTuan232/admin-layout.git",
     "ckfinder": "https://github.com/VoTuan232/ckfinder.git",
-    "client-news": "*"
+    "client-news": "*",
+    "clipboard": "https://github.com/zenorocha/clipboard.js.git#^2.0.1"
   }
 }

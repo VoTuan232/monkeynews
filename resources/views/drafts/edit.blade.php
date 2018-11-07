@@ -77,7 +77,7 @@
 	                    <div class="col-3-md">
 	                        <div class="form-group">
 	                            {{ Form::label('tags', 'Tag:') }}
-	                           {{ Form::select('tags[]', $tagHomes->pluck('name','id'), null, ['class' => 'form-control select2-multi', 'multiple' => 'multiple']) }} 
+	                           {{ Form::select('tags[]', $tags->pluck('name','id'), null, ['class' => 'form-control select2-multi', 'multiple' => 'multiple']) }} 
 	                        </div>
 	                    </div>
 	                    @can('post.publish')

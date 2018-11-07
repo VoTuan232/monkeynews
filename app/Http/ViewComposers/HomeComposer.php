@@ -22,12 +22,12 @@ class HomeComposer
      * @param  UserRepository  $users
      * @return void
      */
-    public function __construct(Category $categories, Tag $tags)
-    {
-        // Dependencies automatically resolved by service container...
-        $this->categories = $categories;
-        $this->tags = $tags;
-    }
+    // public function __construct(Category $categories, Tag $tags)
+    // {
+    //     // Dependencies automatically resolved by service container...
+    //     $this->categories = $categories;
+    //     $this->tags = $tags;
+    // }
 
     /**
      * Bind data to the view.
@@ -37,9 +37,10 @@ class HomeComposer
      */
     public function compose(View $view)
     {
-        $cats = Category::where('parent_id', null)->take(5)->get();
-        $tags = Tag::all();
+        // $cats = Category::where('parent_id', null)->take(5)->get();
+        // $tags = Tag::all();
 
-        $view->withCatHomes($cats)->withTagHomes($tags);
+        // $view->withCatHomes($cats);
+        // $view->withCatHomes($cats)->withTagHomes($tags);
     }
 }

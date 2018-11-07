@@ -68,7 +68,7 @@
                     <div class="col-3-md">
                         <div class="form-group">
                            {{ Form::label('tags', 'Tags:') }}
-                           {{ Form::select('tags[]',  $tagHomes->pluck('name', 'id') , null, ['class' => 'form-control select2-multi', 'multiple', 'name'=>'tags[]']) }}  
+                           {{ Form::select('tags[]',  $tags->pluck('name', 'id') , null, ['class' => 'form-control select2-multi', 'multiple', 'name'=>'tags[]']) }}  
                     </div>
                     </div>
                     

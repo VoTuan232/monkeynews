@@ -120,12 +120,12 @@
             <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
                 <div class="row">
                     <div class="col-md-8">
-                        <h2>{{ $post->title }}</h2>
+                        <h1>{{ $post->title }}</h1>
                         <h4>{{ $post->created_at }}</h4>
                     </div>
                 </div>
 
-                {!! substr(strip_tags($post->body), 0, 200) !!}{{ strlen(strip_tags($post->body))>200 ? "..." : ""}}
+                {!! $post->body !!}
 
                 <hr />
                     <form method="post" action="{{ route('comment.add') }}" id="frm-create-comment">
@@ -144,7 +144,7 @@
                 <hr>
 
             </div>
-            <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
+          {{--   <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tags</div>
                 </div>
@@ -152,7 +152,7 @@
                 <div class="fh5co_tags_all">
                     @include('pages.tag')
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

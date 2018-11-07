@@ -19,7 +19,8 @@ class CategoryController extends Controller
         $categories = Category::all();
         $categoriesNoChildren = Category::getCategoryNoChildren()->get();
         $trees = Category::where('parent_id',null)->get();
-        return view('admin.categories.index')->withCategories($categories)->withCategoriesNoChildren($categoriesNoChildren)->withTrees($trees);
+
+        return view('admin.categories.index', compact('categories', 'categoriesNoChildren', 'trees'));
     }
 
     /**
@@ -73,23 +74,6 @@ class CategoryController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request)
     {
         $category = Category::find($request->id);
@@ -99,21 +83,12 @@ class CategoryController extends Controller
             $parent = Category::where('id', '=', $category->parent_id)->first();
             $parent_name = $parent->name;
         }
-        // $category = Category::find($request->id);
         return response()->json([
             'category' => $category,
-            // 'message' => $request->all(),
             'parent_name' => isset($parent_name) ? $parent_name : "null",
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request)
     {
         $validation = CategoryRequest::rulesUpdate($request);

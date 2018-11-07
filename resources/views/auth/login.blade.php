@@ -72,12 +72,12 @@
                   <span class="txt1">
                   Forgot
                   </span>
-                  <a class="txt2" href="#">
+                  <a class="txt2" href="{{ route('resetPassword') }}">
                   Username / Password?
                   </a>
                </div>
                <div class="text-center p-t-136">
-                  <a class="txt2" href="{{ route('register') }}">
+                  <a class="txt2" href="{{ url('password/reset') }}">
                   Create your Account
                   <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                   </a>

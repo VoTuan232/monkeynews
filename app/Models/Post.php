@@ -19,7 +19,7 @@ class Post extends Model
 
     public function user()
     {
-        $this->belongsTo('App\Models\User');
+        $this->belongsTo('App\Models\User', 'user_id');
     }
 
     public function scopePublished($query)

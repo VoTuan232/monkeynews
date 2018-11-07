@@ -1,4 +1,4 @@
-<script>
+uuuuu<script>
         $(document).on('click','#delete',function(e){
             var id=$(this).data('id');
            if(confirm("Are You Sure to delete this")){

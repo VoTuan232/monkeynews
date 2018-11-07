@@ -30,8 +30,7 @@
 	                        </div>
 	                    </div>
 	                    <div class="col-md-7 animate-box">
-	                        <a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" class="fh5co_magna py-2"> {!! substr(strip_tags($post->title), 0, 50) !!}{{ strlen(strip_tags($post->title))>50 ? "..." : ""}} </a> <a href="#" class="fh5co_mini_time py-3"> Thomson Smith -
-	                        {{ $post->created_at }} </a>
+	                        <a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" class="fh5co_magna py-2"> {!! substr(strip_tags($post->title), 0, 50) !!}{{ strlen(strip_tags($post->title))>50 ? "..." : ""}} </a> <a href="#" class="fh5co_mini_time py-3">{{ $post->created_at }}</a>
 	                        <div class="fh5co_consectetur"> {!! substr(strip_tags($post->body), 0, 200) !!}{{ strlen(strip_tags($post->body))>200 ? "..." : ""}}
 	                        </div>
 	                    </div>

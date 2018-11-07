@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use DB;
 use Auth;
+use App\Repositories\RepositoryInterface;
 
 class StorageController extends Controller
 {
@@ -15,8 +16,10 @@ class StorageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct() {
-        // return $this->middleware('auth');
+    private $res;
+    // private $
+    public function __construct(RepositoryInterface $res) {
+        $this->res = $res;
     }
     
     public function index()
@@ -25,25 +28,6 @@ class StorageController extends Controller
         //
     }
 
-   
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    
     public function savePost(Request $request) {
 
         if(is_null(Auth::user())) {
@@ -83,30 +67,6 @@ class StorageController extends Controller
 
     }
 
-    // public function savePost(Request $request) {
-
-    //     if(is_null(Auth::user())) {
-    //         return response()->json([
-    //             'authenticated' => 'Bạn cần đăng nhập mới lưu được bài post này',
-    //             'class_name' => 'alert-danger',
-    //         ]);
-    //     }
-    //     else {
-    //         $post = Post::find($request->id);
-
-    //         DB::table('storages')->insert([
-    //             'post_id' => $post->id,
-    //             'user_id' => Auth::user()->id,
-    //         ]);
-
-    //         return response()->json([
-    //             'message' => 'Save post successfully',
-    //             'class_name' => 'alert-success',
-    //         ]); 
-    //     }
-
-    // }
-
      public function removePost(Request $request) {
             $post = Post::find($request->id);
 
@@ -122,21 +82,8 @@ class StorageController extends Controller
                 'class_name' => 'alert-success',
             ]); 
     }
-    //xoa => da login roi
-    // public function removePost(Request $request) {
-    //         $post = Post::find($request->id);
 
-    //         DB::table('storages')->where([
-    //             ['user_id', '=', Auth::user()->id],
-    //             ['post_id', '=', $post->id],
-    //         ])->delete();
-    //         return response()->json([
-    //             'message' => 'Delete post successfully',
-    //             'class_name' => 'alert-success',
-    //         ]); 
-    // }
-    // 
-     public function getPost() {
+    public function getPost() {
         $storagesPost = DB::table('storages')
         ->join('users', 'storages.user_id', '=', 'users.id')
         ->join('posts', 'storages.post_id', '=', 'posts.id')
@@ -149,8 +96,8 @@ class StorageController extends Controller
         ->groupBy('posts.id')
         ->selectRaw('posts.*, categories.name as category_name')->get();
         $tags = Tag::all();
-
-        return view('storages.index')->withStoragesPost($storagesPost)->withTags($tags);
+        $catsHome = $this->res->getCategoryForHome();
+        return view('storages.index')->withStoragesPost($storagesPost)->withTags($tags)->withCatsHome($catsHome);
     }
 
 

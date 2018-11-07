@@ -16,17 +16,17 @@ use Auth;
 use App\Validations\Validation;
 use Gate;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Repositories\RepositoryInterface;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function __construct() {
-        return $this->middleware('auth');
+    private $res;
+    private $tags;
+
+    public function __construct(RepositoryInterface $res) {
+        $this->middleware('auth');
+        $this->res = $res;
+        $this->tags = $this->res->getAllTag();
     }
     
    
@@ -35,9 +35,8 @@ class PostController extends Controller
      
         $data['categoriesNoChildren']  = Category::getCategoryNoChildren()->get();
         $data['trees'] = Category::where('parent_id',null)->get();
-        // $data['tags'] = Tag::all();
-        
-        return view('admin.posts.index', $data);
+
+        return view('admin.posts.index', $data)->withTags($this->tags);
     }
 
     public function readData()
@@ -86,27 +85,6 @@ class PostController extends Controller
         return Post::join('users', 'users.id', '=', 'posts.user_id')
         ->selectRaw('posts.id, posts.title, posts.slug, posts.body, posts.image, posts.published, posts.like, posts.dislike, posts.view, users.name as username')->where('posts.id',$id)->first();
     }
-
-
-    
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     
     public function store(Request $request)
     {
@@ -166,45 +144,29 @@ class PostController extends Controller
       
   }
   
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    
-
-
     public function edit($id) 
     {
-
         $post = Post::find($id);
         $tags = Tag::all();
 
         foreach($tags as $tag){
 
            $tags[$tag->id] = $tag->name;
-       }
+        }
        $tags[0] = "";
        $trees = Category::where('parent_id',null)->get();
-            //lay name category be nhat cua bai post nay trong csdl
        if($post->categories()->count() > 0 )
        {
         $cat = $post->categories()->first();
-        return view('admin.posts.edit')->withPost($post)->withTags($tags)->withCategory($cat->name)->withTrees($trees);
+        $category = $cat->name;
 
-    }
-    else{
+        return view('admin.posts.edit', compact('post', 'tags', 'category', 'trees'));
+        }
+        else{
+            $category = null;
 
-       return view('admin.posts.edit')->withPost($post)->withTags($tags)->withCategory(null)->withTrees($trees);
-   }
-   
+            return view('admin.posts.edit', compact('post', 'tags', 'category', 'trees'));
+        }
 }
 
 

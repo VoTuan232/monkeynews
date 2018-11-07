@@ -26,6 +26,8 @@
     <!-- Modernizr JS -->
     <script src="{{ asset('client/js/modernizr-3.5.0.min.js') }}"></script>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
+
     <style>
         .img-tran {
 
@@ -54,6 +56,12 @@
         .icon-view-post {
             color : #a25757;
             margin-left : 5px;
+            cursor: pointer;
+        }
+
+        .button {
+            background-color: #ffffff;
+            border: none;
             cursor: pointer;
         }
     </style>
@@ -90,7 +98,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    @foreach($catHomes as $cat)
+                    @foreach($catsHome as $cat)
                         @if($category->childrens->count() > 0 )
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle"href="{{ route('home.posts', ['id' => $cat->id, 'slug' => str_slug($cat->name)]) }}" id="dropdownMenuButton3" data-toggle="dropdown"
@@ -169,7 +177,7 @@
                     <div class="col-md-8">
                         <h2>{{ $post->title }}</h2>
                         Thẻ liên quan bài viết:<br>
-                        @foreach($tags as $tag)
+                        @foreach($tagsPost as $tag)
                             <a href="{{ route('home.tags.posts', ['id' => $tag->id]) }}" class="fh5co_tagg">{{ $tag->name }}</a>
                         @endforeach
                         <br>
@@ -182,6 +190,10 @@
                         @endcan
                         <i class="fa fa-eye fa-1x icon-view-post" title="View"></i>{{ $post->view }}
                         <i class="fa fa-comments fa-1x icon-view-post" title="Comment"></i>{{ $comments->comment_number }}
+
+                        <input id="post-shortlink" value="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}">
+                        <button class="button" id="copy-link-post" data-clipboard-target="#post-shortlink" title="Copy url"><i class="fa fa-link" ></i></button>
+
                     </div>
                     <div class="col-md-4">
                         <button type="button" class="btn btn-primary btn-sm" data-like="{{ isset($postAll) ? $postAll->like : "1"}}" data-id="{{ $post->id }}" title="Like" id="btn-like-post">
@@ -207,7 +219,6 @@
                         <br><br>                                    
                     </div>
                 </div>
-
                 {!! $post->body !!}
 
                 <hr />
@@ -374,6 +385,13 @@
 @include('pages.js.like_post_js')
 @include('pages.js.share_js')
 @include('pages.js.delete_comment')
+
+<script>
+    
+    (function(){
+    new Clipboard('#copy-link-post');
+})();
+</script>
 
 </body>
 </html>
