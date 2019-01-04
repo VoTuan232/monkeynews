@@ -18,6 +18,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        'App\Events\NewPost' => [
+            'App\Listeners\SendEmailAfterNewPost',
+        ],
         // 'App\Events\ViewPostHander' => [
         //     'App\Listeners\SendNotificationAfterViewPost', 
         // ],

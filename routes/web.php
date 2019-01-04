@@ -21,7 +21,13 @@ Route::get('/test', function() {
     return view('test.index');
 });
 Route::get('/', 'HomeController@index')->name('pages.index');
-
+Route::group(['middleware' => 'web'], function () {
+});
+    //i18n
+    Route::group(['middleware' => ['locale', 'web']], function() {
+    Route::get('change-language/{language}', 'changeLanguageController@changeLanguage')
+        ->name('user.change-language');
+    });
 Auth::routes();
 Route::get('logout','Auth\LoginController@logout');
 
@@ -52,6 +58,7 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
 	Route::get('manager/posts/read-data', 'admin\PostController@readData');
     Route::resource('admin', 'admin\AdminController');
     Route::get('manager/posts', 'admin\PostController@index')->name('posts.index');
+    Route::get('manager/posts/trending/{post}', 'admin\PostController@getTrending')->name('posts.trending');
 
     Route::post('manager/posts', 'admin\PublishController@closeRequest')->name('posts.draft.close');
     // Route::post('manager/posts/store', 'admin\PostController@store')->name('posts.store')->middleware('can:post.create');
@@ -105,12 +112,14 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
 
     Route::get('/tags/{id}', 'HomeController@getPostsBaseTag')->name('home.tags.posts');
 
+    
+
     // Route::post('/language-chooser', 'LanguageController@changeLanguage');
-    Route::post('/language/', array(
-        'before' => 'csrf',
-        'as' => 'language-chooser',
-        'uses' => 'LanguageController@changeLanguage',
-    ));
+    // Route::post('/language/', array(
+    //     'before' => 'csrf',
+    //     'as' => 'language-chooser',
+    //     'uses' => 'LanguageController@changeLanguage',
+    // ));
     // Route::group(['middleware' => 'locale'], function() {
     //     Route::get('change-language/{language}', 'HomeController@changeLanguage')
     //     ->name('user.change-language');
@@ -126,7 +135,7 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
 //     MAIL_DRIVER=smtp
 // MAIL_HOST=smtp.gmail.com
 // MAIL_PORT=587
-// MAIL_USERNAME=votuanbk051@gmail.com
+// MAIL_USERNAME=votuanbk051@gmail.calculhmac(clent, data)om
 // MAIL_PASSWORD=votuan232
 // MAIL_ENCRYPTION=tls
 

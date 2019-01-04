@@ -15,4 +15,6 @@ interface RepositoryInterface {
 
 	public function getCategoryForHome();
 
+	public function getAll();
+
 }

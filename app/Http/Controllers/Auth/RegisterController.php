@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use App\Jobs\SendWelcomeEmail;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -40,6 +44,17 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    //GUI MAI, GHI DE PHUONG THUC REGISTER
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        $this->guard()->login($user);
+        dispatch((new SendWelcomeEmail($user))->delay(Carbon::now()->addMinutes(10)));  //dispatch: day job vao trong queue
+
+        //return $this->registered($request, $user)?: redirect($this->redirectPath());
+        return view('auth.welcome');
+    }
     /**
      * Get a validator for an incoming registration request.
      *

@@ -8,10 +8,18 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use DB;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Database\Eloquent\Model;
 
 class Repository implements RepositoryInterface
 
 {
+
+    // protected $model;
+
+    // public function __construct(Model $model) {
+    //     $this->model = $model;
+    // }
+
 	public function paginate($items, $perPage = 4, $page = null, $options = [])
     {
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
@@ -41,5 +49,9 @@ class Repository implements RepositoryInterface
 
     public function getCategoryForHome() {
         return Category::where('parent_id', null)->take(5)->get();
+    }
+
+    public function getAll() {
+        // return $this->model->all();
     }
 }

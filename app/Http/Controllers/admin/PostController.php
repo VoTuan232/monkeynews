@@ -17,6 +17,10 @@ use App\Validations\Validation;
 use Gate;
 use Illuminate\Database\Eloquent\Model;
 use App\Repositories\RepositoryInterface;
+use Event;
+use App\Events\NewPost;
+use Session;
+use Carbon;
 
 class PostController extends Controller
 {
@@ -115,6 +119,8 @@ class PostController extends Controller
                 'request' => 0,
 
             ]);
+            //send mail
+            event(new NewPost($post));
 
             if(!is_null($request->category)){
                 $category = Category::where('name', '=', $request->category)->firstOrFail();
@@ -269,5 +275,16 @@ class PostController extends Controller
         return response()->json([
             'message' => 'Ajax loi',
         ]);
+    }
+
+    public function getTrending(Post $post) {
+        // Session::flash('success','Trending has been created');
+        //cap nhat post
+        
+        $post->update([
+            'trending' => Carbon\Carbon::now(),
+            'title' => 'A accusamus voluptas voluptatum amet aliquam et molestias.2', 
+        ]);
+        return redirect()->back();
     }
 }

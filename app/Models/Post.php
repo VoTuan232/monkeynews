@@ -15,6 +15,7 @@ class Post extends Model
         'published',
         'request',
         'view',
+        'trending',
     ];
 
     public function user()

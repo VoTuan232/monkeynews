@@ -35,11 +35,11 @@
     <div class="container">
         <div class="row">
             <div class="col-12 fh5co_mediya_center"><a href="#" class="color_fff fh5co_mediya_setting"><i
-                    class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;Friday, 5 January 2018</a>
+                    class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;{{ date('d-m-Y', strtotime($trending->trending)) }}</a>
                 <div class="d-inline-block fh5co_trading_posotion_relative"><a href="#" class="treding_btn">Trending</a>
                     <div class="fh5co_treding_position_absolute"></div>
                 </div>
-                <a href="#" class="color_fff fh5co_mediya_setting">Instagram’s big redesign goes live with black-and-white app</a>
+                <a href="#" class="color_fff fh5co_mediya_setting">{{ $trending->title }}</a>
             </div>
         </div>
     </div>
@@ -69,6 +69,14 @@
         </nav>
     </div>
 </div> --}}
+@csrf
+
+{{-- <select name="language" onchange="location = this.value;">
+    <option>---</potion>
+     <option value="{!! route('user.change-language', ['en']) !!}">English</option>
+     <option value="{!! route('user.change-language', ['vn']) !!}">VietNam</option>
+</select> --}}
+
 <div class="container-fluid bg-faded fh5co_padd_mediya padding_786">
     <div class="container padding_786">
         <nav class="navbar navbar-toggleable-md navbar-light ">

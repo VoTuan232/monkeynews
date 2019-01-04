@@ -36,7 +36,7 @@
 <div class="container-fluid pt-3">
     <div class="container animate-box" data-animate-effect="fadeIn">
         <div>
-            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tin mới</div>
+            <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4"><a class="cate-parent">Tin mới</a></div>
 
         </div>
         <div class="owl-carousel owl-theme js" id="slider1">
@@ -64,7 +64,7 @@
         <div class="row mx-0">
             <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
                 <div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tin mới</div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4"><a class="cate-parent">Tin mới</a></div>
                 </div>
             @foreach($newList as $post)
                 <div class="row pb-4">
@@ -86,14 +86,14 @@
             </div>
             <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
                 <div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tags</div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4"><a class="cate-parent">Tags</a></div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="fh5co_tags_all">
                     @include('pages.tag')
                 </div>
                 <div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Tin nóng</div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4"><a class="cate-parent">Tin nóng</a></div>
                 </div>
                 @foreach($newsHot as $post)
                 <div class="row pb-3">

@@ -74,11 +74,11 @@
     <div class="container">
         <div class="row">
             <div class="col-12 fh5co_mediya_center"><a href="#" class="color_fff fh5co_mediya_setting"><i
-                    class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;Friday, 5 January 2018</a>
+                    class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;{{ date('d-m-Y', strtotime($trending->trending)) }}</a>
                 <div class="d-inline-block fh5co_trading_posotion_relative"><a href="#" class="treding_btn">Trending</a>
                     <div class="fh5co_treding_position_absolute"></div>
                 </div>
-                <a href="#" class="color_fff fh5co_mediya_setting">Instagram’s big redesign goes live with black-and-white app</a>
+                <a href="#" class="color_fff fh5co_mediya_setting">{{ $trending->title }}</a>
             </div>
         </div>
     </div>
@@ -118,10 +118,10 @@
                    
                     @if(!Auth::user())
                     <li class="nav-item ">
-                        <a class="nav-link" href="{{ route('login') }}"><!-- <i class="fa fa-user"></i> -->Login <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('login') }}">{{ trans('language.login') }}<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item pull-right">
-                        <a class="nav-link" href="{{ route('register') }}">Register<!-- <i class="fa fa-user-plus"></i> -->  <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('register') }}">{{ trans('language.register') }}<!-- <i class="fa fa-user-plus"></i> -->  <span class="sr-only">(current)</span></a>
                     </li>
                     @else
                         <li class="nav-item dropdown">
@@ -175,6 +175,15 @@
                 </div>
                 <div class="row">
                     <div class="col-md-8">
+                        {{-- thong bao: trending da dc tao --}}
+                        @if ($post->trending == null) 
+                            @can('post.trending')
+                                <a href="{{ route('posts.trending', $post->id) }}" ><i class="fa fa-edit"></i>Trending</a>
+                            @endcan
+                        
+                        @else 
+                            <p  class="fh5co_tagg" style="margin-top: -14px;">Trending đã được tạo</p>
+                        @endif
                         <h2>{{ $post->title }}</h2>
                         Thẻ liên quan bài viết:<br>
                         @foreach($tagsPost as $tag)
@@ -240,14 +249,14 @@
             </div>
             <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
                 <div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tags</div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4"><a class="cate-parent">Tags</a></div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="fh5co_tags_all">
                     @include('pages.tag')
                 </div>
                 <div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4">Bài viết cùng chủ đề</div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom pt-3 py-2 mb-4"><a class="cate-parent">Bài viết cùng chủ đề</a></div>
                 </div>
                 @foreach($postsRelated as $post)
                 <div class="row pb-3">

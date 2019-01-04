@@ -15,6 +15,7 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         \App\Http\Middleware\CheckForMaintenanceMode::class,
+        \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
@@ -64,7 +65,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin'  => \App\Http\Middleware\AdminMiddleware::class,
         'checkviewpost' => \App\Http\Middleware\CheckViewPost::class,
-        // 'locale' => \App\Http\Middleware\Locale::class,
+        'locale' => \App\Http\Middleware\Locale::class,
     ];
 
     /**

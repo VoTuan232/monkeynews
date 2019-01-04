@@ -1,4 +1,4 @@
-u@extends('admin.index')
+@extends('admin.index')
 
 @section('title', '| Posts')
 
