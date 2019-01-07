@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        \Debugbar::disable();
         View::composer(
             '*', 'App\Http\ViewComposers\HomeComposer'
         );

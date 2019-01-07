@@ -28,6 +28,11 @@
                 </a>
                 <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
+                            <select name="language" onchange="location = this.value;">
+                                <option value="{!! route('user.change-language', ['en']) !!}" <?php if($language == 'en') echo 'selected'; ?> >English</option>
+                                <option value="{!! route('user.change-language', ['vn']) !!}" <?php if($language == 'vn') echo 'selected'; ?> >VietNam</option>
+                            </select>
+
                     <!-- Sidebar toggle button-->
                     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     </a>

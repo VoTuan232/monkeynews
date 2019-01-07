@@ -56,5 +56,6 @@ return [
     'password-confirmed' => 'Password again...',
     'question-exist-account' => 'Do you have a account?',
     'user-password' => 'User/Password',
+    'Create new post' => 'Create new post',
 
 ];

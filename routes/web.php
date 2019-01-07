@@ -129,6 +129,7 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
     Route::get('/{id}/{slug}', 'HomeController@getPosts')->name('home.posts');
+    Route::get('/trending', 'HomeController@getPostTrending')->name('home.trending');
     Route::get('/{slug}', 'HomeController@getSingle')->name('home.single');
     // Route::get('/{category}/{slug}', 'HomeController@getSingle')->name('home.single');
     // 

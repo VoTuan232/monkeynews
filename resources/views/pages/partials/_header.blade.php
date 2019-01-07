@@ -4,11 +4,13 @@
             <img src="{{ asset('client/images/logo.png') }}" alt="img" class="fh5co_logo_width"/>
         </div>
         <div class="col-12 col-md-9 align-self-center fh5co_mediya_right">
-
+            <div class="styled-select slate">
                  <select name="language" onchange="location = this.value;">
                      <option value="{!! route('user.change-language', ['en']) !!}" <?php if($language == 'en') echo 'selected'; ?> >English</option>
                      <option value="{!! route('user.change-language', ['vn']) !!}" <?php if($language == 'vn') echo 'selected'; ?> >VietNam</option>
                 </select>
+            </div>
+
             {!! Form::open(array('route' => 'home.getSearch', 'method' => 'GET')) !!}
             @csrf
                 <div class="text-center d-inline-block">
@@ -20,7 +22,7 @@
                 <div class="text-center d-inline-block">
                     <a class="fh5co_display_table" id="btn-search" href="">
                         <div class="fh5co_verticle_middle">
-                            {{-- <i class="fa fa-search"></i> --}}{{ Form::button('<i class="fa fa-search"></i>' ,array('class'=>'btn btn-success pull-left', 'type' => 'submit'))}}
+                            {{-- <i class="fa fa-search"></i> --}}{{ Form::button('<i class="fa fa-search"></i>' ,array('class'=>'btn btn-success pull-left search', 'type' => 'submit'))}}
                         </div>
                     </a>
                 </div>
@@ -28,16 +30,16 @@
             {!! Form::close() !!}
 
             <div class="text-center d-inline-block">
-                <a class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-linkedin"></i></div></a>
+                <a class="fh5co_display_table" href="https://instagram.com"><div class="fh5co_verticle_middle"><i class="fa fa-linkedin"></i></div></a>
             </div>
             <div class="text-center d-inline-block">
-                <a class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-google-plus"></i></div></a>
+                <a class="fh5co_display_table" href="https://google.com"><div class="fh5co_verticle_middle"><i class="fa fa-google-plus"></i></div></a>
             </div>
             <div class="text-center d-inline-block">
-                <a href="https://twitter.com/fh5co" target="_blank" class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-twitter"></i></div></a>
+                <a href="https://twitter.com" target="_blank" class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-twitter"></i></div></a>
             </div>
              <div class="text-center d-inline-block">
-                <a href="https://fb.com/fh5co" target="_blank" class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i></div></a>
+                <a href="https://fb.com" target="_blank" class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i></div></a>
             </div>
            
 

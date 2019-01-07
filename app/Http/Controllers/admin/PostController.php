@@ -46,7 +46,7 @@ class PostController extends Controller
     public function readData()
     {
         $posts = Post::join('users', 'users.id', '=', 'posts.user_id')
-        ->selectRaw('posts.id, posts.title, posts.slug, posts.body, posts.image, posts.published, posts.like,posts.dislike, posts.view, users.name as username, posts.user_id')->orderBy('posts.id', 'asc')->get(); 
+        ->selectRaw('posts.id, posts.title, posts.slug, posts.body, posts.image, posts.published, posts.like,posts.dislike, posts.view, users.name as username, posts.user_id')->orderBy('posts.id', 'desc')->get(); 
 
         return view('admin.posts.post_info')->withPosts($posts);
     }
@@ -120,7 +120,7 @@ class PostController extends Controller
 
             ]);
             //send mail
-            event(new NewPost($post));
+            //event(new NewPost($post));
 
             if(!is_null($request->category)){
                 $category = Category::where('name', '=', $request->category)->firstOrFail();
@@ -283,8 +283,9 @@ class PostController extends Controller
         
         $post->update([
             'trending' => Carbon\Carbon::now(),
-            'title' => 'A accusamus voluptas voluptatum amet aliquam et molestias.2', 
         ]);
         return redirect()->back();
     }
+
+    
 }

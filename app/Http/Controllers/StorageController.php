@@ -24,7 +24,10 @@ class StorageController extends Controller
     
     public function index()
     {
-        return view('storages.index');
+         // lay trending
+        $trending = Post::orderBy('trending', 'desc')->firstOrFail();
+        dd($trending);
+        return view('storages.index', compact('trending'));
         //
     }
 

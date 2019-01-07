@@ -52,7 +52,16 @@ class HomeController extends Controller
         $catsHome = $this->catsHome;
         $tags = $this->tags;
 
-        return view('pages.search', compact('posts', 'textSearch', 'catsHome', 'tags'));
+        // if(session()->has('lang')) {
+        //     $language = session('lang');
+        // }
+        // else {
+        //     $language = App::getLocale();
+        // }
+         // lay trending
+        $trending = Post::orderBy('trending', 'desc')->firstOrFail();
+
+        return view('pages.search', compact('posts', 'textSearch', 'catsHome', 'tags', 'trending'));
     }
 
     public function index()
@@ -79,17 +88,10 @@ class HomeController extends Controller
         $tags = DB::table('tags')->selectRaw('id, name')->get(); 
         $catsHome = $this->catsHome;
 
-        if(session()->has('lang')) {
-            $language = session('lang');
-        }
-        else {
-            $language = App::getLocale();
-        }
-
         // lay trending
         $trending = Post::orderBy('trending', 'desc')->firstOrFail();
 
-        return view('pages.home', compact('categories', 'data', 'data1', 'new', 'newList', 'newsHot', 'tags', 'catsHome', 'language', 'trending'));
+        return view('pages.home', compact('categories', 'data', 'data1', 'new', 'newList', 'newsHot', 'tags', 'catsHome', 'trending'));
     }
 
     // public function paginate($items, $perPage = 4, $page = null, $options = [])
@@ -112,7 +114,7 @@ class HomeController extends Controller
             
             $data = [];
             $data1 = [];
-            $categories = Category::where('parent_id', '=', null)->take(4)->get();
+            $categories = Category::where('parent_id', '=', null)->paginate(4);
             foreach ($categories as $key => $value) {
                 $this->save = new Collection();
                 $postsBaseCategory = $this->getAllPostsBaseCategory($value->id)->sortByDesc('created_at');
@@ -127,17 +129,10 @@ class HomeController extends Controller
             $tags = DB::table('tags')->selectRaw('id, name')->get();
             $catsHome = $this->catsHome;  
 
-            if(session()->has('lang')) {
-            $language = session('lang');
-            }
-            else {
-                $language = App::getLocale();
-            }
-
             // lay trending
             $trending = Post::orderBy('trending', 'desc')->firstOrFail();
 
-            return view('pages.posts_base_category', compact('posts', 'category', 'postsMostPopular', 'numberPage', 'data', 'data1', 'categories', 'tags', 'catsHome', 'language', 'trending'));
+            return view('pages.posts_base_category', compact('posts', 'category', 'postsMostPopular', 'numberPage', 'data', 'data1', 'categories', 'tags', 'catsHome', 'trending'));
             // return view('pages.posts_base_category')->withPosts($posts)->withCategory($category)->withPostsMostPopular($postsMostPopular)->withNumberPage($numberPage)->withData($data)->withData1($data1)->withCategories($categories)->withTags($tags)->withCatsHome($this->catsHome);
         }
 
@@ -238,17 +233,11 @@ class HomeController extends Controller
                 $tags = DB::table('tags')->selectRaw('id, name')->get();  
                 $catsHome = $this->catsHome;
 
-                if(session()->has('lang')) {
-                    $language = session('lang');
-                    }
-                else {
-                        $language = App::getLocale();
-                }
 
                 // lay trending
             $trending = Post::orderBy('trending', 'desc')->firstOrFail();
 
-                return view('pages.single', compact('post', 'category', 'postsRelated', 'postAll', 'data', 'data1', 'categories', 'tags', 'comments', 'catsHome', 'tagsPost', 'language', 'trending'));
+                return view('pages.single', compact('post', 'category', 'postsRelated', 'postAll', 'data', 'data1', 'categories', 'tags', 'comments', 'catsHome', 'tagsPost', 'trending'));
 
                 // return view('pages.single')->withPost($post)->withCategory($category1)->withPostsRelated($postsRelated)->withPost($post)->withPostAll($postAll)->withData($data)->withData1($data1)->withCategories($categories)->withTags($tags)->withComments($comments)->withTags($tags)->withCatsHome($this->catsHome);
         }
@@ -284,9 +273,25 @@ class HomeController extends Controller
           
             $data1[$value->id] = $posts->first();
         }  
-        // dd($posts);
-        return view('pages.posts_base_tag')->withPosts($posts)->withTag($tag)->withNumberPage($numberPage)->withTags($tags)->withCatsHome($this->catsHome)->withData($data)->withData1($data1)->withCategories($categories);
+
+          // lay trending
+        $trending = Post::orderBy('trending', 'desc')->firstOrFail();
+
+        return view('pages.posts_base_tag')->withPosts($posts)->withTag($tag)->withNumberPage($numberPage)->withTags($tags)->withCatsHome($this->catsHome)->withData($data)->withData1($data1)->withCategories($categories)->withTrending($trending);
     }
+
+    public function getPostTrending() {
+        $catsHome = $this->catsHome;
+        $tags = DB::table('tags')->selectRaw('id, name')->get();
+        // lay trending
+        $trending = Post::orderBy('trending', 'desc')->firstOrFail();
+
+        $trending_list = Post::WhereNotNull('trending')->orderBy('trending', 'desc')->with('tags', 'comments')->paginate(5);
+        // dd($trending_list);
+
+       return view('pages.trending', compact('catsHome', 'trending', 'tags', 'trending_list'));
+    }
+
     // public function getSingle(Request $request, $category, $slug) {
     //     if(Auth::user()) {
     //         $postAll = DB::table('posts')

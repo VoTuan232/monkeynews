@@ -5,6 +5,9 @@ namespace App\Http\ViewComposers;
 use Illuminate\View\View;
 use App\Models\Category;
 use App\Models\Tag;
+use App\Models\Post;
+use Session;
+use App;
 
 class HomeComposer
 {
@@ -37,6 +40,13 @@ class HomeComposer
      */
     public function compose(View $view)
     {
+        if(session()->has('lang')) {
+            $language = session('lang');
+        }
+        else {
+            $language = App::getLocale();
+        }
+        $view->withLanguage($language);
         // $cats = Category::where('parent_id', null)->take(5)->get();
         // $tags = Tag::all();
 

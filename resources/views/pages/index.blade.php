@@ -26,8 +26,9 @@
     <script src="{{ asset('client/js/modernizr-3.5.0.min.js') }}"></script>
 
     <link href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/header.css') }}" rel="stylesheet">
 
-
+    @yield('stylesheet')
 
 </head>
 <body>
@@ -36,10 +37,10 @@
         <div class="row">
             <div class="col-12 fh5co_mediya_center"><a href="#" class="color_fff fh5co_mediya_setting"><i
                     class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;{{ date('d-m-Y', strtotime($trending->trending)) }}</a>
-                <div class="d-inline-block fh5co_trading_posotion_relative"><a href="#" class="treding_btn">Trending</a>
+                <div class="d-inline-block fh5co_trading_posotion_relative"><a href="{{ route('home.trending') }}" class="treding_btn">Trending</a>
                     <div class="fh5co_treding_position_absolute"></div>
                 </div>
-                <a href="#" class="color_fff fh5co_mediya_setting">{{ $trending->title }}</a>
+                <a href="{{ route('home.single', ['slug' => str_slug($trending->slug)]) }}" class="color_fff fh5co_mediya_setting">{{ $trending->title }}</a>
             </div>
         </div>
     </div>
@@ -87,7 +88,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/">{{ __('language.home') }} <span class="sr-only">(current)</span></a>
                     </li>
                     @foreach($catsHome as $category)
                         @if($category->childrens->count() > 0 )
@@ -154,16 +155,16 @@
                     unknown printer took a galley of type and scrambled it to make a type specimen book.
                 </div>
                 <div class="footer_mediya_icon">
-                    <div class="text-center d-inline-block"><a class="fh5co_display_table_footer">
+                    <div class="text-center d-inline-block"><a class="fh5co_display_table_footer" href="https://instagram.com">
                         <div class="fh5co_verticle_middle"><i class="fa fa-linkedin"></i></div>
                     </a></div>
-                    <div class="text-center d-inline-block"><a class="fh5co_display_table_footer">
+                    <div class="text-center d-inline-block"><a class="fh5co_display_table_footer" href="https://google.com">
                         <div class="fh5co_verticle_middle"><i class="fa fa-google-plus"></i></div>
                     </a></div>
-                    <div class="text-center d-inline-block"><a class="fh5co_display_table_footer">
+                    <div class="text-center d-inline-block"><a class="fh5co_display_table_footer" href="https://twitter.com">
                         <div class="fh5co_verticle_middle"><i class="fa fa-twitter"></i></div>
                     </a></div>
-                    <div class="text-center d-inline-block"><a class="fh5co_display_table_footer">
+                    <div class="text-center d-inline-block"><a class="fh5co_display_table_footer" href="https://facebook.com">
                         <div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i></div>
                     </a></div>
                 </div>

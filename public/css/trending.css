@@ -1,0 +1,14 @@
+.img-tran {
+
+    max-width: 100%;
+    border-radius: 50%;
+    width: 50px;
+    float:right;
+    }
+    .comment_option {
+    margin-left: 60px;
+}
+
+.paginate_trending {
+	padding-left: 40%;
+}

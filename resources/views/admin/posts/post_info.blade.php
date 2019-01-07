@@ -11,7 +11,7 @@
     <td>{{ $post->vote }}</td>
     <td>{{ $post->view }}</td>
     <td>
-        <a href="#" class="btn btn-info btn-xs" id="view" data-id="{{$post->id}}">View</a>
+        <a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" class="btn btn-info btn-xs" id="view" data-id="{{$post->id}}">View</a>
         @can('post.update', $post)
         <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-success btn-xs" id="edit" data-id="{{$post->id}}">Edit</a>
         @endcan

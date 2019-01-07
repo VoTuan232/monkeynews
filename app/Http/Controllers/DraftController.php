@@ -45,7 +45,10 @@ class DraftController extends Controller
         $catsHome = $this->res->getCategoryForHome();
         $tags = $this->tags;
 
-        return view('drafts.index', compact('posts', 'categories', 'trees', 'tags', 'catsHome'));
+        // lay trending
+        $trending = Post::orderBy('trending', 'desc')->firstOrFail();
+
+        return view('drafts.index', compact('posts', 'categories', 'trees', 'tags', 'catsHome', 'trending'));
     }
 
     public function getPosts()

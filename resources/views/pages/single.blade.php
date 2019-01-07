@@ -27,7 +27,8 @@
     <script src="{{ asset('client/js/modernizr-3.5.0.min.js') }}"></script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
-
+    <link href="{{ asset('css/header.css') }}" rel="stylesheet">
+    
     <style>
         .img-tran {
 
@@ -75,10 +76,10 @@
         <div class="row">
             <div class="col-12 fh5co_mediya_center"><a href="#" class="color_fff fh5co_mediya_setting"><i
                     class="fa fa-clock-o"></i>&nbsp;&nbsp;&nbsp;{{ date('d-m-Y', strtotime($trending->trending)) }}</a>
-                <div class="d-inline-block fh5co_trading_posotion_relative"><a href="#" class="treding_btn">Trending</a>
+                <div class="d-inline-block fh5co_trading_posotion_relative"><a href="{{ route('home.trending') }}" class="treding_btn">Trending</a>
                     <div class="fh5co_treding_position_absolute"></div>
                 </div>
-                <a href="#" class="color_fff fh5co_mediya_setting">{{ $trending->title }}</a>
+                <a href="{{ route('home.single', ['slug' => str_slug($trending->slug)]) }}" class="color_fff fh5co_mediya_setting">{{ $trending->title }}</a>
             </div>
         </div>
     </div>
@@ -175,15 +176,18 @@
                 </div>
                 <div class="row">
                     <div class="col-md-8">
-                        {{-- thong bao: trending da dc tao --}}
-                        @if ($post->trending == null) 
-                            @can('post.trending')
-                                <a href="{{ route('posts.trending', $post->id) }}" ><i class="fa fa-edit"></i>Trending</a>
-                            @endcan
-                        
-                        @else 
-                            <p  class="fh5co_tagg" style="margin-top: -14px;">Trending đã được tạo</p>
+                        @if($post->trending != null)
+                        <a href="{{ route('home.trending') }}" class="btn btn-primary btn-sm">Trending</a>
                         @endif
+                        {{-- thong bao: trending da dc tao --}}
+                        @can('post.trending')
+                            @if ($post->trending == null) 
+                                    <a href="{{ route('posts.trending', $post->id) }}" ><i class="fa fa-edit"></i>Create Trending</a>
+                            
+                            @else 
+                                <p  class="fh5co_tagg" style="margin-top: -14px;">Trending đã được tạo</p>
+                            @endif
+                        @endcan
                         <h2>{{ $post->title }}</h2>
                         Thẻ liên quan bài viết:<br>
                         @foreach($tagsPost as $tag)

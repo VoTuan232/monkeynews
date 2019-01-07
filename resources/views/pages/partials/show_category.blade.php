@@ -37,3 +37,7 @@
         <?php $i +=1; ?>
 </div>
 @endforeach
+
+<div style="padding-left:40%;">
+    {{ $categories->links() }}
+</div>
