@@ -16,21 +16,22 @@ use Auth;
 use App\Validations\Validation;
 use Gate;
 use Illuminate\Database\Eloquent\Model;
-use App\Repositories\RepositoryInterface;
 use Event;
 use App\Events\NewPost;
 use Session;
 use Carbon;
+use App\Repositories\TagRepository;
 
 class PostController extends Controller
 {
     private $res;
     private $tags;
 
-    public function __construct(RepositoryInterface $res) {
+    private $tagRepository;
+
+    public function __construct(TagRepository $tagRepository) {
         $this->middleware('auth');
-        $this->res = $res;
-        $this->tags = $this->res->getAllTag();
+        $this->tagRepository = $tagRepository;
     }
     
    
@@ -238,7 +239,6 @@ class PostController extends Controller
         
     }
 
-    
     /**
      * Remove the specified resource from storage.
      *
@@ -261,7 +261,6 @@ class PostController extends Controller
                 ]);
 
             }
-
             else{
 
                 return response()->json([
@@ -278,9 +277,6 @@ class PostController extends Controller
     }
 
     public function getTrending(Post $post) {
-        // Session::flash('success','Trending has been created');
-        //cap nhat post
-        
         $post->update([
             'trending' => Carbon\Carbon::now(),
         ]);

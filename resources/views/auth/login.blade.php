@@ -28,9 +28,9 @@
                {{ csrf_field() }}
                <span class="login100-form-title">
                Member Login
-
+               @include('partials._message')
+               
                 </span>
-                  {{-- @include('partials._message') --}}
                   @if($errors->has('email'))
                   <div class="alert alert-success">
                   {{ $errors->first('email') }}

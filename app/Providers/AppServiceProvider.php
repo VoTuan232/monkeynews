@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(TodoInterface::class, EloquentTodo::class);
+        // $this->app->singleton(TodoInterface::class, EloquentTodo::class);
         $this->app->singleton(RepositoryInterface::class, Repository::class);
         // $this->app->singleton(Repository::class);
         // if (!Collection::hasMacro('paginate')) {

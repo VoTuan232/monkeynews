@@ -10,24 +10,16 @@
                      <option value="{!! route('user.change-language', ['vn']) !!}" <?php if($language == 'vn') echo 'selected'; ?> >VietNam</option>
                 </select>
             </div>
+            
+            <div class="search" style="padding-right:5px;">
+                {!! Form::open(array('route' => 'home.getSearch', 'method' => 'GET', 'class' => 'searchform')) !!}
+                @csrf
+                            <input type="" name="text" id="textSearch" placeholder="{{ __('language.search_news') }}" >
+                                {{ Form::button('<i class="fa fa-search"></i>' ,array('class'=>'btn btn-success pull-left search', 'type' => 'submit')) }}
+                {!! Form::close() !!}
+            </div>
+            <div class="clearfix"></div>
 
-            {!! Form::open(array('route' => 'home.getSearch', 'method' => 'GET')) !!}
-            @csrf
-                <div class="text-center d-inline-block">
-                    <div class="fh5co_verticle_middle">
-                        <input type="" name="text" id="textSearch" placeholder="Search..." >
-                    </div>
-                </div>
-                <?php $textSearch =  'a' ?>
-                <div class="text-center d-inline-block">
-                    <a class="fh5co_display_table" id="btn-search" href="">
-                        <div class="fh5co_verticle_middle">
-                            {{-- <i class="fa fa-search"></i> --}}{{ Form::button('<i class="fa fa-search"></i>' ,array('class'=>'btn btn-success pull-left search', 'type' => 'submit'))}}
-                        </div>
-                    </a>
-                </div>
-
-            {!! Form::close() !!}
 
             <div class="text-center d-inline-block">
                 <a class="fh5co_display_table" href="https://instagram.com"><div class="fh5co_verticle_middle"><i class="fa fa-linkedin"></i></div></a>

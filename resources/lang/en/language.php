@@ -57,5 +57,6 @@ return [
     'question-exist-account' => 'Do you have a account?',
     'user-password' => 'User/Password',
     'Create new post' => 'Create new post',
+    'search_news' => 'Enter search keywords...',
 
 ];

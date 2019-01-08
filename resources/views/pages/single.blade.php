@@ -203,7 +203,7 @@
                         @endcan
                         <i class="fa fa-eye fa-1x icon-view-post" title="View"></i>{{ $post->view }}
                         <i class="fa fa-comments fa-1x icon-view-post" title="Comment"></i>{{ $comments->comment_number }}
-
+                        {{-- <br> --}}
                         <input id="post-shortlink" value="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}">
                         <button class="button" id="copy-link-post" data-clipboard-target="#post-shortlink" title="Copy url"><i class="fa fa-link" ></i></button>
 
@@ -393,9 +393,9 @@
         });
 </script>
 @include('pages.js.custom_comment_js')
-{{-- @include('pages.js.create_comment_js') --}}
-@include('pages.js.save_post_js')
-@include('pages.js.like_post_js')
+@routes
+    <script src="{{ mix('js/like_post.js') }}"></script>
+    <script src="{{ mix('js/save_post.js') }}"></script>
 @include('pages.js.share_js')
 @include('pages.js.delete_comment')
 

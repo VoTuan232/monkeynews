@@ -36,7 +36,6 @@ class CommentController extends Controller
         }
         else {
             Session::flash('message', 'Bạn cần đăng nhập trước khi bình luận');
-            
             return redirect()->route('login');
         }
 

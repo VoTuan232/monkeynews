@@ -13,3 +13,6 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
+
+mix.js('resources/js/like_post.js', 'public/js/like_post.js');
+mix.js('resources/js/save_post.js', 'public/js/save_post.js');

@@ -1,20 +1,40 @@
 <?php
+
 namespace App\Repositories;
- 
-use App\Models\Post;
 
-interface RepositoryInterface {
-	
-	public function paginate($items, $perPage = 4, $page = null, $options = []);
+interface RepositoryInterface
+{
+    public function where($conditions, $operator = null, $value = null);
 
-	public function paginateComments($items, $perPage = 4, $page = null, $options = []);
+    public function orWhere($conditions, $operator = null, $value = null);
 
-	public function getCommentBasePost(Post $post);
+    public function count();
 
-	public function getAllTag();
+    public function get($columns = ['*']);
 
-	public function getCategoryForHome();
+    public function lists($column, $key = null);
 
-	public function getAll();
+    public function paginateDefault($perPage = 20, $columns = ['*']);
 
+    public function find($id, $columns = ['*']);
+
+    public function findOrFail($id, $columns = ['*']);
+
+    public function create(array $data);
+
+    public function update(array $data);
+
+    public function delete($id);
+
+    public function orderBy($key, $value);
+
+    public function first();
+
+    public function pluck($value, $key = null);
+
+    public function toArray();
+
+    public function all();
+
+    public function with($relationships = ['']);
 }

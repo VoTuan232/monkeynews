@@ -7,7 +7,8 @@ use App\Models\Post;
 use App\Models\Tag;
 use DB;
 use Auth;
-use App\Repositories\RepositoryInterface;
+use App\Repositories\CategoryRepository;
+use App\Repositories\TagRepository;
 
 class StorageController extends Controller
 {
@@ -16,19 +17,23 @@ class StorageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    private $res;
-    // private $
-    public function __construct(RepositoryInterface $res) {
-        $this->res = $res;
+    private $categoryRepository;
+    private $tagRepository;
+
+    public function __construct(
+        CategoryRepository $categoryRepository, 
+        TagRepository $tagRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+        $this->tagRepository = $tagRepository;
     }
     
     public function index()
     {
          // lay trending
         $trending = Post::orderBy('trending', 'desc')->firstOrFail();
-        dd($trending);
+
         return view('storages.index', compact('trending'));
-        //
     }
 
     public function savePost(Request $request) {
@@ -98,9 +103,14 @@ class StorageController extends Controller
         ->whereNotNull('categories.parent_id')
         ->groupBy('posts.id')
         ->selectRaw('posts.*, categories.name as category_name')->get();
-        $tags = Tag::all();
-        $catsHome = $this->res->getCategoryForHome();
-        return view('storages.index')->withStoragesPost($storagesPost)->withTags($tags)->withCatsHome($catsHome);
+
+        $catsHome = $this->categoryRepository->getCategoryForHome();
+        $tags = $this->tagRepository->getAllTag();
+
+        // lay trending
+        $trending = Post::orderBy('trending', 'desc')->firstOrFail();
+
+        return view('storages.index', compact('storagesPost', 'tags', 'catsHome', 'trending'));
     }
 
 

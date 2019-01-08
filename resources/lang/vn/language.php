@@ -56,5 +56,6 @@ return [
     'question-exist-account' => 'Bạn đã có tài khoản ?',
     'user-password' => 'Tài khoản/Mật khẩu',
     'Create new post' => 'Tạo mới',
+    'search_news' => 'Nhập từ khóa tìm kiếm...',
 
 ];

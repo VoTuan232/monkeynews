@@ -18,7 +18,8 @@ use Gate;
 use Illuminate\Database\Eloquent\Model;
 use Carbon;
 use DB;
-use App\Repositories\RepositoryInterface;
+use App\Repositories\CategoryRepository;
+use App\Repositories\TagRepository;
 
 class DraftController extends Controller
 {
@@ -27,13 +28,16 @@ class DraftController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    private $res;
-    private $tags;
+    private $categoryRepository;
+    private $tagRepository;
 
-    public function __construct(RepositoryInterface $res) {
+    public function __construct(
+        CategoryRepository $categoryRepository, 
+        TagRepository $tagRepository) 
+    {
         $this->middleware(['auth']);
-        $this->res = $res;
-        $this->tags = $this->res->getAllTag();
+        $this->tagRepository = $tagRepository;
+        $this->categoryRepository = $categoryRepository;
     }
     
     public function index()
@@ -42,8 +46,8 @@ class DraftController extends Controller
         $trees = Category::where('parent_id',null)->get();
         $posts = $this->getPosts();
 
-        $catsHome = $this->res->getCategoryForHome();
-        $tags = $this->tags;
+        $catsHome = $this->categoryRepository->getCategoryForHome();
+        $tags = $this->tagRepository->getAllTag();
 
         // lay trending
         $trending = Post::orderBy('trending', 'desc')->firstOrFail();
