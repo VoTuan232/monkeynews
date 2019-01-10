@@ -16,3 +16,7 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.js('resources/js/like_post.js', 'public/js/like_post.js');
 mix.js('resources/js/save_post.js', 'public/js/save_post.js');
+mix.js('resources/js/delete_comment.js', 'public/js/delete_comment.js');
+mix.js('resources/js/custom_comment.js', 'public/js/custom_comment.js');
+mix.js('resources/js/show_image.js', 'public/js/show_image.js');
+mix.js('resources/js/edit_profile.js', 'public/js/edit_profile.js');

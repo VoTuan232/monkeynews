@@ -16,7 +16,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-                <h2>Quản lí đăng bài</h2>
+                <h2>{{ __('language.manager_published') }}</h2>
                 <div class="alert" id="message_delete" style="display: none"></div>
             </div>
             <!-- /.box-header -->

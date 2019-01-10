@@ -17,14 +17,14 @@
 		<div class="col-xs-12">
 			<div class="box">
 				<div class="box-header">
-					<h3 class="box-title">Quản lí quyền</h3>
+					<h3 class="box-title">{{ __('language.manager_role') }}</h3>
 					<div class="alert" id="message" style="display: none"></div>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
 					<div class="col-md-12">
 
-								{{ Form::label('role', 'Lựa chọn Role:') }}
+								{{ Form::label('role', __('language.choose_role')) }}
 						<div class="row">
 							<div class="col-md-3">
 								<div class="form-group">
@@ -38,12 +38,12 @@
 							</div>
 							@can('role.update')
 							<div class="col-md-4">
-                            	{{ Form::text('permission',null,array('class'=>'form-control', 'placeholder' => 'Nhấn enter để thêm permission...', 'id' => 'permission')) }}
+                            	{{ Form::text('permission',null,array('class'=>'form-control', 'placeholder' => __('language.enter_to_add_permission'), 'id' => 'permission')) }}
 							</div>
 							<div class="col-md-3">
             	{!! Form::open(array('route' => 'roles.update', 'id' => 'update-role')) !!}
             	{{-- @csrf --}}
-								{{ Form::submit('Update Role',array('class'=>'btn btn-success pull-right'))}}
+								{{ Form::submit(__('language.update_role'),array('class'=>'btn btn-success pull-right'))}}
              					 <div class="alert" id="message" style="display: none"></div>
 							</div>
 							@endcan

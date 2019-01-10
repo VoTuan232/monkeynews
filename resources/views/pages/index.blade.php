@@ -26,12 +26,25 @@
     <script src="{{ asset('client/js/modernizr-3.5.0.min.js') }}"></script>
 
     <link href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}" rel="stylesheet">
+    
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
+    
+    {{-- toastr  --}}
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    
+    {{-- <script>
+          var user = {!! json_encode((array)auth()->user()) !!};
+    </script> --}}
     @yield('stylesheet')
 
 </head>
 <body>
+
+    @include('users.profile')
+
 <div class="container-fluid fh5co_header_bg">
     <div class="container">
         <div class="row">
@@ -121,16 +134,16 @@
                            aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}<span class="sr-only">(current)</span></a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink_1">
                             @if (auth()->user()->isAdmin())
-                            <a class="dropdown-item" href="/admin"><i class="fa fa-home"></i>Manager</a>
+                            <a class="dropdown-item" href="/admin"><i class="fa fa-home"></i>{{ __('language.manager') }}</a>
                             @else
                             @endif
-                            <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Profife</a>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profile"><i class="fa fa-user"></i>{{ __('language.profile') }}</a>
                             <a class="dropdown-item" href="{{ route('storages.posts.index') }}">
-                              <i class="fa fa-archive"></i>Save</a>
+                              <i class="fa fa-archive"></i>{{ __('language.save') }}</a>
                             <a class="dropdown-item" href="{{ route('draft.posts.index') }}">
-                               <i class="fa fa-window-restore"></i>Draft</a>
+                               <i class="fa fa-window-restore"></i>{{ __('language.draft') }}</a>
                             <a class="dropdown-item" href="{{ route('logout') }}">
-                               <i class="fa fa-sign-out"></i>Logout</a>
+                               <i class="fa fa-sign-out"></i>{{ __('language.logout') }}</a>
                         </div>
                         </li>
                     @endif
@@ -233,6 +246,8 @@
     <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
 </div>
 
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="{{ asset('client/js/owl.carousel.min.js') }}"></script>
 <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
@@ -259,8 +274,17 @@
         $('.select2-multi').select2();
  </script>
 
+<script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
+
 @include('pages.language_js')
+
+@routes
+    <script src="{{ mix('js/show_image.js') }}"></script>
+    <script src="{{ mix('js/edit_profile.js') }}"></script>
+
 
  @yield('javascript')
 </body>
 </html>
+<script>
+</script>

@@ -21,13 +21,16 @@ Route::get('/test', function() {
     return view('test.index');
 });
 Route::get('/', 'HomeController@index')->name('pages.index');
-Route::group(['middleware' => 'web'], function () {
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('updateProfile', 'UserController@updateProfile')->name('ajaxupdate.profile');
 });
+
     //i18n
     Route::group(['middleware' => ['locale', 'web']], function() {
     Route::get('change-language/{language}', 'changeLanguageController@changeLanguage')
         ->name('user.change-language');
     });
+    
 Auth::routes();
 Route::get('logout','Auth\LoginController@logout');
 
@@ -60,7 +63,7 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::get('manager/posts', 'admin\PostController@index')->name('posts.index');
     Route::get('manager/posts/trending/{post}', 'admin\PostController@getTrending')->name('posts.trending');
 
-    Route::post('manager/posts', 'admin\PublishController@closeRequest')->name('posts.draft.close');
+    // Route::post('manager/posts', 'admin\PublishController@closeRequest')->name('posts.draft.close');
     // Route::post('manager/posts/store', 'admin\PostController@store')->name('posts.store')->middleware('can:post.create');
 
 	Route::post('manager/ajax/getCategoriesChildren', 'admin\PostController@getCategoriesChildren');
@@ -130,7 +133,7 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
 
     Route::get('/{id}/{slug}', 'HomeController@getPosts')->name('home.posts');
     Route::get('/trending', 'HomeController@getPostTrending')->name('home.trending');
-    Route::get('/{slug}', 'HomeController@getSingle')->name('home.single');
+    Route::get('{slug}', 'HomeController@getSingle')->name('home.single');
     // Route::get('/{category}/{slug}', 'HomeController@getSingle')->name('home.single');
     // 
 //     MAIL_DRIVER=smtp

@@ -8,7 +8,7 @@ use DB;
 use App\Models\Comment;
 use Illuminate\Support\Collection;
 use App\Models\Post;
-use App\Repositories\RepositoryInterface;
+use App\Repositories\CommentRepository;
 
 
 class CommentController extends Controller
@@ -20,16 +20,15 @@ class CommentController extends Controller
      */
     
     private $save;
-    private $res;
-    private $paginate;
+    private $commentRepository;
 
-    public function __construct(RepositoryInterface $res) {
+    public function __construct(CommentRepository $commentRepository) {
         $this->save = new Collection();
-        $this->res = $res;
+        $this->commentRepository = $commentRepository;
     }
-    public function getComments() {
 
-     return DB::table('posts')
+    public function getComments() {
+        return DB::table('posts')
         ->leftJoin('comments', 'posts.id', '=', 'comments.commentable_id' )
         ->where('posts.published', '=', true)
         ->selectRaw('posts.id as post_id, posts.slug as slug, comments.*, count(comments.id) as comment_number')->groupBy('post_id')->get();
@@ -39,7 +38,7 @@ class CommentController extends Controller
     {
         $posts = $this->getComments();
         $numberPage = (int)($posts->count() / 4);
-        $posts = $this->res->paginateComments($posts);
+        $posts = $this->commentRepository->paginate($posts);
 
         return view('admin.comments.index', compact('posts', 'numberPage'));
     }
@@ -55,6 +54,7 @@ class CommentController extends Controller
                 $this->getAllCommentDestroy($sub_comment->id);
             }
         }
+
         return $this->save;
     }
 
@@ -65,11 +65,11 @@ class CommentController extends Controller
             DB::table('comments')->where('id', '=', $comment->id)->delete();
         }
 
-
         $response = array(
             'message'   => 'Đã xóa bình luận thành công',
             'class_name'  => 'alert-success'
         );
+        
         return response()->json($response); 
     }
 }

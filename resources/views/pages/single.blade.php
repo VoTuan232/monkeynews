@@ -28,6 +28,12 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.4.0/clipboard.min.js"></script>
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
+    
+    {{-- toastr --}}
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     
     <style>
         .img-tran {
@@ -68,9 +74,11 @@
     </style>
 
 </head>
-                    {{-- @php dd($category) @endphp --}}
 
 <body class="single">
+
+    @include('users.profile')
+
 <div class="container-fluid fh5co_header_bg">
     <div class="container">
         <div class="row">
@@ -97,7 +105,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/">{{ __('language.home') }} <span class="sr-only">(current)</span></a>
                     </li>
                     @foreach($catsHome as $cat)
                         @if($category->childrens->count() > 0 )
@@ -129,14 +137,17 @@
                         <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton3" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}<span class="sr-only">(current)</span></a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink_1">
-                            <a class="dropdown-item" href="/admin"><i class="fa fa-home"></i>Manager</a>
-                            <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Profife</a>
+                            @if (auth()->user()->isAdmin())
+                            <a class="dropdown-item" href="/admin"><i class="fa fa-home"></i>{{ __('language.manager') }}</a>
+                            @else
+                            @endif
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#profile"><i class="fa fa-user"></i>{{ __('language.profile') }}</a>
                             <a class="dropdown-item" href="{{ route('storages.posts.index') }}">
-                              <i class="fa fa-archive"></i>Save</a>
+                              <i class="fa fa-archive"></i>{{ __('language.save') }}</a>
                             <a class="dropdown-item" href="{{ route('draft.posts.index') }}">
-                               <i class="fa fa-window-restore"></i>Draft</a>
+                               <i class="fa fa-window-restore"></i>{{ __('language.draft') }}</a>
                             <a class="dropdown-item" href="{{ route('logout') }}">
-                               <i class="fa fa-sign-out"></i>Logout</a>
+                               <i class="fa fa-sign-out"></i>{{ __('language.logout') }}</a>
                         </div>
                         </li>
                     @endif
@@ -145,11 +156,11 @@
         </nav>
     </div>
 </div>
-<div id="fh5co-title-box" style="background-image: url({{ asset('images/taylor1.png') }}); background-position: 50% 90.5px;" data-stellar-background-ratio="0.5">
+<div id="fh5co-title-box" style="background-image: url({{ asset('images/single_post/'.$imageName) }}); background-position: 50% 90.5px;" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="page-title">
         {{-- <img src="{{ asset('images/'.$post->image) }}" alt="Free HTML5 by FreeHTMl5.co"> --}}
-        <span>{{ $post->created_at }}</span>
+        <span><i class="fa fa-clock-o"></i> {{ $post->created_at }}</span>
         <h2>{{ $post->title }}</h2>
     </div>
 </div>
@@ -176,10 +187,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-8">
-                        @if($post->trending != null)
-                        <a href="{{ route('home.trending') }}" class="btn btn-primary btn-sm">Trending</a>
-                        @endif
-                        {{-- thong bao: trending da dc tao --}}
+                       
                         @can('post.trending')
                             @if ($post->trending == null) 
                                     <a href="{{ route('posts.trending', $post->id) }}" ><i class="fa fa-edit"></i>Create Trending</a>
@@ -190,6 +198,11 @@
                         @endcan
                         <h2>{{ $post->title }}</h2>
                         Thẻ liên quan bài viết:<br>
+
+                        @if($post->trending != null)
+                            <a href="{{ route('home.trending') }}" class="btn btn-primary btn-sm">Trending</a>
+                        @endif
+                        
                         @foreach($tagsPost as $tag)
                             <a href="{{ route('home.tags.posts', ['id' => $tag->id]) }}" class="fh5co_tagg">{{ $tag->name }}</a>
                         @endforeach
@@ -203,7 +216,7 @@
                         @endcan
                         <i class="fa fa-eye fa-1x icon-view-post" title="View"></i>{{ $post->view }}
                         <i class="fa fa-comments fa-1x icon-view-post" title="Comment"></i>{{ $comments->comment_number }}
-                        {{-- <br> --}}
+                        <br>
                         <input id="post-shortlink" value="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}">
                         <button class="button" id="copy-link-post" data-clipboard-target="#post-shortlink" title="Copy url"><i class="fa fa-link" ></i></button>
 
@@ -392,19 +405,21 @@
             }
         });
 </script>
-@include('pages.js.custom_comment_js')
 @routes
     <script src="{{ mix('js/like_post.js') }}"></script>
     <script src="{{ mix('js/save_post.js') }}"></script>
+    <script src="{{ mix('js/edit_profile.js') }}"></script>
+    <script src="{{ mix('js/show_image.js') }}"></script>
+    <script src="{{ mix('js/delete_comment.js') }}"></script>
 @include('pages.js.share_js')
-@include('pages.js.delete_comment')
+@include('pages.js.custom_comment_js')
 
 <script>
-    
     (function(){
     new Clipboard('#copy-link-post');
 })();
 </script>
+
 
 </body>
 </html>

@@ -41,7 +41,9 @@ class PostController extends Controller
         $data['categoriesNoChildren']  = Category::getCategoryNoChildren()->get();
         $data['trees'] = Category::where('parent_id',null)->get();
 
-        return view('admin.posts.index', $data)->withTags($this->tags);
+        $tags = $this->tagRepository->getAllTag();
+
+        return view('admin.posts.index', $data)->withTags($tags);
     }
 
     public function readData()
@@ -192,7 +194,8 @@ class PostController extends Controller
           
             $post= Post::find($request->id);
             $post->title = $request->title;
-            $post->slug = $request->slug;
+            $post->slug = str_slug($request->title);
+            // $post->slug = $request->slug;
             $post->body = rtrim($request->body);
             if($request->hasFile('image')){
                 $image = $request->file('image');

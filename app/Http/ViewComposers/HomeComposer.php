@@ -46,6 +46,7 @@ class HomeComposer
         else {
             $language = App::getLocale();
         }
+
         $view->withLanguage($language);
         // $cats = Category::where('parent_id', null)->take(5)->get();
         // $tags = Tag::all();

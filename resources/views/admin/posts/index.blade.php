@@ -23,7 +23,7 @@
                 <button class="btn btn-info" data-toggle="modal" data-target="#createPost"><i class="fas fa-plus-circle"></i>{{ trans('language.Create new post') }}
                 </button>
                 @endcan    
-                <button class="btn btn-info pull-right " id="read-data">Hiển thị danh sách bài viết</button>
+                <button class="btn btn-info pull-right " id="read-data">{{ __('language.show_post_list') }}</button>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

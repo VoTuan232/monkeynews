@@ -19,13 +19,20 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
+        'c0a1d8b5e5432f18f0a9bb76a10d5e68' => __DIR__ . '/..' . '/grimthorr/laravel-toast/src/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        '6b34c85f7b1ad6faa15aa12109e030f2' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/functions.php',
+        '101b35f72e0ccb1b5ef72aa86bba3ef9' => __DIR__ . '/..' . '/yoeunes/toastr/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
+        ),
+        'Y' => 
+        array (
+            'Yoeunes\\Toastr\\' => 15,
         ),
         'X' => 
         array (
@@ -64,6 +71,7 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         ),
         'R' => 
         array (
+            'RealRashid\\SweetAlert\\' => 22,
             'Ramsey\\Uuid\\' => 12,
         ),
         'P' => 
@@ -99,6 +107,10 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         'I' => 
         array (
             'Illuminate\\' => 11,
+        ),
+        'G' => 
+        array (
+            'Grimthorr\\LaravelToast\\' => 23,
         ),
         'F' => 
         array (
@@ -140,6 +152,10 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'Yoeunes\\Toastr\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yoeunes/toastr/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -221,6 +237,10 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'RealRashid\\SweetAlert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/realrashid/sweet-alert/src',
+        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -276,6 +296,10 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
+        ),
+        'Grimthorr\\LaravelToast\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/grimthorr/laravel-toast/src',
         ),
         'Fideloper\\Proxy\\' => 
         array (
@@ -393,6 +417,8 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         'App\\Http\\Controllers\\LanguageController' => __DIR__ . '/../..' . '/app/Http/Controllers/LanguageController.php',
         'App\\Http\\Controllers\\StatePostController' => __DIR__ . '/../..' . '/app/Http/Controllers/StatePostController.php',
         'App\\Http\\Controllers\\StorageController' => __DIR__ . '/../..' . '/app/Http/Controllers/StorageController.php',
+        'App\\Http\\Controllers\\TrendingController' => __DIR__ . '/../..' . '/app/Http/Controllers/TrendingController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Controllers\\admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/AdminController.php',
         'App\\Http\\Controllers\\admin\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/CategoryController.php',
         'App\\Http\\Controllers\\admin\\CommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/CommentController.php',
@@ -402,6 +428,7 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         'App\\Http\\Controllers\\admin\\StorageController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/StorageController.php',
         'App\\Http\\Controllers\\admin\\TagController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/TagController.php',
         'App\\Http\\Controllers\\admin\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/admin/UserController.php',
+        'App\\Http\\Controllers\\changeLanguageController' => __DIR__ . '/../..' . '/app/Http/Controllers/changeLanguageController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AdminMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminMiddleware.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -444,13 +471,13 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\MainServiceProvider' => __DIR__ . '/../..' . '/app/Providers/MainServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
-        'App\\Repositories\\EloquentTodo' => __DIR__ . '/../..' . '/app/Repositories/EloquentTodo.php',
-        'App\\Repositories\\Repository' => __DIR__ . '/../..' . '/app/Repositories/Repository.php',
+        'App\\Repositories\\CategoryRepository' => __DIR__ . '/../..' . '/app/Repositories/CategoryRepository.php',
+        'App\\Repositories\\CommentRepository' => __DIR__ . '/../..' . '/app/Repositories/CommentRepository.php',
+        'App\\Repositories\\EloquentRepository' => __DIR__ . '/../..' . '/app/Repositories/EloquentRepository.php',
+        'App\\Repositories\\PostRepository' => __DIR__ . '/../..' . '/app/Repositories/PostRepository.php',
         'App\\Repositories\\RepositoryInterface' => __DIR__ . '/../..' . '/app/Repositories/RepositoryInterface.php',
         'App\\Repositories\\RepositoryServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RepositoryServiceProvider.php',
-        'App\\Repositories\\ResAlt' => __DIR__ . '/../..' . '/app/Repositories/ResAlt.php',
-        'App\\Repositories\\ResAltInterface' => __DIR__ . '/../..' . '/app/Repositories/ResAltInterface.php',
-        'App\\Repositories\\TodoInterface' => __DIR__ . '/../..' . '/app/Repositories/TodoInterface.php',
+        'App\\Repositories\\TagRepository' => __DIR__ . '/../..' . '/app/Repositories/TagRepository.php',
         'App\\Validations\\Validation' => __DIR__ . '/../..' . '/app/Validations/Validation.php',
         'Barryvdh\\Debugbar\\Console\\ClearCommand' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Console/ClearCommand.php',
         'Barryvdh\\Debugbar\\Controllers\\AssetController' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Controllers/AssetController.php',
@@ -1241,6 +1268,9 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         'Faker\\ValidGenerator' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/ValidGenerator.php',
         'Fideloper\\Proxy\\TrustProxies' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustProxies.php',
         'Fideloper\\Proxy\\TrustedProxyServiceProvider' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustedProxyServiceProvider.php',
+        'Grimthorr\\LaravelToast\\Facade' => __DIR__ . '/..' . '/grimthorr/laravel-toast/src/Facade.php',
+        'Grimthorr\\LaravelToast\\ServiceProvider' => __DIR__ . '/..' . '/grimthorr/laravel-toast/src/ServiceProvider.php',
+        'Grimthorr\\LaravelToast\\Toast' => __DIR__ . '/..' . '/grimthorr/laravel-toast/src/Toast.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',
@@ -3337,6 +3367,12 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         'Ramsey\\Uuid\\UuidFactory' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidFactory.php',
         'Ramsey\\Uuid\\UuidFactoryInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidFactoryInterface.php',
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
+        'RealRashid\\SweetAlert\\Facades\\Alert' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Facades/Alert.php',
+        'RealRashid\\SweetAlert\\Storage\\AlertSessionStore' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Storage/AlertSessionStore.php',
+        'RealRashid\\SweetAlert\\Storage\\SessionStore' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Storage/SessionStore.php',
+        'RealRashid\\SweetAlert\\SweetAlertServiceProvider' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/SweetAlertServiceProvider.php',
+        'RealRashid\\SweetAlert\\ToSweetAlert' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/ToSweetAlert.php',
+        'RealRashid\\SweetAlert\\Toaster' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Toaster.php',
         'RolesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RolesTableSeeder.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
@@ -4054,6 +4090,9 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'Yoeunes\\Toastr\\Facades\\Toastr' => __DIR__ . '/..' . '/yoeunes/toastr/src/Facades/Toastr.php',
+        'Yoeunes\\Toastr\\Toastr' => __DIR__ . '/..' . '/yoeunes/toastr/src/Toastr.php',
+        'Yoeunes\\Toastr\\ToastrServiceProvider' => __DIR__ . '/..' . '/yoeunes/toastr/src/ToastrServiceProvider.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',

@@ -164,6 +164,8 @@ return [
         App\Providers\MainServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         // 'repotutrepositoriesRepositoryServiceProvider'
+        // RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        'Grimthorr\LaravelToast\ServiceProvider',
 
     ],
 
@@ -217,6 +219,9 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'MainService' => App\Helpers\Pagination::class,
+        // 'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'Toast' => 'Grimthorr\LaravelToast\Facade',
+        Yoeunes\Toastr\ToastrServiceProvider::class,
 
     ],
 

@@ -154,7 +154,7 @@ abstract class EloquentRepository implements RepositoryInterface
         return $this->model->lists($column, $key = null);
     }
 
-    public function paginateDefault($perPage = null, $columns = ['*'])
+    public function paginateModel($perPage = null, $columns = ['*'])
     {
         $this->newQuery()
             ->loadWhere();

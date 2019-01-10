@@ -22,20 +22,20 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Quản lí chủ đề</h3>
+              <h3 class="box-title">{{ __('language.manager_category') }}</h3>
               <div class="alert" id="message" style="display: none"></div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
             	<div class="col-md-6">
-            		<button class="btn btn-info" data-toggle="modal" data-target="#showTreeCategory"><i class="far fa-eye"></i> Hiển thị chủ đề</button>
+            		<button class="btn btn-info" data-toggle="modal" data-target="#showTreeCategory"><i class="far fa-eye"></i> {{ __('language.show_category') }}</button>
 
 					<table class="table">
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Name</th>
-								<th>Paren Category</th>
+								<th>{{ __('language.name') }}</th>
+								<th>{{ __('language.parent_category') }}</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -71,14 +71,14 @@
             	<div class="col-md-4 pull-right">
             		<div class="well">
 						{!! Form::open(['route' => 'categories.store', 'method' => 'POST', 'id' => 'frm-create']) !!}
-							<h2>Chủ đề mới</h2>
-							{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'category_id', 'placeholder' => 'Nhập tên chủ để...']) }}
+							<h2>{{ __('language.new_category') }}</h2>
+							{{ Form::text('name', null, ['class' => 'form-control', 'id' => 'category_id', 'placeholder' => __('language.enter_category_name')]) }}
     							<br>
-    							<span class="btn btn-info" data-toggle="modal" data-target="#showTreeCategory"><i class="far fa-eye"></i> Chọn chủ đề cha</span>
-    							<span class="btn btn-info btn-sm" id="clear-category">Xóa</span>
+    							<span class="btn btn-info" data-toggle="modal" data-target="#showTreeCategory"><i class="far fa-eye"></i> {{ __('language.choose_parent_category') }}</span>
+    							<span class="btn btn-info btn-sm" id="clear-category">{{ __('language.delete') }}</span>
     							<br>
     							{{ Form::text('parent_id', null, ['class' => 'form-control', 'readonly' => 'true']) }}
-							{{ Form::submit('Tạo', ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
+							{{ Form::submit(__('language.create'), ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
 						
 						{!! Form::close() !!}
 

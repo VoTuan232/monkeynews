@@ -18,14 +18,14 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Quản lí người dùng</h3>
+              <h3 class="box-title">{{ __('language.manager_user') }}</h3>
               <div class="alert" id="message" style="display: none"></div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
             	<div class="col-md-12">
             		@can('user.create')
-            		<button class="btn btn-info" data-toggle="modal" data-target="#showAddUser"><i class="fas fa-plus-square"></i>Thêm người dùng</button>
+            		<button class="btn btn-info" data-toggle="modal" data-target="#showAddUser"><i class="fas fa-plus-square"></i>{{ __('language.create_new_user') }}</button>
             		@endcan
 
 					<table class="table">

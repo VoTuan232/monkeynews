@@ -81,52 +81,52 @@
                         <li class="{{ Request::is('admin*') ? "li-manager" : "" }}">
                             <a href="{{ route('home') }}">
                             <i class="fas fa-home"></i>
-                            <span>Trang chủ</span>
+                            <span>{{ __('language.home') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is('manager/posts*') ? "li-manager" : "" }}">
                             <a href="{{ route('posts.index') }}">
                            <i class="far fa-newspaper"></i>
-                            <span>Bài viết</span>
+                            <span>{{ __('language.manager_post') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is('manager/categories*') ? "li-manager" : "" }}">
                             <a href="{{ route('categories.index') }}">
                             <i class="fas fa-align-justify"></i>
-                            <span>Chủ đề</span>
+                            <span>{{ __('language.manager_category') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is('manager/tags*') ? "li-manager" : "" }}">
                             <a href="{{ route('tags.index') }}">
                             <i class="fas fa-tags"></i>
-                            <span>Thẻ</span>
+                            <span>{{ __('language.manager_tag') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is('manager/comments*') ? "li-manager" : "" }}">
                             <a href="{{ route('comments.index') }}">
                             <i class="fas fa-comments"></i>
-                            <span>Bình luận</span>
+                            <span>{{ __('language.manager_comment') }}</span>
                             <span class="pull-right-container">
                             </a>
                         </li>
                         <li class="{{ Request::is('manager/users*') ? "li-manager" : "" }}">
                             <a href="{{ route('users.index') }}">
                             <i class="fas fa-user-plus"></i>
-                            <span>Người dùng</span>
+                            <span>{{ __('language.manager_user') }}</span>
                             <span class="pull-right-container">
                             </a>
                         </li>
                         <li class="{{ Request::is('manager/roles*') ? "li-manager" : "" }}">
                             <a href="{{ route('roles.index') }}">
                             <i class="fas fa-user-shield"></i>
-                            <span>Quản lí quyền</span>
+                            <span>{{ __('language.manager_role') }}</span>
                             <span class="pull-right-container">
                             </a>
                         </li>
                         <li class="{{ Request::is('manager/publish*') ? "li-manager" : "" }}">
                             <a href="{{ route('publish.index') }}">
                             <i class="fas fa-drafting-compass"></i>
-                            <span>Quản lí đăng bài</span>
+                            <span>{{ __('language.manager_published') }}</span>
                             <span class="pull-right-container">
                             </a>
                         </li>

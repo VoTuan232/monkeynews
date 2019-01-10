@@ -4,8 +4,9 @@
     border-radius: 50%;
     width: 50px;
     float:right;
+    height: 50px;
     }
-    .comment_option {
+.comment_option {
     margin-left: 60px;
 }
 

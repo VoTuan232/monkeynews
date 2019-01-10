@@ -16,7 +16,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Quản lí bình luận</h3>
+              <h3 class="box-title">{{ __('language.manager_comment') }}</h3>
               <div class="alert" id="message" style="display: none"></div>
             </div>
             <!-- /.box-header -->

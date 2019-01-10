@@ -26,7 +26,8 @@
         }
     });
 
-  });
+    });
+ 
     $(document).ready(function () {
          $("#permission").on('keyup', function (e) {
 

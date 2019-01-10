@@ -12,7 +12,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Quản lí thẻ</h3>
+              <h3 class="box-title">{{ __('language.manager_tag') }}</h3>
               <div class="alert" id="message" style="display: none"></div>
             </div>
             <!-- /.box-header -->
@@ -23,7 +23,7 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Name</th>
+								<th>{{ __('language.name') }}</th>
 								<th></th>
 							</tr>
 						</thead>
@@ -51,11 +51,11 @@
             	<div class="col-md-4 pull-right">
             		<div class="well">
 						{!! Form::open(['route' => 'tags.store', 'method' => 'POST', 'id' => 'frm-create']) !!}
-							<h2>Tạo thẻ mới</h2>
+							<h2>{{ __('language.new_tag') }}</h2>
 							{{-- {{ Form::label('name', 'Tên thẻ:') }} --}}
-							{{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nhập tên thẻ...']) }}
+							{{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => __('language.enter_tag_name')]) }}
 							<br>
-							{{ Form::submit('Tạo', ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
+							{{ Form::submit(__('language.create'), ['class' => 'btn btn-primary btn-block btn-h1-spacing']) }}
 						
 						{!! Form::close() !!}
 					</div>

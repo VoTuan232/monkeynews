@@ -1,0 +1,16 @@
+.caption label {
+  display: block;
+  cursor: pointer;
+  background: grey;
+  width: 75px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  color: #fff;
+  margin-left:41%;
+}
+
+.caption .hidden {
+  position: absolute;
+  left: -99999px;
+}

@@ -14,7 +14,7 @@ interface RepositoryInterface
 
     public function lists($column, $key = null);
 
-    public function paginateDefault($perPage = 20, $columns = ['*']);
+    public function paginateModel($perPage = 20, $columns = ['*']);
 
     public function find($id, $columns = ['*']);
 

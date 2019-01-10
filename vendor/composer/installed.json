@@ -740,6 +740,62 @@
         ]
     },
     {
+        "name": "grimthorr/laravel-toast",
+        "version": "1.1.2",
+        "version_normalized": "1.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Grimthorr/laravel-toast.git",
+            "reference": "2783fc1b8582c30ab58c72e6d9e8571a3ac4cb07"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Grimthorr/laravel-toast/zipball/2783fc1b8582c30ab58c72e6d9e8571a3ac4cb07",
+            "reference": "2783fc1b8582c30ab58c72e6d9e8571a3ac4cb07",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/config": "5.*",
+            "illuminate/database": "5.*",
+            "illuminate/support": "5.*",
+            "php": ">=5.4.0"
+        },
+        "time": "2018-09-20T13:43:24+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Grimthorr\\LaravelToast\\ServiceProvider"
+                ],
+                "aliases": {
+                    "Toast": "Grimthorr\\LaravelToast\\Facade"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Grimthorr\\LaravelToast\\": "src/"
+            },
+            "files": [
+                "src/helpers.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Grimthorr",
+                "email": "phil@hughesbox.co.uk",
+                "homepage": "http://hughesbox.co.uk"
+            }
+        ],
+        "description": "Simple toast messages for Laravel 5.",
+        "homepage": "https://github.com/Grimthorr/laravel-toast"
+    },
+    {
         "name": "hamcrest/hamcrest-php",
         "version": "v2.0.0",
         "version_normalized": "2.0.0.0",
@@ -2842,6 +2898,74 @@
         ]
     },
     {
+        "name": "realrashid/sweet-alert",
+        "version": "v1.1.1",
+        "version_normalized": "1.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/realrashid/sweet-alert.git",
+            "reference": "baf7e4f1539fa3053854eb96dd20f2fd9681d0bc"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/realrashid/sweet-alert/zipball/baf7e4f1539fa3053854eb96dd20f2fd9681d0bc",
+            "reference": "baf7e4f1539fa3053854eb96dd20f2fd9681d0bc",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/session": "~5.1",
+            "illuminate/support": "~5.1",
+            "php": "~5.6|~7.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": ">=5.4.3",
+            "squizlabs/php_codesniffer": "^2.3"
+        },
+        "time": "2018-11-03T16:02:56+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "RealRashid\\SweetAlert\\SweetAlertServiceProvider"
+                ],
+                "aliases": {
+                    "Alert": "RealRashid\\SweetAlert\\Facades\\Alert"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "RealRashid\\SweetAlert\\": "src"
+            },
+            "files": [
+                "src/functions.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Rashid Ali",
+                "email": "realrashid05@gmail.com",
+                "homepage": "https://realrashid.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "SweetAlert2 for Laravel 5.5.* by Rashid Ali",
+        "homepage": "https://github.com/realrashid/sweet-alert",
+        "keywords": [
+            "alert",
+            "laravel",
+            "notifier",
+            "noty",
+            "sweet",
+            "sweet-alert2"
+        ]
+    },
+    {
         "name": "sebastian/code-unit-reverse-lookup",
         "version": "1.0.1",
         "version_normalized": "1.0.1.0",
@@ -4636,6 +4760,85 @@
             "assert",
             "check",
             "validate"
+        ]
+    },
+    {
+        "name": "yoeunes/toastr",
+        "version": "v1.1.2",
+        "version_normalized": "1.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/yoeunes/toastr.git",
+            "reference": "b7f5a51ea29958c8e50a411457e1df3ee3ce9f68"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/yoeunes/toastr/zipball/b7f5a51ea29958c8e50a411457e1df3ee3ce9f68",
+            "reference": "b7f5a51ea29958c8e50a411457e1df3ee3ce9f68",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/session": "~5.5.0|~5.6.0|~5.7.0",
+            "illuminate/support": "~5.5.0|~5.6.0|~5.7.0",
+            "php": "^7.0|^7.1|^7.2"
+        },
+        "require-dev": {
+            "orchestra/testbench": "~3.5.0|~3.6.0|~3.7.0",
+            "phpunit/phpunit": "^6.2|^7.0"
+        },
+        "time": "2018-10-20T17:12:18+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Yoeunes\\Toastr\\ToastrServiceProvider"
+                ],
+                "aliases": {
+                    "Toastr": "Yoeunes\\Toastr\\Facades\\Toastr"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Yoeunes\\Toastr\\": "src"
+            },
+            "files": [
+                "src/helpers.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Younes Khoubza",
+                "email": "younes.khoubza@gmail.com",
+                "homepage": "https://dalilbook.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "toastr.js flush notifications for Laravel 5 and Lumen",
+        "homepage": "https://github.com/yoeunes/toastr",
+        "keywords": [
+            "Laravel 5.6",
+            "alerts",
+            "flush",
+            "flush messages",
+            "flush notifications",
+            "laravel",
+            "laravel 5",
+            "laravel flush notifications",
+            "laravel notification",
+            "laravel toastr",
+            "lumen",
+            "messages",
+            "notification",
+            "php",
+            "toastr",
+            "toastr js",
+            "yoeunes"
         ]
     }
 ]

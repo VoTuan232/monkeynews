@@ -1,6 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/js/show_image.js": "/js/show_image.js",
     "/js/save_post.js": "/js/save_post.js",
-    "/js/like_post.js": "/js/like_post.js"
+    "/js/like_post.js": "/js/like_post.js",
+    "/js/edit_profile.js": "/js/edit_profile.js",
+    "/js/delete_comment.js": "/js/delete_comment.js",
+    "/js/custom_comment.js": "/js/custom_comment.js"
 }

@@ -18,6 +18,8 @@ use App;
 use App\Repositories\CategoryRepository;
 use App\Repositories\TagRepository;
 use App\Repositories\PostRepository;
+use Illuminate\Support\Facades\Storage;
+use File;
 
 class HomeController extends Controller
 {
@@ -191,8 +193,12 @@ class HomeController extends Controller
             $catsHome = $this->categoryRepository->getCategoryForHome();
             // lay trending
             $trending = Post::orderBy('trending', 'desc')->firstOrFail();
+            //random anh
+            $files = File::allFiles('images/single_post');
+            $randomFile = array_random($files);
+            $imageName = $randomFile->getFilename();
 
-            return view('pages.single', compact('post', 'category', 'postsRelated', 'postAll', 'data', 'data1', 'categories', 'tags', 'comments', 'catsHome', 'tagsPost', 'trending'));
+            return view('pages.single', compact('post', 'category', 'postsRelated', 'postAll', 'data', 'data1', 'categories', 'tags', 'comments', 'catsHome', 'tagsPost', 'trending', 'imageName'));
         }
 
         return view('errors.404');
@@ -241,7 +247,11 @@ class HomeController extends Controller
         $trending = Post::orderBy('trending', 'desc')->firstOrFail();
 
         $trending_list = Post::WhereNotNull('trending')->orderBy('trending', 'desc')->with('tags', 'comments')->paginate(5);
+        //random anh
+        $files = File::allFiles('images/single_post');
+        $randomFile = array_random($files);
+        $imageName = $randomFile->getFilename();
 
-       return view('pages.trending', compact('catsHome', 'trending', 'tags', 'trending_list'));
+       return view('pages.trending', compact('catsHome', 'trending', 'tags', 'trending_list', 'imageName'));
     }
 }

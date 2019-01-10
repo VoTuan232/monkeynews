@@ -9,11 +9,14 @@
         "barryvdh/laravel-debugbar": "^3.2",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.4",
+        "grimthorr/laravel-toast": "^1.1",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
         "league/flysystem": "^1.0",
-        "unisharp/laravel-ckeditor": "^4.7"
+        "realrashid/sweet-alert": "^1.1",
+        "unisharp/laravel-ckeditor": "^4.7",
+        "yoeunes/toastr": "^1.1"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

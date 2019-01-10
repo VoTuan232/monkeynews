@@ -22,7 +22,8 @@
                             <br>
                             <b><a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" style="color:#292b5a;">{{ $post->title }}</a></b>
                             <br>
-                            @if($post->tags->count() > 0)    
+                            <a href="{{ route('home.trending') }}" class="btn btn-primary btn-sm">Trending</a>
+                            @if($post->tags->count() > 0)
                                 @foreach($post->tags as $tag)
                                 <a href="{{ route('home.tags.posts', ['id' => $tag->id]) }}" class="btn btn-primary btn-sm">{{ $tag->name }}</a>
                                 @endforeach
@@ -33,7 +34,11 @@
                             <i class="fa fa-comments fa-1x icon-view-post" title="Comment" style="color:#9b9ba7;"></i>{{ $post->comments->count() }}
                         </div>
                         <div class="col-md-2" >
-                            <image src="/images/demo.jpg" class="img-tran"/>
+                            @if ($post->user->avatar != null)
+                                <image src="/images/users/{{ $post->user->avatar }}" class="img-tran"/>
+                            @else
+                                <image src="/images/anonymos.png" class="img-tran"/>
+                            @endif
                         </div> 
                     </div>
                     <div class="clearfix"></div>
