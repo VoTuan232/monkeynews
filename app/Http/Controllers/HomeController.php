@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Post;
+use App\Models\User;
 use DB;
 use Auth;
 use Illuminate\Support\Collection;

@@ -17,10 +17,39 @@
 //     return view('welcome');
 // });
 
+use App\Models\User;
+use App\Http\Resources\User as UserResource;
+use App\Http\Resources\UserCollection;
+
+
+// Route::get('/json', function() {
+//     $users = User::paginate();
+//     return new UserCollection($users);
+// });
+// Route::get('/json', function() {
+//     return (new UserCollection(User::all()->load('roles')))
+//                 ->additional(['meta' => [
+//                     'key' => 'value',
+//                 ]]);
+// });
+
+Route::get('/json', function() {
+     return (new UserResource(User::find(1)))
+                ->response()
+                ->header('X-Value', 'True');
+});
+
+
+// Route::get('/json', function() {
+//     $user = User::find(1);
+//      return new UserResource($user);
+// });
+
 Route::get('/test', function() {
     return view('test.index');
 });
 Route::get('/', 'HomeController@index')->name('pages.index');
+Route::get('/manager/comments/getComments', 'admin\CommentController@getComments')->name('manager.comments.getComment');
 Route::group(['middleware' => 'auth'], function () {
     Route::post('updateProfile', 'UserController@updateProfile')->name('ajaxupdate.profile');
 });

@@ -89,11 +89,11 @@ $(document).ready(function () {
             cache: false,
             processData: false,
             success: function success(data) {
-                var type = data.alert_type;
-
+                if (data.post_data) {
+                    toastr.success(data.message);
+                }
                 switch (type) {
                     case 'success':
-                        toastr.success(data.message);
                         break;
                     case 'error':
                         var message = data.message;

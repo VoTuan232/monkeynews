@@ -17,6 +17,7 @@ use App\Repositories\TodoInterface;
 
 use App\Repositories\Repository;
 use App\Repositories\RepositoryInterface;
+use Illuminate\Http\Resources\Json\Resource;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer(
             '*', 'App\Http\ViewComposers\HomeComposer'
         );
+
+        Resource::withoutWrapping(); //remove data object of resource api
     }
 
     /**

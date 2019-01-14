@@ -6,5 +6,6 @@
     "/js/like_post.js": "/js/like_post.js",
     "/js/edit_profile.js": "/js/edit_profile.js",
     "/js/delete_comment.js": "/js/delete_comment.js",
-    "/js/custom_comment.js": "/js/custom_comment.js"
+    "/js/custom_comment.js": "/js/custom_comment.js",
+    "/js/auto_slug_post.js": "/js/auto_slug_post.js"
 }

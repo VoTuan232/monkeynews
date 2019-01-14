@@ -19,9 +19,7 @@
 	        <tr>
 	            <th>ID</th>
 	            <th>Title</th>
-	            {{-- <th>Slug</th> --}}
-	            {{-- <th>Body</th> --}}
-	            <th></th>       
+	            <th>Action</th>       
 	            <th>Send request</th>       
 	        </tr>
 	        </thead>
@@ -39,7 +37,9 @@
 					    </td>
 					    <td>
 					    	@can('post.publish')
-						    	<a class="btn btn-success btn-sm" id="view" data-id="{{$post->id}}">Publish</a>
+						    	 	{!! Form::open(['route' => ['posts.draft.accept', $post->id], '  method' => 'POST']) !!}
+		                            	{{ Form::submit('Publish',['class' => 'btn btn-success btn-sm']) }}
+		                            {!! Form::close() !!}
 					    	@else
 						    	@if($post->request == 2)
 						    	<a class="btn btn-danger btn-sm" id="view" data-id="{{$post->id}}">Request closed by admin</a>
@@ -80,6 +80,11 @@
  <script type="text/javascript">
         $('.select2-multi').select2();
  </script>
- @include('drafts.create_js')
+
+ 	@include('drafts.create_js')
+
+@routes
+	<script src="{{ mix('js/auto_slug_post.js') }}"></script>
+
 @endsection
 

@@ -35,13 +35,24 @@
                 cache: false,
                 processData: false,
                 success:function(data){
-                    $('#message').css('display', 'block');
-                    $('#message').html(data.message);
-                    $('#message').addClass(data.class_name);
+                    // $('#message').css('display', 'block');
+                    // $('#message').html(data.message);
+                    // $('#message').addClass(data.class_name);
+                    // $("#message").fadeTo(2000, 500).slideUp(500, function(){
+                    //     $("#message").slideUp(500);
+                    // });
+                    if(data.post_data) {
+                        toastr.success(data.message);
+                    }
+                    else {
+                        var message = data.message;
+                        var key = Object.keys(message);
 
-                     $("#message").fadeTo(2000, 500).slideUp(500, function(){
-                            $("#message").slideUp(500);
-                        });
+                        for (var i = 0; i < key.length; i++) {
+                            toastr.error(message[key[i]]);
+                        }
+                    }
+
                     if(data.post_data) {
                         var tr=$("<tr/>",{
                             id:data.post_data.id

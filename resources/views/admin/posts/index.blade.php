@@ -6,7 +6,6 @@
 
     {!! Html::style('public/bower_components/bootstrap/dist/css/bootstrap.min.css')!!}
     {!! Html::style('bower_components/select2/dist/css/select2.min.css')!!}
-
 @endsection
 
 @section('main')
@@ -86,6 +85,9 @@
     @include('admin.posts.create_js')
     @include('admin.posts.delete_js')
     @include('admin.posts.edit_js')
+
+    @routes
+        <script src="{{ mix('js/auto_slug_post.js') }}"></script>
 
   
 

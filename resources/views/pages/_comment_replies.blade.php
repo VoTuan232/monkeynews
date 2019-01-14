@@ -9,7 +9,7 @@
         @if ($comment->user->avatar != null) 
             <image src="/images/users/{{ $comment->user->avatar }}" class="img-tran">
         @else
-            <image src="/images/demo.png" class="img-tran">
+            <image src="/images/anonymos.png" class="img-tran" >
         @endif
         <strong>{{ $comment->user->name }}</strong>&nbsp;&nbsp;<small>{{ $comment->created_at }}</small>
         <div class="comment_option">

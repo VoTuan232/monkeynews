@@ -7,12 +7,12 @@
 
 
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Add Post</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
             @include('partials._message')
-
+            
             {!! Form::open(array('route' => 'posts.store', 'files' => true, 'id'=> "frm-insert")) !!}
                 <div class="modal-body">
                     <div class="col-3-md">
@@ -24,6 +24,7 @@
                     <div class="col-3-md">
                         <div class="form-group">
                             {{ Form::label('slug',"Slug") }}
+                            <span class="btn btn-info btn-sm" id="button_auto_slug"><i class="fa fa-info"></i>{{ __('language.auto') }}</span>
                             {{ Form::text('slug',null,array('class'=>'form-control')) }}
                         </div>
                     </div>

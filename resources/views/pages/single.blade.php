@@ -41,6 +41,7 @@
         max-width: 100%;
         border-radius: 50%;
         width: 50px;
+        height: 50px;
         }
         .comment_option {
         margin-left: 60px;
@@ -193,6 +194,7 @@
                                     <a href="{{ route('posts.trending', $post->id) }}" ><i class="fa fa-edit"></i>Create Trending</a>
                             
                             @else 
+                                <a href="{{ route('posts.trending', $post->id) }}" ><i class="fa fa-edit"></i>Update Trending</a>
                                 <p  class="fh5co_tagg" style="margin-top: -14px;">Trending đã được tạo</p>
                             @endif
                         @endcan
@@ -382,7 +384,6 @@
 <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
 </div>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="{{ asset('client/js/owl.carousel.min.js') }}"></script>
 <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
@@ -419,6 +420,8 @@
     new Clipboard('#copy-link-post');
 })();
 </script>
+
+
 
 
 </body>

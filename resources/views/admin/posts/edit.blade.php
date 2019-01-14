@@ -37,6 +37,7 @@
 	                    <div class="col-3-md">
 	                        <div class="form-group">
 	                            {{ Form::label('slug', 'Slug') }}
+	                            <span class="btn btn-info btn-sm" id="button_auto_slug"><i class="fa fa-info"></i>{{ __('language.auto') }}</span>
 	                            {{ Form::text('slug', null, array('class' => 'form-control')) }}
 	                        </div>
 	                    </div>
@@ -138,4 +139,7 @@
     </script>
 
     @include('admin.posts.edit_js')
+
+    @routes
+		<script src="{{ mix('js/auto_slug_post.js') }}"></script>
 @endsection

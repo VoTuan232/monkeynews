@@ -18,29 +18,38 @@
     })
 
     $('#frm-update').on('submit', function(e) {
-
-            var data = CKEDITOR.instances.body.getData();
-            document.getElementById('body').value = data;
             e.preventDefault();
-            var url = $(this).attr('action');
-            var method = $(this).attr('method');
-             $.ajax({
-                type: method,
-                url: url,
-                data:new FormData(this),
-                dataTy:'json',
-                contentType: false,
-                cache: false,
-                processData: false,
-                success:function(data){
-                    $('#message').css('display', 'block');
-                    $('#message').html(data.message);
-                    $('#message').addClass(data.class_name);
 
-                    $("#message").fadeTo(2000, 500).slideUp(500, function(){
-                            $("#message").slideUp(500);
-                    });
-                }});
+            var category = document.getElementById('category').value;
+            if(category == '') {
+                toastr.error('Category is required!');
+            }
+
+            else {
+                var data = CKEDITOR.instances.body.getData();
+                document.getElementById('body').value = data;
+                e.preventDefault();
+                var url = $(this).attr('action');
+                var method = $(this).attr('method');
+                 $.ajax({
+                    type: method,
+                    url: url,
+                    data:new FormData(this),
+                    dataTy:'json',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success:function(data){
+                        $('#message').css('display', 'block');
+                        $('#message').html(data.message);
+                        $('#message').addClass(data.class_name);
+
+                        $("#message").fadeTo(2000, 500).slideUp(500, function(){
+                                $("#message").slideUp(500);
+                        });
+                    }});
+            }
+
     })
 </script>
 

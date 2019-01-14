@@ -9,7 +9,8 @@ use App\Models\Comment;
 use Illuminate\Support\Collection;
 use App\Models\Post;
 use App\Repositories\CommentRepository;
-
+use Yajra\DataTables\DataTables;
+use App\Models\User;
 
 class CommentController extends Controller
 {
@@ -27,21 +28,68 @@ class CommentController extends Controller
         $this->commentRepository = $commentRepository;
     }
 
-    public function getComments() {
-        return DB::table('posts')
-        ->leftJoin('comments', 'posts.id', '=', 'comments.commentable_id' )
-        ->where('posts.published', '=', true)
-        ->selectRaw('posts.id as post_id, posts.slug as slug, comments.*, count(comments.id) as comment_number')->groupBy('post_id')->get();
-    } 
+    // public function getComments() {
+    //     return DB::table('posts')
+    //     ->leftJoin('comments', 'posts.id', '=', 'comments.commentable_id' )
+    //     ->where('posts.published', '=', true)
+    //     ->selectRaw('posts.id as post_id, posts.slug as slug, comments.*, count(comments.id) as comment_number')->groupBy('post_id')->get();
+    // } 
 
-    public function index()
-    {
-        $posts = $this->getComments();
-        $numberPage = (int)($posts->count() / 4);
-        $posts = $this->commentRepository->paginate($posts);
-
-        return view('admin.comments.index', compact('posts', 'numberPage'));
+    public function index() {
+        $data = Post::Where('published', '1')->orderBy('created_at', 'desc')->with('comments', 'users')->get();
+        dd($data);
+        foreach($data as $data) {
+            dd($data);
+        }
+        return view('admin.comments.index');
     }
+
+    public function getComments() {
+        $data = Post::Where('published', '1')->orderBy('created_at', 'desc')->with('comments')->get();
+        return DataTables::of($data)
+        ->addColumn('role', function($data){
+        })
+        ->toJson();
+    }
+
+    // public function getComments() {
+    //     return DataTables::of(User::query())
+    //     // ->setRowClass(function ($user) {
+    //     //     return $user->id %2 == 0 ? 'alert-success' : 'alert-warning';
+    //     // }) //hang se doi mau
+    //     // ->setRowClass('{{ $id %2 == 0 ? "alert-success" : "alert-warning" }}')
+    //     // ->setRowClass('{{ $email == "buster.klocko@example.net" ? "alert-success" : "alert-warning" }}')
+    //     ->setRowId(function ($user) {
+    //         return $user->id;
+    //     }) //tr se chua id cua user
+    //     // ->setRowAttr([ 'align' => 'center' ])
+    //     ->setRowData(['data-name' => 'row-{{$name}}, '])
+    //     // ->make(true);
+    //     ->addColumn('role', function (User $user) {
+    //          if($user->roles->count() > 0) {
+    //             return $user->roles->first()->name;
+    //          }
+    //          else{
+    //             return "";
+    //          }
+    //     })
+    //     // ->editColumn('created_at', function (User $user) {
+    //     //     return $user->created_at->diffForHumans();
+    //     // }) // time past
+    //     ->editcolumn('updated_at', 'column') //tra ve view column
+    //     ->rawColumns(['updated_at'])
+    //     ->removeColumn('updated_at')
+    //     ->make(true);
+    // }
+
+    // public function index()
+    // {
+    //     $posts = $this->getComments();
+    //     $numberPage = (int)($posts->count() / 4);
+    //     $posts = $this->commentRepository->paginate($posts);
+
+    //     return view('admin.comments.index', compact('posts', 'numberPage'));
+    // }
 
     public function getAllCommentDestroy($idComment) {
 

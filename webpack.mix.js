@@ -20,3 +20,4 @@ mix.js('resources/js/delete_comment.js', 'public/js/delete_comment.js');
 mix.js('resources/js/custom_comment.js', 'public/js/custom_comment.js');
 mix.js('resources/js/show_image.js', 'public/js/show_image.js');
 mix.js('resources/js/edit_profile.js', 'public/js/edit_profile.js');
+mix.js('resources/js/auto_slug_post.js', 'public/js/auto_slug_post.js');

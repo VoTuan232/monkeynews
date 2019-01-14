@@ -87,4 +87,12 @@ return [
     'enter_to_add_permission' => 'Nhấn enter để thêm permission...',
     'update_role' => 'Cập nhật quyền',
     'manager_published' => 'Quản lí đăng bài',
+    'check_login_like_post' => 'Bạn cần đăng nhập mới thích được bài viết!',
+    'like_post_success' => 'Thích bài viết thành công!',
+    'remove_like_post_success' => 'Xóa thích bài viết thành công!',
+    'check_login_dislike_post' => 'Bạn cần đăng nhập mới không thích được bài viết!',
+    'remove_dislike_post_success' => 'Xóa không thích bài viết thành công',
+    'dislike_post_success' => 'Không thích bài viết thành công',
+    'check_login_save_post' => 'Bạn cần đăng nhập mới lưu được bài viết này!',
+    'auto' => 'Tự động',
 ];

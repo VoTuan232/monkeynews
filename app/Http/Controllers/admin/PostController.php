@@ -194,8 +194,8 @@ class PostController extends Controller
           
             $post= Post::find($request->id);
             $post->title = $request->title;
-            $post->slug = str_slug($request->title);
-            // $post->slug = $request->slug;
+            // $post->slug = str_slug($request->title);
+            $post->slug = $request->slug;
             $post->body = rtrim($request->body);
             if($request->hasFile('image')){
                 $image = $request->file('image');

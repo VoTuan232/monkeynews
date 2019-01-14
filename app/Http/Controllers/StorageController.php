@@ -40,7 +40,7 @@ class StorageController extends Controller
 
         if(is_null(Auth::user())) {
             return response()->json([
-                'authenticated' => 'Bạn cần đăng nhập mới lưu được bài post này',
+                'authenticated' => __('language.check_login_save_post'),
                 'class_name' => 'alert-danger',
             ]);
         }

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Models\Post;
+use Session;
+use Auth;
 
 class RequestController extends Controller
 {
@@ -45,6 +47,8 @@ class RequestController extends Controller
         $post->save();
         DB::table('comments')->where('commentable_id',$post->id)->delete();
 
+        // notificationMsg('success', 'Bài viết đã được công khai');
+        // 
         return back();
     }
 }

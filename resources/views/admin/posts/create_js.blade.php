@@ -20,61 +20,72 @@
 
         $('#frm-insert').on('submit',function(e){
             e.preventDefault();
-          
-            var url=$(this).attr('action');
-            var post=$(this).attr('method');
-            var data = CKEDITOR.instances.body.getData();
-        
-            document.getElementById('body').value = data;
-            $.ajax({
-                type: post,
-                url: url,
-                data:new FormData(this),
-                dataTy:'json',
-                contentType: false,
-                cache: false,
-                processData: false,
-                success:function(data){
-                    $('#message').css('display', 'block');
-                    $('#message').html(data.message);
-                    $('#message').addClass(data.class_name);
 
-                     $("#message").fadeTo(2000, 500).slideUp(500, function(){
-                            $("#message").slideUp(500);
-                        });
-                    if(data.post_data) {
-                        // $('#upload-image').html(data.uploaded_image);
-                        // var post_id=data.post_data.id;
-                        var tr=$("<tr/>",{
-                            id:data.post_data.id
-                        });
-                            tr.append($("<td/>",{
-                                text : data.post_data.id
-                            })).append($("<td/>",{
-                                text : data.post_data.title
-                            })).append($("<td/>",{
-                                text : data.post_data.slug
-                         })).append($("<td/>",{
-                                text : data.post_data.body.substring(0,50)
-                            })).append($("<td/>",{
-                                text : data.post_data.published
-                            })).append($("<td/>",{
-                                // text : data.post_data.image
-                                html: '<image src="{{ asset('images') }}/'+data.post_data.image+'" alt="img" class="manager-post-image"/>'
-                            })).append($("<td/>",{
-                                text : data.post_data.username
-                            })).append($("<td/>",{
-                                text : data.post_data.vote
-                            })).append($("<td/>",{
-                                text : data.post_data.view
-                            })).append($("<td/>",{
-                                html : '<a href="#" class="btn btn-info btn-sm" id="view" data-id="'+data.post_data.id+'">View </a> ' + 
-                                    '<a href="posts/edit/'+data.post_data.id+'" class="btn btn-success btn-sm" id="edit" data-id="'+data.post_data.id+'">Edit </a> ' +
-                                    '<a href="#" class="btn btn-danger btn-sm" id="delete" data-id="'+data.post_data.id+'">Delete </a>' 
-                            }))
-                        $('#post-info').append(tr);
-                    }
-                }});
+            var category = document.getElementById('category').value;
+            if(category == '') {
+                toastr.error('Category is required!');
+            }
+
+            else {
+
+                var url=$(this).attr('action');
+                var post=$(this).attr('method');
+
+
+                var data = CKEDITOR.instances.body.getData();
+            
+                document.getElementById('body').value = data;
+                $.ajax({
+                    type: post,
+                    url: url,
+                    data:new FormData(this),
+                    dataTy:'json',
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success:function(data){
+                        $('#message').css('display', 'block');
+                        $('#message').html(data.message);
+                        $('#message').addClass(data.class_name);
+
+                         $("#message").fadeTo(2000, 500).slideUp(500, function(){
+                                $("#message").slideUp(500);
+                            });
+                        if(data.post_data) {
+                            // $('#upload-image').html(data.uploaded_image);
+                            // var post_id=data.post_data.id;
+                            var tr=$("<tr/>",{
+                                id:data.post_data.id
+                            });
+                                tr.append($("<td/>",{
+                                    text : data.post_data.id
+                                })).append($("<td/>",{
+                                    text : data.post_data.title
+                                })).append($("<td/>",{
+                                    text : data.post_data.slug
+                             })).append($("<td/>",{
+                                    text : data.post_data.body.substring(0,50)
+                                })).append($("<td/>",{
+                                    text : data.post_data.published
+                                })).append($("<td/>",{
+                                    // text : data.post_data.image
+                                    html: '<image src="{{ asset('images') }}/'+data.post_data.image+'" alt="img" class="manager-post-image"/>'
+                                })).append($("<td/>",{
+                                    text : data.post_data.username
+                                })).append($("<td/>",{
+                                    text : data.post_data.vote
+                                })).append($("<td/>",{
+                                    text : data.post_data.view
+                                })).append($("<td/>",{
+                                    html : '<a href="#" class="btn btn-info btn-sm" id="view" data-id="'+data.post_data.id+'">View </a> ' + 
+                                        '<a href="posts/edit/'+data.post_data.id+'" class="btn btn-success btn-sm" id="edit" data-id="'+data.post_data.id+'">Edit </a> ' +
+                                        '<a href="#" class="btn btn-danger btn-sm" id="delete" data-id="'+data.post_data.id+'">Delete </a>' 
+                                }))
+                            $('#post-info').append(tr);
+                        }
+                    }});
+            }
+          
         });
     </script>
     

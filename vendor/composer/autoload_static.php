@@ -22,6 +22,7 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         'c0a1d8b5e5432f18f0a9bb76a10d5e68' => __DIR__ . '/..' . '/grimthorr/laravel-toast/src/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         '6b34c85f7b1ad6faa15aa12109e030f2' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/functions.php',
+        '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
         '101b35f72e0ccb1b5ef72aa86bba3ef9' => __DIR__ . '/..' . '/yoeunes/toastr/src/helpers.php',
     );
 
@@ -33,6 +34,7 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         'Y' => 
         array (
             'Yoeunes\\Toastr\\' => 15,
+            'Yajra\\DataTables\\' => 17,
         ),
         'X' => 
         array (
@@ -156,6 +158,10 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         'Yoeunes\\Toastr\\' => 
         array (
             0 => __DIR__ . '/..' . '/yoeunes/toastr/src',
+        ),
+        'Yajra\\DataTables\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -448,6 +454,8 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         'App\\Http\\Requests\\TagRequest' => __DIR__ . '/../..' . '/app/Http/Requests/TagRequest.php',
         'App\\Http\\Requests\\UserLoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserLoginRequest.php',
         'App\\Http\\Requests\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserRequest.php',
+        'App\\Http\\Resources\\User' => __DIR__ . '/../..' . '/app/Http/Resources/User.php',
+        'App\\Http\\Resources\\UserCollection' => __DIR__ . '/../..' . '/app/Http/Resources/UserCollection.php',
         'App\\Http\\ViewComposers\\HomeComposer' => __DIR__ . '/../..' . '/app/Http/ViewComposers/HomeComposer.php',
         'App\\Jobs\\SendWelcomeEmail' => __DIR__ . '/../..' . '/app/Jobs/SendWelcomeEmail.php',
         'App\\Listeners\\SendEmailAfterNewPost' => __DIR__ . '/../..' . '/app/Listeners/SendEmailAfterNewPost.php',
@@ -478,6 +486,7 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         'App\\Repositories\\RepositoryInterface' => __DIR__ . '/../..' . '/app/Repositories/RepositoryInterface.php',
         'App\\Repositories\\RepositoryServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RepositoryServiceProvider.php',
         'App\\Repositories\\TagRepository' => __DIR__ . '/../..' . '/app/Repositories/TagRepository.php',
+        'App\\Repositories\\UserRepository' => __DIR__ . '/../..' . '/app/Repositories/UserRepository.php',
         'App\\Validations\\Validation' => __DIR__ . '/../..' . '/app/Validations/Validation.php',
         'Barryvdh\\Debugbar\\Console\\ClearCommand' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Console/ClearCommand.php',
         'Barryvdh\\Debugbar\\Controllers\\AssetController' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Controllers/AssetController.php',
@@ -4090,6 +4099,21 @@ class ComposerStaticInitd9fc06946a3db3961d418b4bc6e9b159
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'Yajra\\DataTables\\ApiResourceDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/ApiResourceDataTable.php',
+        'Yajra\\DataTables\\CollectionDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/CollectionDataTable.php',
+        'Yajra\\DataTables\\Contracts\\DataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Contracts/DataTable.php',
+        'Yajra\\DataTables\\DataTableAbstract' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTableAbstract.php',
+        'Yajra\\DataTables\\DataTables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTables.php',
+        'Yajra\\DataTables\\DataTablesServiceProvider' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTablesServiceProvider.php',
+        'Yajra\\DataTables\\EloquentDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/EloquentDataTable.php',
+        'Yajra\\DataTables\\Exceptions\\Exception' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Exceptions/Exception.php',
+        'Yajra\\DataTables\\Facades\\DataTables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Facades/DataTables.php',
+        'Yajra\\DataTables\\Processors\\DataProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/DataProcessor.php',
+        'Yajra\\DataTables\\Processors\\RowProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/RowProcessor.php',
+        'Yajra\\DataTables\\QueryDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/QueryDataTable.php',
+        'Yajra\\DataTables\\Utilities\\Config' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Config.php',
+        'Yajra\\DataTables\\Utilities\\Helper' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Helper.php',
+        'Yajra\\DataTables\\Utilities\\Request' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Request.php',
         'Yoeunes\\Toastr\\Facades\\Toastr' => __DIR__ . '/..' . '/yoeunes/toastr/src/Facades/Toastr.php',
         'Yoeunes\\Toastr\\Toastr' => __DIR__ . '/..' . '/yoeunes/toastr/src/Toastr.php',
         'Yoeunes\\Toastr\\ToastrServiceProvider' => __DIR__ . '/..' . '/yoeunes/toastr/src/ToastrServiceProvider.php',

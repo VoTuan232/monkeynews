@@ -18,7 +18,7 @@ class StatePostController extends Controller
 
         if(is_null(Auth::user())) {
             return response()->json([
-                'authenticated' => 'Bạn cần đăng nhập mới thích được bài post này',
+                'authenticated' => __('language.check_login_like_post'),
                 'class_name' => 'alert-danger',
             ]);
         }
@@ -59,7 +59,7 @@ class StatePostController extends Controller
             }
 
             return response()->json([
-                'message' => 'Like post successfully',
+                'message' => __('language.like_post_success'),
                 'class_name' => 'alert-success',
                 'post_data' => $post,
             ]); 
@@ -81,7 +81,7 @@ class StatePostController extends Controller
             ]);
             
             return response()->json([
-                'message' => 'Remove like post successfully',
+                'message' => __('language.remove_like_post_success'),
                 'class_name' => 'alert-success',
                 'post_data' => $post,
             ]); 
@@ -91,7 +91,7 @@ class StatePostController extends Controller
 
         if(is_null(Auth::user())) {
             return response()->json([
-                'authenticated' => 'Bạn cần đăng nhập mới ghét được bài post này',
+                'authenticated' => __('language.check_login_dislike_post'),
                 'class_name' => 'alert-danger',
             ]);
         }
@@ -131,7 +131,7 @@ class StatePostController extends Controller
             }
 
             return response()->json([
-                'message' => 'Dislike post successfully',
+                'message' => __('language.dislike_post_success'),
                 'class_name' => 'alert-success',
                 'post_data' => $post,
             ]); 
@@ -153,7 +153,7 @@ class StatePostController extends Controller
             ]);
             
             return response()->json([
-                'message' => 'Remove dislike post successfully',
+                'message' => __('language.remove_dislike_post_success'),
                 'class_name' => 'alert-success',
                 'post_data' => $post,
             ]); 

@@ -123,7 +123,8 @@
                     
                     @if(!Auth::user())
                     <li class="nav-item ">
-                        <a class="nav-link" href="{{ route('login') }}"><!-- <i class="fa fa-user"></i> -->{{ trans('language.login') }} <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('login') }}">
+                            <!-- <i class="fa fa-user"></i> -->{{ trans('language.login') }} <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item pull-right">
                         <a class="nav-link" href="{{ route('register') }}">{{ trans('language.register') }}<!-- <i class="fa fa-user-plus"></i> -->  <span class="sr-only">(current)</span></a>
@@ -277,6 +278,7 @@
 <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
 
 @include('pages.language_js')
+@include('partials._alert')
 
 @routes
     <script src="{{ mix('js/show_image.js') }}"></script>

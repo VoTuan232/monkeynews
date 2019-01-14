@@ -88,5 +88,13 @@ return [
     'enter_to_add_permission' => 'Enter to add new permission...',
     'update_role' => 'Update Role',
     'manager_published' => 'Manager Pulished Post',
+    'check_login_like_post' => 'You need login to like post!',
+    'like_post_success' => 'Like post success!',
+    'remove_like_post_success' => 'Remove like post success!',
+    'check_login_dislike_post' => 'You need login to dislike post!',
+    'remove_dislike_post_success' => 'Remove dislike post success!',
+    'dislike_post_success' => 'Dislike post success',
+    'check_login_save_post' => 'You need login to save post!',
+    'auto' => 'Auto',
 
 ];
