@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use App\Models\Category;
@@ -19,6 +18,7 @@ use App\Repositories\TodoInterface;
 use App\Repositories\Repository;
 use App\Repositories\RepositoryInterface;
 use Illuminate\Http\Resources\Json\Resource;
+use Illuminate\Contracts\Routing\UrlGenerator;
 
 class AppServiceProvider extends ServiceProvider
 {
