@@ -23,6 +23,16 @@ class PostRequest extends FormRequest
      *
      * @return array
      */
+    public function rulesTest()
+    {
+        return [
+            'title'       => 'required|max:255',
+            'slug'        => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
+            'body'         => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ];
+    }
+
     public static function rules($request)
     {
         $messages = [

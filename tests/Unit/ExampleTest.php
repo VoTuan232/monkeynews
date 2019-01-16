@@ -17,3 +17,10 @@ class ExampleTest extends TestCase
         $this->assertTrue(true);
     }
 }
+
+/* Unit Test tap trung :
+	+test cac truong (field) trong table co ton tai trong bang hay ko
+	+test relationship cac bang
+*/
+
+/* function has name test_... */

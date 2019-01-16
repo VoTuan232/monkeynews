@@ -21,6 +21,8 @@ use App\Repositories\TagRepository;
 use App\Repositories\PostRepository;
 use Illuminate\Support\Facades\Storage;
 use File;
+use GuzzleHttp\Client;
+use Gmopx\LaravelOWM\LaravelOWM;
 
 class HomeController extends Controller
 {
@@ -59,6 +61,12 @@ class HomeController extends Controller
 
     public function index()
     {
+        // $lowm = new LaravelOWM();
+        // $current_weather = $lowm->getCurrentWeather('london');
+
+        // dd($current_weather->temperature->now->value);
+
+
         $data = [];
         $data1 = [];
         $categories = Category::where('parent_id', null)->paginate(4);

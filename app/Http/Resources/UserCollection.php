@@ -23,14 +23,15 @@ class UserCollection extends ResourceCollection
             ],
         ];
     }
-     public function with($request)
-    {
-        return [
-            'meta hihi' => [
-                'key' => 'value',
-            ],
-        ];
-    }
+    
+    // public function with($request)
+    // {
+    //     return [
+    //         'meta hihi' => [
+    //             'key' => 'value',
+    //         ],
+    //     ];
+    // }
     // public function toArray($request)
     // {
     //     return parent::toArray($request);

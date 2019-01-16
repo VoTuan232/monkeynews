@@ -44,7 +44,6 @@
 <body>
 
     @include('users.profile')
-
 <div class="container-fluid fh5co_header_bg">
     <div class="container">
         <div class="row">
@@ -283,7 +282,20 @@
 @routes
     <script src="{{ mix('js/show_image.js') }}"></script>
     <script src="{{ mix('js/edit_profile.js') }}"></script>
-
+{{-- <script>
+    $(document).ready(function (){
+        $('#submitWeather').click(function() {
+            $.ajax({
+                url: 'https://samples.openweathermap.org/data/2.5/weather?id=2172797&appid=b053c04ceef90d13f605fae2b37a666c',
+                type: "GET",
+                dataType: "jsonp",
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+        })
+    })
+</script> --}}
 
  @yield('javascript')
 </body>

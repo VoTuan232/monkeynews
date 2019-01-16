@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    // public static $slug;
+    
     protected $fillable = [
         'title',
         'slug',

@@ -36,18 +36,18 @@ class CommentController extends Controller
     // } 
 
     public function index() {
-        $data = Post::Where('published', '1')->orderBy('created_at', 'desc')->with('comments', 'users')->get();
-        dd($data);
-        foreach($data as $data) {
-            dd($data);
-        }
+        
         return view('admin.comments.index');
     }
 
     public function getComments() {
-        $data = Post::Where('published', '1')->orderBy('created_at', 'desc')->with('comments')->get();
+        $data = Post::Where('published', '1')->with('comments', 'user')->get();
         return DataTables::of($data)
         ->addColumn('role', function($data){
+            return $data->user->roles->first()->name;
+        })
+        ->addColumn('total_comments', function($data){
+            return $data->comments->count();
         })
         ->toJson();
     }

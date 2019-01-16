@@ -29,10 +29,10 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
+                            <th>Title</th>
+                            <th>User</th>
                             <th>Role</th>
-                            <th>Email</th>
-                            <th>Created_at</th>
+                            <th>Total Comments</th>
                         </tr>
                     </thead>
                 </table>
@@ -94,9 +94,22 @@
                     },
                     "columns": [
                         { data: 'id', name: 'id' },
-                        { data: 'title', name: 'title' },
-                        { data: 'created_at', name: 'created_at' },
-                        // { data: 'updated_at', name: 'updated_at' },
+                        { 
+                            data: 'title',
+                            name: 'title',
+                            // render: function (data) {
+                            //     $string = '';
+                            //     $string = $stirng + 'hihi';
+                            //         return $string;
+                            // }
+                        },
+                        { data: 'user.name', name: 'user' },
+                        { data: 'role', name: 'role' },
+                        { 
+                            data: 'total_comments', 
+                            name: 'total_comments',
+
+                        }
                     ]
                 } );
             } );

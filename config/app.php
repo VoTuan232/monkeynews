@@ -150,7 +150,6 @@ return [
         /*
          * Package Service Providers...
          */
-
         /*
          * Application Service Providers...
          */
@@ -166,6 +165,7 @@ return [
         // 'repotutrepositoriesRepositoryServiceProvider'
         // RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         'Grimthorr\LaravelToast\ServiceProvider',
+        Gmopx\LaravelOWM\LaravelOWMServiceProvider::class,
 
     ],
 
