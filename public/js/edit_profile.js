@@ -80,8 +80,11 @@ $(document).ready(function () {
 
     $('#update_profile').on('submit', function (event) {
         event.preventDefault();
+        var appBaseUrl = '';
+        var finalUrl = appBaseUrl + '/updateProfile';
+
         $.ajax({
-            url: "updateProfile",
+            url: finalUrl,
             method: "POST",
             data: new FormData(this),
             dataType: 'JSON',
@@ -89,11 +92,11 @@ $(document).ready(function () {
             cache: false,
             processData: false,
             success: function success(data) {
-                if (data.post_data) {
-                    toastr.success(data.message);
-                }
+                var type = data.alert_type;
+
                 switch (type) {
                     case 'success':
+                        toastr.success(data.message);
                         break;
                     case 'error':
                         var message = data.message;

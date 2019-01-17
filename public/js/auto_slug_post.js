@@ -68,12 +68,12 @@
 /***/ 58:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(63);
+module.exports = __webpack_require__(59);
 
 
 /***/ }),
 
-/***/ 63:
+/***/ 59:
 /***/ (function(module, exports) {
 
 $("#button_auto_slug").click(function () {
