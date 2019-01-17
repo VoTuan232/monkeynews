@@ -201,7 +201,8 @@ class PostController extends Controller
             if($request->hasFile('image')){
                 $image = $request->file('image');
                 $filename = time() . '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('images'), $filename);
+                // $image->move(public_path('images'), $filename);
+                $image->move("images", $filename);
                 $oldFilename = $post->image;
                 File::delete('images/'.$oldFilename);
                 $post->image = $filename; 

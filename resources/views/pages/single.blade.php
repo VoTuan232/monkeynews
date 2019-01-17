@@ -217,7 +217,8 @@
                              <a href="" data-id="{{$post->id}}"><i class="fa fa-trash"></i>Delete</a>
                         @endcan
                         <i class="fa fa-eye fa-1x icon-view-post" title="View"></i>{{ $post->view }}
-                        <i class="fa fa-comments fa-1x icon-view-post" title="Comment"></i>{{ $comments->comment_number }}
+                        <i class="fa fa-comments fa-1x icon-view-post" title="Comment"></i>{{ $post->comments->count() }}
+                        {{-- <i class="fa fa-comments fa-1x icon-view-post" title="Comment"></i>{{ $comments->comment_number }} --}}
                         <br>
                         <input id="post-shortlink" value="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}">
                         <button class="button" id="copy-link-post" data-clipboard-target="#post-shortlink" title="Copy url"><i class="fa fa-link" ></i></button>

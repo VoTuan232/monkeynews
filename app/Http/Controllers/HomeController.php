@@ -164,17 +164,22 @@ class HomeController extends Controller
                 ->where('storages.user_id', '=', Auth::user()->id)
                 ->selectRaw('storages.*')
                 ->first();
+                // dd($postAll);
             } 
             else {
                 $postAll = null;
             }
 
-            $category = DB::table('category_post')
-                    ->join('posts', 'category_post.post_id', '=', 'posts.id' )
-                    ->join('categories', 'category_post.category_id', '=', 'categories.id' )
-                    ->where('posts.id', '=', $post->id)
-                    ->first();
-            $category = Category::find($category->id);
+            // dd('hihi');
+
+            // $category = DB::table('category_post')
+            //         ->join('posts', 'category_post.post_id', '=', 'posts.id' )
+            //         ->join('categories', 'category_post.category_id', '=', 'categories.id' )
+            //         ->where('posts.id', '=', $post->id)
+            //         ->first();
+            // $category = Category::find($category->id);
+
+            $category = $post->categories()->first();
 
             $this->save = new Collection();
             $postsRelated = $this->getAllPostsBaseCategory($category->id)->sortByDesc('created_at')->take(4);
@@ -184,7 +189,10 @@ class HomeController extends Controller
                 ->leftjoin('posts', 'posts.id', '=', 'post_tag.post_id')  
                 ->where('posts.id', '=', $post->id)
                 ->selectRaw('tags.*')->get();
-            $comments = $this->postRepository->getCommentBasePost($post);
+
+            // $comments = $this->postRepository->getCommentBasePost($post);
+            // dd($post->comments()->count());
+
             $data = [];
             $data1 = [];
             $categories = Category::where('parent_id', '=', null)->paginate(4);
@@ -207,7 +215,7 @@ class HomeController extends Controller
             $randomFile = array_random($files);
             $imageName = $randomFile->getFilename();
 
-            return view('pages.single', compact('post', 'category', 'postsRelated', 'postAll', 'data', 'data1', 'categories', 'tags', 'comments', 'catsHome', 'tagsPost', 'trending', 'imageName'));
+            return view('pages.single', compact('post', 'category', 'postsRelated', 'postAll', 'data', 'data1', 'categories', 'tags', 'catsHome', 'tagsPost', 'trending', 'imageName'));
         }
 
         return view('errors.404');
