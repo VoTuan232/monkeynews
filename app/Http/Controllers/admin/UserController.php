@@ -98,9 +98,11 @@ class UserController extends Controller
 
             $user->save();
 
+            $user = User::where('id', $user->id)->with('roles', 'posts')->get();
+
             return response()->json([
-                'user_data' => $this->findUser($user->id),
-                'message'   => 'The post was successfully updated!',
+                'user_data' => $user,
+                'message'   => __('language.update_post_success'),
                 'class_name'  => 'alert-success',
             ]);
         }

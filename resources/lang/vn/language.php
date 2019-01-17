@@ -95,4 +95,5 @@ return [
     'dislike_post_success' => 'Không thích bài viết thành công',
     'check_login_save_post' => 'Bạn cần đăng nhập mới lưu được bài viết này!',
     'auto' => 'Tự động',
+    'update_post_success' => 'Cập nhật bài viết thành công!',
 ];

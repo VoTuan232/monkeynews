@@ -31,38 +31,40 @@
                 cache: false,
                 processData: false,
                 success:function(data){
-                    console.log(data); 
-                     if(data.user_data)
+
+                    if(data.user_data[0])
                     {
 
                     var tr=$("<tr/>",{
-                    id:data.user_data.id
+                    id:data.user_data[0].id
                 });
                     tr.append($("<td/>",{
-                        text : data.user_data.user_id
+                        text : data.user_data[0].id
                     })).append($("<td/>",{
-                        text : data.user_data.username
+                        text : data.user_data[0].name
                     })).append($("<td/>",{
-                        text : data.user_data.email
+                        text : data.user_data[0].email
                  })).append($("<td/>",{
-                        text : data.user_data.role_name
+                        text : ( typeof data.user_data[0].roles[0] === "undefined" ? '' : data.user_data[0].roles[0].name)
                     })).append($("<td/>",{
                         text : 0
                     })).append($("<td/>",{
-                        html : '<a href="#" class="btn btn-info btn-xs" id="view" data-id="'+data.user_data.id+'">View </a> ' + 
-                            '<a href="" class="btn btn-success btn-xs" id="edit" data-id="'+data.user_data.id+'">Edit </a> ' +
-                            '<a href="#" class="btn btn-danger btn-xs" id="delete" data-id="'+data.user_data.id+'">Delete </a>' 
+                        html : '<a href="#" class="btn btn-info btn-xs" id="view" data-id="'+data.user_data[0].id+'">View </a> ' + 
+                            '<a href="" class="btn btn-success btn-xs" id="edit" data-id="'+data.user_data[0].id+'">Edit </a> ' +
+                            '<a href="#" class="btn btn-danger btn-xs" id="delete" data-id="'+data.user_data[0].id+'">Delete </a>' 
                     }))
 
-                        $('#user-info tr#'+data.user_data.user_id).replaceWith(tr);
+                        $('#user-info tr#'+data.user_data[0].id).replaceWith(tr);
                         
                         $('#editUser').modal('hide');
-                        $('#message').css('display', 'block');
-                        $('#message').html(data.message);
-                        $('#message').addClass(data.class_name);
-                         $("#message").fadeTo(2000, 500).slideUp(500, function(){
-                            $("#message").slideUp(500);
-                        });
+
+                        toastr.success(data.message);
+                        // $('#message').css('display', 'block');
+                        // $('#message').html(data.message);
+                        // $('#message').addClass(data.class_name);
+                        // $("#message").fadeTo(2000, 500).slideUp(500, function(){
+                        //     $("#message").slideUp(500);
+                        // });
                     }
 
                     else{

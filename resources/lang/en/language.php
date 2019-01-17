@@ -96,5 +96,6 @@ return [
     'dislike_post_success' => 'Dislike post success',
     'check_login_save_post' => 'You need login to save post!',
     'auto' => 'Auto',
+    'update_post_success' => 'The post was updated successfully',
 
 ];
