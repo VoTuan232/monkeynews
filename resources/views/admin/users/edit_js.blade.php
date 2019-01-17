@@ -2,13 +2,17 @@
    $(document).on('click','#edit',function(e){
             var id=$(this).data('id');
             console.log(id);
-            $.get("{{ URL::to('manager/users/edit')}}", {id: id}, function(data){
-                console.log(data);
-                $('#frm-update').find('#user_id').val(data.user_data.user_id)
-                $('#frm-update').find('#name').val(data.user_data.username)
-                $('#frm-update').find('#email').val(data.user_data.email)
-                $('#frm-update').find('#role').val(data.user_data.role_id)
-                $('#frm-update').find('#posts').val(data.user_data.post_number)
+            $.get("{{ URL::to('manager/users/edit')}}", {id: id}, function(data) {
+                $('#frm-update').find('#user_id').val(data[0].id)
+                $('#frm-update').find('#name').val(data[0].name)
+                $('#frm-update').find('#email').val(data[0].email)
+                if(data[0].roles[0]) {
+                    $('#frm-update').find('#role').val(data[0].roles[0].id)
+                }
+                else {
+                    $('#frm-update').find('#role').val(0)
+                }
+                // $('#frm-update').find('#posts').val(data.user_data.posts);
                 $('#editUser').modal('show');
             })
   })

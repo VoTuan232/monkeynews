@@ -74,10 +74,14 @@ class UserController extends Controller
 
     public function edit(Request $request)
     {
-        $user = $this->findUser($request->id);
-            return response()->json([
-                'user_data' => $user,
-            ]);
+        $user = User::where('id', $request->id)->with('roles', 'posts')->get();
+
+        return response()->json($user);
+        // $user = $this->findUser($request->id);
+
+        // return response()->json([
+        //     'user_data' => $user,
+        // ]);
     }
 
     public function update(Request $request)
