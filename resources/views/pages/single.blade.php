@@ -72,6 +72,9 @@
             border: none;
             cursor: pointer;
         }
+        div .body-post img {
+            max-width: 100%;
+        }
     </style>
 
 </head>
@@ -171,7 +174,7 @@
 <div id="fh5co-single-content" class="container-fluid pb-4 pt-4 paddding">
     <div class="container paddding">
         <div class="row mx-0">
-            <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
+            <div class="col-md-8 animate-box body-post" data-animate-effect="fadeInLeft">
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">
                         @if(!is_null($category->parent))
