@@ -18,7 +18,6 @@ use App\Repositories\TodoInterface;
 use App\Repositories\Repository;
 use App\Repositories\RepositoryInterface;
 use Illuminate\Http\Resources\Json\Resource;
-use Illuminate\Contracts\Routing\UrlGenerator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,10 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(UrlGenerator $url)
     {
-        if(env('REDIRECT_HTTPS')) {
-            $url->forceSchema('https');
-        }
-
         \Debugbar::disable();
         View::composer(
             '*', 'App\Http\ViewComposers\HomeComposer'
@@ -48,9 +43,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if(env('REDIRECT_HTTPS')) {
-            $this->app['request']->server->set('HTTPS', true);
-        }
         // $this->app->singleton(TodoInterface::class, EloquentTodo::class);
         // $this->app->singleton(RepositoryInterface::class, Repository::class);
         // $this->app->singleton(Repository::class);
