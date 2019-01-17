@@ -18,6 +18,7 @@ use App\Repositories\TodoInterface;
 use App\Repositories\Repository;
 use App\Repositories\RepositoryInterface;
 use Illuminate\Http\Resources\Json\Resource;
+use URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        URL::forceScheme('https');
+        
         \Debugbar::disable();
         View::composer(
             '*', 'App\Http\ViewComposers\HomeComposer'
