@@ -1,11 +1,11 @@
 <?php
 
-$url = parse_url(getenv("DATABASE_URL"));
+// $url = parse_url(getenv("DATABASE_URL"));
 
-$host = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
+// $host = $url["host"];
+// $username = $url["user"];
+// $password = $url["pass"];
+// $database = substr($url["path"], 1);
 
 return [
 
@@ -75,14 +75,16 @@ return [
         ],
 
         'pgsql_production' => array(
-            'driver'   => 'pgsql',
-            'host'     => $host,
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
-            'charset'  => 'utf8',
-            'prefix'   => '',
-            'schema'   => 'public',
+            'driver' => 'pgsql',
+            'host' => 'ec2-23-21-244-254.compute-1.amazonaws.com',
+            'port' => '5432',
+            'database' => 'd56lbq83s3bspd',
+            'username' => 'fpjifbrkafvafe',
+            'password' => ':ae342fe0f32f8f4ac67296def496a389a6f95c7a8aa8c5d667dbb4b4586ca671',
+            'charset' => 'utf8',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
         ),
 
         'sqlsrv' => [
