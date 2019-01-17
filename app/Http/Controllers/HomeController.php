@@ -88,7 +88,7 @@ class HomeController extends Controller
         $tags = DB::table('tags')->selectRaw('id, name')->get(); 
         $catsHome = $this->categoryRepository->getCategoryForHome();
 
-        DB::table('posts')->update(['trending' => null]);
+        // DB::table('posts')->update(['trending' => null]);
         // lay trending
         $trending = Post::where('published', true)->orderBy('trending', 'desc')->firstOrFail();
 
