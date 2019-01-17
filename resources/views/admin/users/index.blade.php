@@ -42,20 +42,20 @@
 
 						<tbody id="user-info">
 							@foreach ($users as $user)
-							<tr id="{{ $user->user_id }}">
-								<th>{{ $user->user_id }}</th>
-								<td>{{ $user->username }}</td>
+							<tr id="{{ $user->id }}">
+								<th>{{ $user->id }}</th>
+								<td>{{ $user->name }}</td>
 								<td>{{ $user->email }}</td>
-								<td>{{ $user->role_name }}</td>
-								<td>{{ $user->post_number }}</td>
+								<td>{{ $user->roles->first()['name'] }}</td>
+								<td>{{ $user->posts->count() }}</td>
 								
 								<td>
 									<a href="#" class="btn btn-info btn-xs" id="view">View</a>
 									@can('user.update')
-									<a href="#" class="btn btn-success btn-xs" id="edit" data-id="{{ $user->user_id }}">Edit</a>
+									<a href="#" class="btn btn-success btn-xs" id="edit" data-id="{{ $user->id }}">Edit</a>
 									@endcan
 									@can('user.delete')
-									<a href="#" class="btn btn-danger btn-xs" id="delete" data-id="{{ $user->user_id }}">Delete</a>
+									<a href="#" class="btn btn-danger btn-xs" id="delete" data-id="{{ $user->id }}">Delete</a>
 									@endcan
 								</td>
 							</tr>

@@ -27,8 +27,9 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = $this->getUsers();
-
+        // $users = $this->getUsers();
+        $users = User::with('roles', 'posts')->get();
+        
         $roles = Role::pluck('name','id'); 
 
         return view('admin.users.index')->withUsers($users)->withRoles($roles)->withRoles($roles);
