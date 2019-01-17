@@ -67,7 +67,7 @@ return [
             'port' => '5432',
             'database' => 'd56lbq83s3bspd',
             'username' => 'fpjifbrkafvafe',
-            'password' => ':ae342fe0f32f8f4ac67296def496a389a6f95c7a8aa8c5d667dbb4b4586ca671',
+            'password' => 'ae342fe0f32f8f4ac67296def496a389a6f95c7a8aa8c5d667dbb4b4586ca671',
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
