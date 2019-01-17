@@ -90,7 +90,7 @@ class HomeController extends Controller
 
         DB::table('posts')->update(['trending' => null]);
         // lay trending
-        $trending = Post::orderBy('trending', 'desc')->firstOrFail();
+        $trending = Post::where('published', true)->orderBy('trending', 'desc')->firstOrFail();
 
         return view('pages.home', compact('categories', 'data', 'data1', 'new', 'newList', 'newsHot', 'tags', 'catsHome', 'trending'));
     }
