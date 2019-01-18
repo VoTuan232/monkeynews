@@ -21,7 +21,7 @@
                 @foreach($value as $post)
                     <div class="item px-2">
                         <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="{{ asset('images/'.$post->image) }}" alt=""/></div>
+                            <div class="fh5co_news_img"><img src="{{ $post->image }}" alt=""/></div>
                             <div>
                                 <a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" class="d-block fh5co_small_post_heading"><span class="">{!! substr(strip_tags($post->title), 0, 60) !!}{{ strlen(strip_tags($post->title))>60 ? "..." : ""}}</span></a>
                                 <div class="c_g"><i class="fa fa-clock-o"></i> {{ $post->created_at }} </div>

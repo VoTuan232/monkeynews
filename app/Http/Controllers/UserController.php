@@ -10,6 +10,7 @@ use Auth;
 use App\Repositories\UserRepository;
 use File;
 use Illuminate\Support\Facades\Hash;
+use JD\Cloudder\Facades\Cloudder;
 
 class UserController extends Controller
 {
@@ -29,15 +30,26 @@ class UserController extends Controller
             {
                 if ($request->hasFile('image')) {
                     $image = $request->file('image');
-                    $new_name = rand() . '.' . $image->getClientOriginalExtension();
-                    $image->move(public_path('images/users'), $new_name);
+                    $filename = rand() . '.' . $image->getClientOriginalExtension();
+                    $image->move('images/users', $filename);
+                    // $image->move(public_path('images/users'), $new_name);
+
                     //remove old file
                     $oldFilename = Auth::user()->avatar;
                     if($oldFilename != null) {
                         File::delete('images/users/'.$oldFilename);
                     }
+
+                    //upload cloud
+                  Cloudder::upload('images/users/' . $filename);
+                  //get url cloudder image
+                  // dd(Cloudder::getResult());
+                  //update image thanh url of cloudder
+                  $url_image_cloudder = Cloudder::getResult()['url'];
+
                     //update
-                    $data['avatar'] = $new_name;
+                    $data['avatar'] = $url_image_cloudder;
+                    // $data['avatar'] = $new_name;
                     $this->userRepository->update($data, Auth::user()->id);
                 }
 

@@ -35,9 +35,9 @@
                         </div>
                         <div class="col-md-2" >
                             @if ($post->user->avatar != null)
-                                <image src="/images/users/{{ $post->user->avatar }}" class="img-tran"/>
+                                <image src="{{ $post->user->avatar }}" class="img-tran"/>
                             @else
-                                <image src="/images/anonymos.png" class="img-tran"/>
+                                <image src="/images/users/anonymos.png" class="img-tran"/>
                             @endif
                         </div> 
                     </div>
