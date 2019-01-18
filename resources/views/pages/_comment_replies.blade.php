@@ -7,7 +7,7 @@
 @foreach($comments as $comment)
 <div class="display-comment-<?php echo $comment->id;?>"  style="margin-left:30px;">
         @if ($comment->user->avatar != null) 
-            <image src="/images/users/{{ $comment->user->avatar }}" class="img-tran">
+            <image src="{{ $comment->user->avatar }}" class="img-tran">
         @else
             <image src="/images/anonymos.png" class="img-tran" >
         @endif
