@@ -23,9 +23,9 @@
                                         <div class="thumbnail">
                                         <h3 align="center">{{ucwords(Auth::user()->name)}}</h3>
                                         @if(Auth::user()->avatar == null)
-                                            <img id="upload-image" src="{{url('/')}}/images/single_post/taylor.png" width="120px" height="120px" class="img-circle" style="margin-left: 36%;"/>
+                                            <img id="upload-image" src="/images/users/anonymos.png" width="120px" height="120px" class="img-circle" style="margin-left: 36%;"/>
                                         @else
-                                            <img id="upload-image" src="{{url('/')}}/images/users/{{ Auth::user()->avatar }}" width="120px" height="120px" class="img-circle" style="margin-left: 36%;"/>
+                                            <img id="upload-image" src="{{ Auth::user()->avatar }}" width="120px" height="120px" class="img-circle" style="margin-left: 36%;"/>
                                         @endif
                                         <div class="caption">
                                             <p align="center">Việt Nam</p>
