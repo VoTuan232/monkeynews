@@ -102,7 +102,7 @@ class PostController extends Controller
             $image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             // $image->move(public_path('images'), $filename);
-            $image->move("images", $filename);
+            $image->move("uploads/images", $filename);
 
 
             if(is_null($request->published)){
@@ -202,9 +202,9 @@ class PostController extends Controller
                 $image = $request->file('image');
                 $filename = time() . '.' . $image->getClientOriginalExtension();
                 // $image->move(public_path('images'), $filename);
-                $image->move("images", $filename);
+                $image->move("uploads/images", $filename);
                 $oldFilename = $post->image;
-                File::delete('images/'.$oldFilename);
+                File::delete('uploads/images'.$oldFilename);
                 $post->image = $filename; 
             }
 
