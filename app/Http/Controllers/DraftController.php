@@ -50,7 +50,10 @@ class DraftController extends Controller
         $tags = $this->tagRepository->getAllTag();
 
         // lay trending
-        $trending = Post::orderBy('trending', 'desc')->firstOrFail();
+        $trending = Post::where('published', true)->WhereNotNull('trending')->orderBy('trending', 'desc')->first();
+        if($trending == null) {
+            $trending = Post::where('published', true)->orderBy('created_at', 'desc')->firstOrFail();
+        }
 
         return view('drafts.index', compact('posts', 'categories', 'trees', 'tags', 'catsHome', 'trending'));
     }

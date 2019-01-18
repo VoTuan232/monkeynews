@@ -90,7 +90,10 @@ class HomeController extends Controller
 
         // DB::table('posts')->update(['trending' => null]);
         // lay trending
-        $trending = Post::where('published', true)->orderBy('trending', 'desc')->firstOrFail();
+        $trending = Post::where('published', true)->WhereNotNull('trending')->orderBy('trending', 'desc')->first();
+        if($trending == null) {
+            $trending = Post::where('published', true)->orderBy('created_at', 'desc')->firstOrFail();
+        }
 
         return view('pages.home', compact('categories', 'data', 'data1', 'new', 'newList', 'newsHot', 'tags', 'catsHome', 'trending'));
     }
@@ -124,7 +127,10 @@ class HomeController extends Controller
             $catsHome = $this->categoryRepository->getCategoryForHome();
 
             // lay trending
-            $trending = Post::orderBy('trending', 'desc')->firstOrFail();
+            $trending = Post::where('published', true)->WhereNotNull('trending')->orderBy('trending', 'desc')->first();
+            if($trending == null) {
+                $trending = Post::where('published', true)->orderBy('created_at', 'desc')->firstOrFail();
+            }
 
             return view('pages.posts_base_category', compact('posts', 'category', 'postsMostPopular', 'numberPage', 'data', 'data1', 'categories', 'tags', 'catsHome', 'trending'));
         }
@@ -209,8 +215,13 @@ class HomeController extends Controller
             }
             $tags = $this->tagRepository->getAllTag();
             $catsHome = $this->categoryRepository->getCategoryForHome();
+
             // lay trending
-            $trending = Post::orderBy('trending', 'desc')->firstOrFail();
+            $trending = Post::where('published', true)->WhereNotNull('trending')->orderBy('trending', 'desc')->first();
+            if($trending == null) {
+                $trending = Post::where('published', true)->orderBy('created_at', 'desc')->firstOrFail();
+            }
+
             //random anh
             $files = File::allFiles('images/single_post');
             $randomFile = array_random($files);
@@ -253,7 +264,10 @@ class HomeController extends Controller
         }  
 
           // lay trending
-        $trending = Post::orderBy('trending', 'desc')->firstOrFail();
+        $trending = Post::where('published', true)->WhereNotNull('trending')->orderBy('trending', 'desc')->first();
+        if($trending == null) {
+            $trending = Post::where('published', true)->orderBy('created_at', 'desc')->firstOrFail();
+        }
 
         return view('pages.posts_base_tag')->withPosts($posts)->withTag($tag)->withNumberPage($numberPage)->withTags($tags)->withCatsHome($catsHome)->withData($data)->withData1($data1)->withCategories($categories)->withTrending($trending);
     }
@@ -262,7 +276,10 @@ class HomeController extends Controller
         $tags = $this->tagRepository->getAllTag();
         $catsHome = $this->categoryRepository->getCategoryForHome();
         // lay trending
-        $trending = Post::orderBy('trending', 'desc')->firstOrFail();
+        $trending = Post::where('published', true)->WhereNotNull('trending')->orderBy('trending', 'desc')->first();
+        if($trending == null) {
+            $trending = Post::where('published', true)->orderBy('created_at', 'desc')->firstOrFail();
+        }
 
         $trending_list = Post::WhereNotNull('trending')->orderBy('trending', 'desc')->with('tags', 'comments')->paginate(5);
         //random anh

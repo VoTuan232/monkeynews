@@ -108,7 +108,7 @@ class PostController extends Controller
             //upload cloud
             Cloudder::upload('uploads/images/' . $filename);
             //get url cloudder image
-            // dd(Cloudder::getResult()['url']);
+            // dd(Cloudder::getResult());
             //update image thanh url of cloudder
             $url_image_cloudder = Cloudder::getResult()['url'];
 
@@ -222,6 +222,9 @@ class PostController extends Controller
                 // dd(Cloudder::getResult()['url']);
                 //update image thanh url of cloudder
                 $url_image_cloudder = Cloudder::getResult()['url'];
+                //delelte imgae cloudder
+                // Cloudder::destroyImage($publicId, array $options)
+                // Cloudder::delete($publicId, array $options)
 
                 // $post->image = $filename; 
                 $post->image = $url_image_cloudder; 

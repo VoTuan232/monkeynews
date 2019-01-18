@@ -62,7 +62,7 @@
 	                            {{ Form::label('image', 'Upload a Featured Image') }}
 	                            {{ Form::file('image', ['class' => 'image']) }}
 	                        </div>
-	                        {{ HTML::image('images/'.$post->image, 'Image Post', array('id' => 'upload-image', 'width' => '300px')) }}
+	                        {{ HTML::image($post->image, 'Image Post', array('id' => 'upload-image', 'width' => '300px')) }}
 	                    </div>
 	                    <br>
 	                    <div class="col-3-md">

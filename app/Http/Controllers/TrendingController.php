@@ -14,7 +14,10 @@ class TrendingController extends Controller
 
     public function getPostTrending() {
 		// lay trending
-    	$trending = Post::orderBy('trending', 'desc')->firstOrFail();
+    	$trending = Post::where('published', true)->WhereNotNull('trending')->orderBy('trending', 'desc')->first();
+        if($trending == null) {
+            $trending = Post::where('published', true)->orderBy('created_at', 'desc')->firstOrFail();
+        }
 
        return view('pages.trending', compact('trending'));
     }
