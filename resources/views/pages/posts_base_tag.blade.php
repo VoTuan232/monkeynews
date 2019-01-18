@@ -14,7 +14,7 @@
                     <div class="row pb-4">
                         <div class="col-md-5">
                             <div class="fh5co_hover_news_img">
-                                <div class="fh5co_news_img"><img src="{{ asset('images/'.$post->image) }}" alt=""/></div>
+                                <div class="fh5co_news_img"><img src="{{ asset(Config::get('social.image_post').'/'.$post->image) }}" alt=""/></div>
                                 <div></div>
                             </div>
                         </div>
