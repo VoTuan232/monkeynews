@@ -206,14 +206,25 @@ class PostController extends Controller
             // $post->slug = str_slug($request->title);
             $post->slug = $request->slug;
             $post->body = rtrim($request->body);
+
             if($request->hasFile('image')){
                 $image = $request->file('image');
                 $filename = time() . '.' . $image->getClientOriginalExtension();
                 // $image->move(public_path('images'), $filename);
                 $image->move("uploads/images", $filename);
                 $oldFilename = $post->image;
+
                 File::delete('uploads/images'.$oldFilename);
-                $post->image = $filename; 
+
+                //upload cloud
+                Cloudder::upload('uploads/images/' . $filename);
+                //get url cloudder image
+                // dd(Cloudder::getResult()['url']);
+                //update image thanh url of cloudder
+                $url_image_cloudder = Cloudder::getResult()['url'];
+
+                // $post->image = $filename; 
+                $post->image = $url_image_cloudder; 
             }
 
             if(is_null($request->published)){
