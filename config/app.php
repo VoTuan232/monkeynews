@@ -166,6 +166,7 @@ return [
         // RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         'Grimthorr\LaravelToast\ServiceProvider',
         Gmopx\LaravelOWM\LaravelOWMServiceProvider::class,
+        JD\Cloudder\CloudderServiceProvider::class,
 
     ],
 
@@ -222,7 +223,7 @@ return [
         // 'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Toast' => 'Grimthorr\LaravelToast\Facade',
         Yoeunes\Toastr\ToastrServiceProvider::class,
-
+        'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
     ],
 
 ];

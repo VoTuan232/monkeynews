@@ -21,6 +21,7 @@ use App\Events\NewPost;
 use Session;
 use Carbon;
 use App\Repositories\TagRepository;
+use JD\Cloudder\Facades\Cloudder;
 
 class PostController extends Controller
 {
@@ -104,6 +105,12 @@ class PostController extends Controller
             // $image->move(public_path('images'), $filename);
             $image->move("uploads/images", $filename);
 
+            //upload cloud
+            Cloudder::upload('uploads/images/' . $filename);
+            //get url cloudder image
+            // dd(Cloudder::getResult()['url']);
+            //update image thanh url of cloudder
+            $url_image_cloudder = Cloudder::getResult()['url'];
 
             if(is_null($request->published)){
                 $published = false;
@@ -117,7 +124,8 @@ class PostController extends Controller
                 'title' => $request->title,
                 'slug' => $request->slug,
                 'body' => trim($request->body),
-                'image' => $filename,
+                'image' => $url_image_cloudder,
+                // 'image' => $filename,
                 'published' => $published,
                 'user_id' => Auth::user()->id,
                 'request' => 0,
