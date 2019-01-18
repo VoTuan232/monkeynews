@@ -84,7 +84,11 @@ class Post extends Model
     }
 
     //get user in storages
-    public function getPostStorages() {
-        return $this->belongsToMany('App\Models\User', 'storages', 'post_id', 'user_id');
+    // public function getPostStorages() {
+    //     return $this->belongsToMany('App\Models\User', 'storages', 'post_id', 'user_id');
+    // }
+    public function storages()
+    {
+        return $this->hasMany('App\Models\Storage', 'post_id');
     }
 }

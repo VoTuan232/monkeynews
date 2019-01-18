@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\Storage;
 use DB;
 use Auth;
 use App\Repositories\CategoryRepository;
@@ -92,27 +93,25 @@ class StorageController extends Controller
     }
 
     public function getPost() {
+        $storages = Storage::where([
+            'user_id' => Auth::user()->id,
+            'save' => true,
+        ])->get();
 
-        // $user = Auth::user();
-        // dd($user->with('getPostStorages')->get());
-        // foreach($user->getPostStorages() as $post) {
-        //     dd($post);
-        // }
+        $posts = $storages->load('post');
 
-        $storagesPost = DB::table('storages')
-        ->join('users', 'storages.user_id', '=', 'users.id')
-        ->join('posts', 'storages.post_id', '=', 'posts.id')
-        ->join('category_post', 'storages.post_id', '=', 'category_post.post_id')
-        ->join('categories', 'categories.id', '=', 'category_post.category_id')
-        ->where('storages.user_id', Auth::user()->id)
-        ->where('storages.save', '=', true)
-        // ->orWhere('storages.like', '!=', 1)
-        // ->whereNotNull('categories.parent_id')
-        ->groupBy('posts.id')
-        ->selectRaw('posts.*')->get();
-        // ->selectRaw('posts.*, categories.name as category_name')->get();
-
-        // dd($storagesPost);
+        // $storagesPost = DB::table('storages')
+        // ->join('users', 'storages.user_id', '=', 'users.id')
+        // ->join('posts', 'storages.post_id', '=', 'posts.id')
+        // ->join('category_post', 'storages.post_id', '=', 'category_post.post_id')
+        // ->join('categories', 'categories.id', '=', 'category_post.category_id')
+        // ->where('storages.user_id', Auth::user()->id)
+        // ->where('storages.save', '=', true)
+        // // ->orWhere('storages.like', '!=', 1)
+        // // ->whereNotNull('categories.parent_id')
+        // ->groupBy('posts.id')
+        // ->selectRaw('posts.*')->get();
+        // // ->selectRaw('posts.*, categories.name as category_name')->get();
 
         $catsHome = $this->categoryRepository->getCategoryForHome();
         $tags = $this->tagRepository->getAllTag();
@@ -123,7 +122,7 @@ class StorageController extends Controller
             $trending = Post::where('published', true)->orderBy('created_at', 'desc')->firstOrFail();
         }
 
-        return view('storages.index', compact('storagesPost', 'tags', 'catsHome', 'trending'));
+        return view('storages.index', compact('posts', 'tags', 'catsHome', 'trending'));
     }
 
 
