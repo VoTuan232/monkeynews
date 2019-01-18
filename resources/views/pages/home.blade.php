@@ -13,7 +13,7 @@
                 <div class="fh5co_suceefh5co_height_position_absolute_font">
                     <div class=""><a href="#" class="color_fff"> <i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ $new->created_at }}
                     </a></div>
-                    <div class=""><a href="{{ route('home.single', ['slug' => str_slug($new->slug)]) }}" class="fh5co_good_font"> {!! substr(strip_tags($new->title), 0, 70) !!}{{ strlen(strip_tags($new->title))>20 ? "..." : ""}} </a></div>
+                    <div class=""><a href="{{ route('home.single', ['slug' => str_slug($new->slug)]) }}" class="fh5co_good_font"> {!! substr(strip_tags($new->title), 0, 100) !!}{{ strlen(strip_tags($new->title))>70 ? "..." : ""}} </a></div>
                 </div>
             </div>
         </div>
