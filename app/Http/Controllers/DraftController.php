@@ -115,7 +115,7 @@ class DraftController extends Controller
                     $category = null;
                 }
 
-                $tags = $this->tags;
+                $tags = $this->tagRepository->getAllTag();
 
                 return view('drafts.edit', compact('post', 'category', 'trees', 'tags'));
         }

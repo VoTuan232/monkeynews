@@ -92,6 +92,13 @@ class StorageController extends Controller
     }
 
     public function getPost() {
+
+        // $user = Auth::user();
+        // dd($user->with('getPostStorages')->get());
+        // foreach($user->getPostStorages() as $post) {
+        //     dd($post);
+        // }
+
         $storagesPost = DB::table('storages')
         ->join('users', 'storages.user_id', '=', 'users.id')
         ->join('posts', 'storages.post_id', '=', 'posts.id')
@@ -99,10 +106,13 @@ class StorageController extends Controller
         ->join('categories', 'categories.id', '=', 'category_post.category_id')
         ->where('storages.user_id', Auth::user()->id)
         ->where('storages.save', '=', true)
-        ->orWhere('storages.like', '!=', 1)
-        ->whereNotNull('categories.parent_id')
+        // ->orWhere('storages.like', '!=', 1)
+        // ->whereNotNull('categories.parent_id')
         ->groupBy('posts.id')
-        ->selectRaw('posts.*, categories.name as category_name')->get();
+        ->selectRaw('posts.*')->get();
+        // ->selectRaw('posts.*, categories.name as category_name')->get();
+
+        // dd($storagesPost);
 
         $catsHome = $this->categoryRepository->getCategoryForHome();
         $tags = $this->tagRepository->getAllTag();

@@ -75,4 +75,9 @@ class User extends Authenticatable
         return false;
 
     }
+
+    //get post in storages
+    public function getPostStorages() {
+        return $this->belongsToMany('App\Models\Post', 'storages', 'user_id', 'post_id');
+    }
 }

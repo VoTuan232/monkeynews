@@ -1,5 +1,6 @@
   <script type="text/javascript">
-        
+       
+            
         $(document).on('click','#cat_link',function(e){
             e.preventDefault();
             var parent_id = $(this).attr('value');

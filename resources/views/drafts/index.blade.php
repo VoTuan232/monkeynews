@@ -82,7 +82,6 @@
  </script>
 
  	@include('drafts.create_js')
-
 @routes
 	<script src="{{ mix('js/auto_slug_post.js') }}"></script>
 
