@@ -20,7 +20,7 @@
                             <span style="color:#ad9ba1;">Trending about 
                             {{ \Carbon\Carbon::parse($post->trending)->diffForHumans() }} </span>
                             <br>
-                            <b><a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" style="color:#292b5a;">{{ $post->title }}</a></b>
+                            <b><a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" style="color:#292b5a;" title="{{ $post->title }}">{{ $post->title }}</a></b>
                             <br>
                             <a href="{{ route('home.trending') }}" class="btn btn-primary btn-sm">Trending</a>
                             @if($post->tags->count() > 0)

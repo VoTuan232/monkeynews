@@ -11,9 +11,14 @@
                 <img src="{{ $new->image }}" alt="img"/>
                 <div class="fh5co_suceefh5co_height_position_absolute"></div>
                 <div class="fh5co_suceefh5co_height_position_absolute_font">
-                    <div class=""><a href="#" class="color_fff"> <i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ $new->created_at }}
-                    </a></div>
-                    <div class=""><a href="{{ route('home.single', ['slug' => str_slug($new->slug)]) }}" class="fh5co_good_font"> {!! substr(strip_tags($new->title), 0, 100) !!}{{ strlen(strip_tags($new->title))>70 ? "..." : ""}} </a></div>
+                    <div class="">
+                        <a href="#" class="color_fff"> <i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ $new->created_at }}
+                        </a>
+                    </div>
+                    <br>
+                    <div class="">
+                        <a href="{{ route('home.single', ['slug' => str_slug($new->slug)]) }}" class="fh5co_good_font" title="{{ $new->title }}"> {!! substr(strip_tags($new->title), 0, 100) !!}{{ strlen(strip_tags($new->title))>70 ? "..." : ""}} </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -27,7 +32,7 @@
                         <div class="fh5co_suceefh5co_height_position_absolute_font_2">
                             <div class=""><a href="#" class="color_fff"> <i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{ $list->created_at }}
                             </a></div>
-                            <div class=""><a href="{{ route('home.single', ['slug' => str_slug($list->slug)]) }}" class="fh5co_good_font_2">  {!! substr(strip_tags($list->title), 0, 70) !!}{{ strlen(strip_tags($list->title))>20 ? "..." : ""}} </a></div>
+                            <div class=""><a href="{{ route('home.single', ['slug' => str_slug($list->slug)]) }}" class="fh5co_good_font_2" title="{{ $list->title }}">  {!! substr(strip_tags($list->title), 0, 70) !!}{{ strlen(strip_tags($list->title))>20 ? "..." : ""}} </a></div>
                         </div>
                     </div>
                 </div>
@@ -53,7 +58,7 @@
                     </div>
                     <div class="fh5co_latest_trading_img_position_absolute"></div>
                     <div class="fh5co_latest_trading_img_position_absolute_1">
-                        <a href="{{ route('home.single', ['slug' => str_slug($list->slug)]) }}" class="text-white"> {!! substr(strip_tags($list->title), 0, 70) !!}{{ strlen(strip_tags($list->title))>20 ? "..." : ""}} </a>
+                        <a href="{{ route('home.single', ['slug' => str_slug($list->slug)]) }}" class="text-white" title="{{ $list->title }}"> {!! substr(strip_tags($list->title), 0, 70) !!}{{ strlen(strip_tags($list->title))>20 ? "..." : ""}} </a>
                         <div class="fh5co_latest_trading_date_and_name_color">{{ $list->created_at }}</div>
                     </div>
                 </div>
@@ -81,7 +86,7 @@
                         </div>
                     </div>
                     <div class="col-md-7 animate-box">
-                        <a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" class="fh5co_magna py-2"> {!! substr(strip_tags($post->title), 0, 50) !!}{{ strlen(strip_tags($post->title))>50 ? "..." : ""}} </a> <a href="" class="fh5co_mini_time py-3"> {{ $post->user->name }} - {{  Carbon\Carbon::parse($post->created_at)->format('d-m-Y') }}
+                        <a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" class="fh5co_magna py-2" title="{{ $post->title }}"> {!! substr(strip_tags($post->title), 0, 50) !!}{{ strlen(strip_tags($post->title))>50 ? "..." : ""}} </a> <a href="" class="fh5co_mini_time py-3"> {{ $post->user->name }} - {{  Carbon\Carbon::parse($post->created_at)->format('d-m-Y') }}
                        {{--  April 18,2016 --}} </a>
                         <div class="fh5co_consectetur"> {!! substr(strip_tags($post->body), 0, 70) !!}{{ strlen(strip_tags($post->body))>70 ? "..." : ""}}
                         </div>
@@ -107,7 +112,7 @@
                         <img src="{{ $post->image }}" alt="img" class="fh5co_most_trading"/>
                     </div>
                     <div class="col-7 paddding">
-                        <div class="most_fh5co_treding_font"><a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" class="fh5co_magna py-2"> {!! substr(strip_tags($post->title), 0, 20) !!}{{ strlen(strip_tags($post->title))>20 ? "..." : ""}} </a> </div>
+                        <div class="most_fh5co_treding_font"><a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" class="fh5co_magna py-2" title="{{ $post->title }}"> {!! substr(strip_tags($post->title), 0, 20) !!}{{ strlen(strip_tags($post->title))>20 ? "..." : ""}} </a> </div>
                         <div class="most_fh5co_treding_font_123"> April 18, 2016</div>
                     </div>
                 </div>

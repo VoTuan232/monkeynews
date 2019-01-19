@@ -32,7 +32,7 @@
 	                        </div>
 	                    </div>
 	                    <div class="col-md-7 animate-box">
-	                        <a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" class="fh5co_magna py-2"> {!! substr(strip_tags($post->title), 0, 50) !!}{{ strlen(strip_tags($post->title))>50 ? "..." : ""}} </a> <a href="#" class="fh5co_mini_time py-3">{{ $post->created_at }}</a>
+	                        <a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" class="fh5co_magna py-2" title="{{ $post->title }}"> {!! substr(strip_tags($post->title), 0, 50) !!}{{ strlen(strip_tags($post->title))>50 ? "..." : ""}} </a> <a href="#" class="fh5co_mini_time py-3">{{ $post->created_at }}</a>
 	                        <div class="fh5co_consectetur"> {!! substr(strip_tags($post->body), 0, 200) !!}{{ strlen(strip_tags($post->body))>200 ? "..." : ""}}
 	                        </div>
 	                    </div>
@@ -64,7 +64,7 @@
 	                        <img src="{{ $post->image }}" alt="img" class="fh5co_most_trading"/>
 	                    </div>
 	                    <div class="col-7 paddding">
-	                        <div class="most_fh5co_treding_font">  <a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}">{!! substr(strip_tags($post->title), 0, 20) !!}{{ strlen(strip_tags($post->title))>20 ? "..." : ""}}</a></div>
+	                        <div class="most_fh5co_treding_font">  <a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" title="{{ $post->title }}">{!! substr(strip_tags($post->title), 0, 20) !!}{{ strlen(strip_tags($post->title))>20 ? "..." : ""}}</a></div>
 	                        <div class="most_fh5co_treding_font_123"> {{ $post->created_at }}</div>
 	                    </div>
 	                </div>
