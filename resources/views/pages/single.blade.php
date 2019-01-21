@@ -201,7 +201,7 @@
                                 <p  class="fh5co_tagg" style="margin-top: -14px;">Trending đã được tạo</p>
                             @endif
                         @endcan
-                        
+
                         <input id="post-shortlink" value="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}">
                         <button class="button" id="copy-link-post" data-clipboard-target="#post-shortlink" title="Copy url"><i class="fa fa-link" ></i></button>
 
@@ -290,7 +290,7 @@
                         <img src="{{ $post->image }}" alt="img" class="fh5co_most_trading"/>
                     </div>
                     <div class="col-7 paddding">
-                        <div class="most_fh5co_treding_font"> <a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}">{!! substr(strip_tags($post->title), 0, 20) !!}{{ strlen(strip_tags($post->title))>20 ? "..." : ""}}</a></div>
+                        <div class="most_fh5co_treding_font"> <a href="{{ route('home.single', ['slug' => str_slug($post->slug)]) }}" title="{{ $post->title }}">{!! substr(strip_tags($post->title), 0, 20) !!}{{ strlen(strip_tags($post->title))>20 ? "..." : ""}}</a></div>
                         <div class="most_fh5co_treding_font_123"> {{ $post->created_at }}</div>
                     </div>
                 </div>
