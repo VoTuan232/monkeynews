@@ -86,6 +86,7 @@
         <script>
             $(document).ready(function() {
                 $('#manager_comment_table').dataTable( {
+                    "order": [[ 0, "desc" ]],
                     "processing": true,
                     "serverSide": true,
                     "ajax": {

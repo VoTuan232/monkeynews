@@ -41,7 +41,7 @@ class CommentController extends Controller
     }
 
     public function getComments() {
-        $data = Post::Where('published', '1')->with('comments', 'user')->get();
+        $data = Post::Where('published', '1')->with('comments', 'user')->orderBy('posts.id', 'desc')->get();
         return DataTables::of($data)
         ->addColumn('role', function($data){
             return $data->user->roles->first()->name;
