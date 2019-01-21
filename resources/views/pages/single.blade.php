@@ -72,6 +72,9 @@
             border: none;
             cursor: pointer;
         }
+        .status {
+            cursor: pointer !important;
+        }
         div .body-post img {
             max-width: 100%;
         }
@@ -231,22 +234,22 @@
 
                     </div>
                     <div class="col-md-4">
-                        <button type="button" class="btn btn-primary btn-sm" data-like="{{ isset($postAll) ? $postAll->like : "1"}}" data-id="{{ $post->id }}" title="Like" id="btn-like-post">
+                        <button type="button" class="btn btn-primary btn-sm status" data-like="{{ isset($postAll) ? $postAll->like : "1"}}" data-id="{{ $post->id }}" title="Like" id="btn-like-post">
                         <i class="fa fa-thumbs-up"></i>
                         <span class="badge" id="number-like-post">{{ $post->like }}</span>
                         </button>
 
-                        <button type="button" class="btn btn-primary btn-sm" data-save="{{ isset($postAll) ? $postAll->like : "1"}}" data-id="{{ $post->id }}" title="Unlike"  id="btn-dislike-post">
+                        <button type="button" class="btn btn-primary btn-sm status" data-save="{{ isset($postAll) ? $postAll->like : "1"}}" data-id="{{ $post->id }}" title="Unlike"  id="btn-dislike-post">
                             <i class="fa fa-thumbs-down"></i>
                             <span class="badge" id="number-dislike-post">{{ $post->dislike }}</span>
                         </button>
 
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('home.single', $post->slug) }}&display=popup" target="_blink">
-                            <button type="button"  class="btn btn-primary btn-sm" title="Share"><i class="fa fa-share-alt"></i></button>
+                            <button type="button"  class="btn btn-primary btn-sm status" title="Share"><i class="fa fa-share-alt"></i></button>
                         </a>
 
                         @csrf
-                        <button type="button" class="btn btn-primary btn-sm" data-save="{{ isset($postAll) ? $postAll->save : "0"}}" data-id="{{ $post->id }}" title="Save" id="btn-save-post">
+                        <button type="button" class="btn btn-primary btn-sm status" data-save="{{ isset($postAll) ? $postAll->save : "0"}}" data-id="{{ $post->id }}" title="Save" id="btn-save-post">
                             <i class="fa fa-archive"></i>
                         </button>
 
