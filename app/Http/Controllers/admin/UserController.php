@@ -28,7 +28,7 @@ class UserController extends Controller
     public function index()
     {
         // $users = $this->getUsers();
-        $users = User::with('roles', 'posts')->get();
+        $users = User::with('roles', 'posts')->paginate(8);
         
         $roles = Role::pluck('name','id'); 
 

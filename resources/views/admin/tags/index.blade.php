@@ -46,6 +46,7 @@
 							@endforeach
 						</tbody>
 					</table>
+					{{ $tags->links() }}
             	</div>
 				@can('tag.create')
             	<div class="col-md-4 pull-right">

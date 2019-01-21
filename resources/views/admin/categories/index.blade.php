@@ -65,6 +65,7 @@
 							@endforeach
 						</tbody>
 					</table>
+					{{ $categories->links() }}
             	</div>
 
 				@can('category.create')

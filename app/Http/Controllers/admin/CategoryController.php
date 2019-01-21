@@ -16,7 +16,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(8);
         $categoriesNoChildren = Category::getCategoryNoChildren()->get();
         $trees = Category::where('parent_id',null)->get();
 
